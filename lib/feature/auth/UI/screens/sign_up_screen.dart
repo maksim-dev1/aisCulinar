@@ -1,7 +1,7 @@
 import 'package:culinar/app/app_view.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/auth/UI/screens/sign_in_screen.dart';
-import 'package:culinar/feature/auth/UI/widgets/my_text_filled.dart';
+import 'package:culinar/feature/auth/UI/widgets/auth_text_filed.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Имя',
                   controller: _nameController,
                   validator: (value) {
@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: userIcon,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Email',
                   controller: _emailController,
                   validator: (value) {
@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: emailIcon,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Пароль',
                   controller: _passwordController,
                   isPassword: true,
@@ -129,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   prefixIcon: lockIcon,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Повторите ароль',
                   controller: _replayPasswordController,
                   isPassword: true,
@@ -180,7 +180,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         child: Text(
                           'Войти',
-                          style: GoogleFonts.bitter(
+                          style: GoogleFonts.inter(
                               textStyle: const TextStyle(
                             color: Colors.blue,
                             fontSize: 13,

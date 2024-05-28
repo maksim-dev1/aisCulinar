@@ -48,7 +48,7 @@ class Ingredient with _$Ingredient {
 class Measurement with _$Measurement {
   const factory Measurement({
     required String measurementId,
-    required String title,
+    required String title, 
   }) = _Measurement;
 
   factory Measurement.fromJson(Map<String, dynamic> json) =>

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MyTextFormField extends StatelessWidget {
+class AuthTextFormField extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
   final bool isPassword;
@@ -9,7 +9,7 @@ class MyTextFormField extends StatelessWidget {
   final InputDecoration? decoration;
   final SvgPicture prefixIcon;
 
-  const MyTextFormField({
+  const AuthTextFormField({
     super.key,
     required this.labelText,
     required this.controller,
@@ -38,10 +38,10 @@ class MyTextFormField extends StatelessWidget {
                 color: Theme.of(context).secondaryHeaderColor,
                 width: 2.0,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(14.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(14.0)),
             )),
         validator: validator,
       ),
     );
   }
-}
+} 

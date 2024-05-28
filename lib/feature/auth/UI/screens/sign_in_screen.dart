@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:culinar/app/app_view.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/auth/UI/screens/sign_up_screen.dart';
-import 'package:culinar/feature/auth/UI/widgets/my_text_filled.dart';
+import 'package:culinar/feature/auth/UI/widgets/auth_text_filed.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocListener<AuthBloc, AuthState>( 
       listener: (context, state) {
         if (state is Success) {
           _closeLoadingDialog(); // Закрытие диалогового окна загрузки
@@ -71,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Email',
                   controller: _emailController,
                   validator: (value) {
@@ -87,7 +87,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   prefixIcon: emailIcon,
                 ),
                 const SizedBox(height: 25),
-                MyTextFormField(
+                AuthTextFormField(
                   labelText: 'Пароль',
                   controller: _passwordController,
                   isPassword: true,
@@ -138,7 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         child: Text(
                           'Зарегистрироваться',
-                          style: GoogleFonts.bitter(
+                          style: GoogleFonts.inter(
                               textStyle: const TextStyle(
                             color: Colors.blue,
                             fontSize: 13,
@@ -183,9 +183,9 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _closeLoadingDialog() {
-    if (_dialogCompleter != null && !_dialogCompleter.isCompleted) {
+    if (!_dialogCompleter.isCompleted) {
       _dialogCompleter.complete();
-      Navigator.pop(context); // Закрытие диалога
+      Navigator.pop(context);
     }
   }
 }
