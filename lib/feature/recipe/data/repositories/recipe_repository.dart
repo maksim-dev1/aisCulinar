@@ -1,4 +1,3 @@
-import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 
 abstract class RecipeRepository {

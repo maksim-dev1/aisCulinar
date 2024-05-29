@@ -349,7 +349,7 @@ class _AddRecipeScreenBodyState extends State<AddRecipeScreenBody> {
                 ],
               ),
               const SizedBox(height: 9),
-              SelectionOfIngredient(context: widget.context),
+              ListIngredient(context: widget.context),
               const SizedBox(height: 100),
             ],
           ),

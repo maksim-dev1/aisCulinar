@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'recipe_repository.dart';
 
 class RecipeFirebaseRepository implements RecipeRepository {
@@ -31,18 +32,23 @@ class RecipeFirebaseRepository implements RecipeRepository {
   @override
   Future<List<Ingredient>> getIngredients(String title) async {
     final snapshot = await _firestore.collection('ingredients').get();
-    return snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
+    final ingredients =
+        snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
+    if (kDebugMode) {
+      print("Ingredients from Firestore: $ingredients");
+    }
+    return ingredients;
   }
 
   @override
   Future<List<Measurement>> getMeasurments(String title) async {
-    final snapshot = await _firestore
-        .collection('measurements')
-        .where('title', isEqualTo: title)
-        .get();
-    return snapshot.docs
-        .map((doc) => Measurement.fromJson(doc.data()))
-        .toList();
+    final snapshot = await _firestore.collection('measurements').get();
+    final measurements =
+        snapshot.docs.map((doc) => Measurement.fromJson(doc.data())).toList();
+    if (kDebugMode) {
+      print("Ingredients from Firestore: $measurements");
+    }
+    return measurements;
   }
 
   @override
@@ -58,7 +64,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
           await docRef.update({'ingredientId': ingredientId});
           return ingredientId;
         } else {
-          // Если у ингредиента уже есть ID, то обновляем его через метод set
           await _firestore
               .collection('ingredients')
               .doc(ingredient.ingredientId)
@@ -85,14 +90,21 @@ class RecipeFirebaseRepository implements RecipeRepository {
     }
   }
 
-   @override
-     Future<List<Ingredient>> searchIngredients(String query) async {
-    final snapshot = await _firestore
-        .collection('ingredients')
-        .where('title', isGreaterThanOrEqualTo: query)
-        .where('title', isLessThanOrEqualTo: '$query\uf8ff')
-        .get();
-    return snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
+  @override
+  Future<List<Ingredient>> searchIngredients(String query) async {
+    final snapshot = await _firestore.collection('ingredients').get();
+    final ingredients =
+        snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
+
+    final filteredIngredients = ingredients.where((ingredient) {
+      return ingredient.title.toLowerCase().contains(query.toLowerCase());
+    }).toList();
+
+    if (kDebugMode) {
+      print(
+          "Searched Ingredients from Firestore for query '$query': $filteredIngredients");
+    }
+    return filteredIngredients;
   }
 
   @override

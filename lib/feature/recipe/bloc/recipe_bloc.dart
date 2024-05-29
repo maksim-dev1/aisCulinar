@@ -171,24 +171,32 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-        on<SearchIngredient>((event, emit) async {
-      emit(const Loading());
-      try {
-        final ingredients = await recipeRepository.searchIngredients(event.query);
-        emit(IngredientsLoaded(ingredients));
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
-    });
+on<SearchIngredient>((event, emit) async {
+  emit(const Loading());
+  try {
+    final ingredients = await recipeRepository.searchIngredients(event.query);
+    if (kDebugMode) {
+      print('Ingredients from Firestore: $ingredients');
+    } 
+    emit(IngredientsLoaded(ingredients));
+  } catch (e) {
+    if (kDebugMode) {
+      print('Error fetching ingredients: $e');
+    } 
+    emit(Error(e.toString())); 
+  }
+});
+
 
     on<GetMeasurements>((event, emit) async {
       emit(const Loading());
       try {
-        final measurements = await recipeRepository.getMeasurments(event.title);
+        final measurements = await recipeRepository.getMeasurments('');
         emit(MeasurementsLoaded(measurements));
       } catch (e) {
         emit(Error(e.toString()));
       }
     });
+
   }
 }
