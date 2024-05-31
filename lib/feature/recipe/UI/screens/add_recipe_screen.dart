@@ -1,6 +1,7 @@
 import 'package:culinar/design/colors.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/widgets/add_recipe_text_filed.dart';
+import 'package:culinar/feature/recipe/UI/widgets/add_step_for_recipe.dart';
 import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,10 +94,12 @@ class _AddRecipeScreenBodyState extends State<AddRecipeScreenBody> {
                         child: Container(
                           height: 250,
                           decoration: BoxDecoration(
-                            color: Colors.grey[500],
+                            color: Colors.grey[400],
                             borderRadius: BorderRadius.circular(24),
                           ),
-                          child: const Center(child: Icon(Icons.add)),
+                          child: Center(
+                              child: Transform.scale(
+                                  scale: 1.5, child: addgalleryIcon)),
                         ),
                       )
                     : Stack(
@@ -114,9 +117,12 @@ class _AddRecipeScreenBodyState extends State<AddRecipeScreenBody> {
                           ),
                           Align(
                             alignment: Alignment.topRight,
-                            child: IconButton(
-                              icon: const Icon(Icons.edit),
-                              onPressed: _pickImage,
+                            child: Transform.scale(
+                              scale: 1.2,
+                              child: IconButton(
+                                icon: editGalleryIcon,
+                                onPressed: _pickImage,
+                              ),
                             ),
                           ),
                         ],
@@ -349,6 +355,53 @@ class _AddRecipeScreenBodyState extends State<AddRecipeScreenBody> {
               ),
               const SizedBox(height: 9),
               ListIngredient(context: widget.context),
+              const SizedBox(height: 22),
+              Row(
+                children: [
+                  Text(
+                    'Пошаговая инструкция',
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 9),
+              const AddStepForRecipe(),
+              const SizedBox(height: 22),
+              const SizedBox(height: 9),
+              const AddStepForRecipe(),
+              const SizedBox(height: 22),
+              const SizedBox(height: 9),
+              const AddStepForRecipe(),
+              const SizedBox(height: 22),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: secondaryColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24)),
+                    fixedSize: const Size.fromHeight(50),
+                  ),
+                  onPressed: () {},
+                  child: Center(
+                      child: Text(
+                    'Добавить шаг',
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  )),
+                ),
+              ),
               const SizedBox(height: 100),
             ],
           ),

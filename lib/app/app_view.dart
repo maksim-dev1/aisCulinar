@@ -1,6 +1,5 @@
 import 'package:culinar/feature/auth/UI/screens/sign_in_screen.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
-import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
 import 'package:culinar/feature/recipe/UI/screens/home_screen.dart';
 import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +15,6 @@ class AppView extends StatelessWidget {
     authBloc.add(const AppStarted());
 
     return MaterialApp(
-      routes: {
-        '/add_recipe': (context) => const AddRecipeScreen()
-      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: const Color(0xFFECB88B),

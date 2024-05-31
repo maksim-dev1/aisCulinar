@@ -1,9 +1,9 @@
+import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
-import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
 import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 
@@ -218,7 +218,12 @@ class HomeScreenBody extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushNamed(context, '/add_recipe');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AddRecipeScreen(),
+                      ),
+                    );
                   },
                 ),
               ),

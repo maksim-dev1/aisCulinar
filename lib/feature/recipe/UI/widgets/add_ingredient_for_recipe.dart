@@ -365,6 +365,7 @@ class WrapListIngredients extends StatelessWidget {
                           minWidth: 35,
                           maxWidth: 100,
                         ),
+// TODO: Доработать TextFiled (вводится только один символ)
                         child: TextField(
                           controller: quantityController,
                           cursorHeight: 18,
