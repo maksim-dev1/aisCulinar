@@ -1,6 +1,4 @@
-import 'package:culinar/design/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AddRecipeTextFiled extends StatelessWidget {
   final String labelText;

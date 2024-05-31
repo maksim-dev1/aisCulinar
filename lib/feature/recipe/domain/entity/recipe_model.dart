@@ -56,16 +56,15 @@ class Measurement with _$Measurement {
 }
 
 @freezed
-class IngredientAndQuantity with _$IngredientAndQuantity {
-  const factory IngredientAndQuantity(
-      {required String ingredientAndQuantityId,
-      required String ingredientId,
-      required String quantity,
-      required String measurementId,
-      required String recipeId}) = _IngredientAndQuantity;
+class IngredientWithQuantity with _$IngredientWithQuantity {
+  const factory IngredientWithQuantity({
+    required Ingredient ingredient,
+    required String quantity,
+    required String measurementId,
+    required String recipeId
+  }) = _IngredientWithQuantity;
 
-  factory IngredientAndQuantity.fromJson(Map<String, dynamic> json) =>
-      _$IngredientAndQuantityFromJson(json);
+  factory IngredientWithQuantity.fromJson(Map<String, dynamic> json) => _$IngredientWithQuantityFromJson(json);
 }
 
 @freezed

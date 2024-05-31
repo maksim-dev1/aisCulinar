@@ -77,21 +77,20 @@ Map<String, dynamic> _$$MeasurementImplToJson(_$MeasurementImpl instance) =>
       'title': instance.title,
     };
 
-_$IngredientAndQuantityImpl _$$IngredientAndQuantityImplFromJson(
+_$IngredientWithQuantityImpl _$$IngredientWithQuantityImplFromJson(
         Map<String, dynamic> json) =>
-    _$IngredientAndQuantityImpl(
-      ingredientAndQuantityId: json['ingredientAndQuantityId'] as String,
-      ingredientId: json['ingredientId'] as String,
+    _$IngredientWithQuantityImpl(
+      ingredient:
+          Ingredient.fromJson(json['ingredient'] as Map<String, dynamic>),
       quantity: json['quantity'] as String,
       measurementId: json['measurementId'] as String,
       recipeId: json['recipeId'] as String,
     );
 
-Map<String, dynamic> _$$IngredientAndQuantityImplToJson(
-        _$IngredientAndQuantityImpl instance) =>
+Map<String, dynamic> _$$IngredientWithQuantityImplToJson(
+        _$IngredientWithQuantityImpl instance) =>
     <String, dynamic>{
-      'ingredientAndQuantityId': instance.ingredientAndQuantityId,
-      'ingredientId': instance.ingredientId,
+      'ingredient': instance.ingredient,
       'quantity': instance.quantity,
       'measurementId': instance.measurementId,
       'recipeId': instance.recipeId,

@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
@@ -23,10 +25,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<AddRecipe>((event, emit) async {
+      emit(const Loading());
       try {
-        await recipeRepository.addRecipe(event.recipe);
-        final recipes = await recipeRepository.getRecipes();
-        emit(Loaded(recipes));
+       // Сохранение рецепта и ингредиентов
+        await recipeRepository.addRecipe(event.recipe, event.ingredientsWithQuantity);
+        emit(const RecipeAdded());
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -171,22 +174,22 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-on<SearchIngredient>((event, emit) async {
-  emit(const Loading());
-  try {
-    final ingredients = await recipeRepository.searchIngredients(event.query);
-    if (kDebugMode) {
-      print('Ingredients from Firestore: $ingredients');
-    } 
-    emit(IngredientsLoaded(ingredients));
-  } catch (e) {
-    if (kDebugMode) {
-      print('Error fetching ingredients: $e');
-    } 
-    emit(Error(e.toString())); 
-  }
-});
-
+    on<SearchIngredient>((event, emit) async {
+      emit(const Loading());
+      try {
+        final ingredients =
+            await recipeRepository.searchIngredients(event.query);
+        if (kDebugMode) {
+          print('Ingredients from Firestore: $ingredients');
+        }
+        emit(IngredientsLoaded(ingredients));
+      } catch (e) {
+        if (kDebugMode) {
+          print('Error fetching ingredients: $e');
+        }
+        emit(Error(e.toString()));
+      }
+    });
 
     on<GetMeasurements>((event, emit) async {
       emit(const Loading());
@@ -197,6 +200,5 @@ on<SearchIngredient>((event, emit) async {
         emit(Error(e.toString()));
       }
     });
-
   }
 }

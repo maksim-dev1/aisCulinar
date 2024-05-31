@@ -875,44 +875,44 @@ abstract class _Measurement implements Measurement {
       throw _privateConstructorUsedError;
 }
 
-IngredientAndQuantity _$IngredientAndQuantityFromJson(
+IngredientWithQuantity _$IngredientWithQuantityFromJson(
     Map<String, dynamic> json) {
-  return _IngredientAndQuantity.fromJson(json);
+  return _IngredientWithQuantity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$IngredientAndQuantity {
-  String get ingredientAndQuantityId => throw _privateConstructorUsedError;
-  String get ingredientId => throw _privateConstructorUsedError;
+mixin _$IngredientWithQuantity {
+  Ingredient get ingredient => throw _privateConstructorUsedError;
   String get quantity => throw _privateConstructorUsedError;
   String get measurementId => throw _privateConstructorUsedError;
   String get recipeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $IngredientAndQuantityCopyWith<IngredientAndQuantity> get copyWith =>
+  $IngredientWithQuantityCopyWith<IngredientWithQuantity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $IngredientAndQuantityCopyWith<$Res> {
-  factory $IngredientAndQuantityCopyWith(IngredientAndQuantity value,
-          $Res Function(IngredientAndQuantity) then) =
-      _$IngredientAndQuantityCopyWithImpl<$Res, IngredientAndQuantity>;
+abstract class $IngredientWithQuantityCopyWith<$Res> {
+  factory $IngredientWithQuantityCopyWith(IngredientWithQuantity value,
+          $Res Function(IngredientWithQuantity) then) =
+      _$IngredientWithQuantityCopyWithImpl<$Res, IngredientWithQuantity>;
   @useResult
   $Res call(
-      {String ingredientAndQuantityId,
-      String ingredientId,
+      {Ingredient ingredient,
       String quantity,
       String measurementId,
       String recipeId});
+
+  $IngredientCopyWith<$Res> get ingredient;
 }
 
 /// @nodoc
-class _$IngredientAndQuantityCopyWithImpl<$Res,
-        $Val extends IngredientAndQuantity>
-    implements $IngredientAndQuantityCopyWith<$Res> {
-  _$IngredientAndQuantityCopyWithImpl(this._value, this._then);
+class _$IngredientWithQuantityCopyWithImpl<$Res,
+        $Val extends IngredientWithQuantity>
+    implements $IngredientWithQuantityCopyWith<$Res> {
+  _$IngredientWithQuantityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -922,21 +922,16 @@ class _$IngredientAndQuantityCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ingredientAndQuantityId = null,
-    Object? ingredientId = null,
+    Object? ingredient = null,
     Object? quantity = null,
     Object? measurementId = null,
     Object? recipeId = null,
   }) {
     return _then(_value.copyWith(
-      ingredientAndQuantityId: null == ingredientAndQuantityId
-          ? _value.ingredientAndQuantityId
-          : ingredientAndQuantityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      ingredientId: null == ingredientId
-          ? _value.ingredientId
-          : ingredientId // ignore: cast_nullable_to_non_nullable
-              as String,
+      ingredient: null == ingredient
+          ? _value.ingredient
+          : ingredient // ignore: cast_nullable_to_non_nullable
+              as Ingredient,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -951,52 +946,58 @@ class _$IngredientAndQuantityCopyWithImpl<$Res,
               as String,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $IngredientCopyWith<$Res> get ingredient {
+    return $IngredientCopyWith<$Res>(_value.ingredient, (value) {
+      return _then(_value.copyWith(ingredient: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$IngredientAndQuantityImplCopyWith<$Res>
-    implements $IngredientAndQuantityCopyWith<$Res> {
-  factory _$$IngredientAndQuantityImplCopyWith(
-          _$IngredientAndQuantityImpl value,
-          $Res Function(_$IngredientAndQuantityImpl) then) =
-      __$$IngredientAndQuantityImplCopyWithImpl<$Res>;
+abstract class _$$IngredientWithQuantityImplCopyWith<$Res>
+    implements $IngredientWithQuantityCopyWith<$Res> {
+  factory _$$IngredientWithQuantityImplCopyWith(
+          _$IngredientWithQuantityImpl value,
+          $Res Function(_$IngredientWithQuantityImpl) then) =
+      __$$IngredientWithQuantityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String ingredientAndQuantityId,
-      String ingredientId,
+      {Ingredient ingredient,
       String quantity,
       String measurementId,
       String recipeId});
+
+  @override
+  $IngredientCopyWith<$Res> get ingredient;
 }
 
 /// @nodoc
-class __$$IngredientAndQuantityImplCopyWithImpl<$Res>
-    extends _$IngredientAndQuantityCopyWithImpl<$Res,
-        _$IngredientAndQuantityImpl>
-    implements _$$IngredientAndQuantityImplCopyWith<$Res> {
-  __$$IngredientAndQuantityImplCopyWithImpl(_$IngredientAndQuantityImpl _value,
-      $Res Function(_$IngredientAndQuantityImpl) _then)
+class __$$IngredientWithQuantityImplCopyWithImpl<$Res>
+    extends _$IngredientWithQuantityCopyWithImpl<$Res,
+        _$IngredientWithQuantityImpl>
+    implements _$$IngredientWithQuantityImplCopyWith<$Res> {
+  __$$IngredientWithQuantityImplCopyWithImpl(
+      _$IngredientWithQuantityImpl _value,
+      $Res Function(_$IngredientWithQuantityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ingredientAndQuantityId = null,
-    Object? ingredientId = null,
+    Object? ingredient = null,
     Object? quantity = null,
     Object? measurementId = null,
     Object? recipeId = null,
   }) {
-    return _then(_$IngredientAndQuantityImpl(
-      ingredientAndQuantityId: null == ingredientAndQuantityId
-          ? _value.ingredientAndQuantityId
-          : ingredientAndQuantityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      ingredientId: null == ingredientId
-          ? _value.ingredientId
-          : ingredientId // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$IngredientWithQuantityImpl(
+      ingredient: null == ingredient
+          ? _value.ingredient
+          : ingredient // ignore: cast_nullable_to_non_nullable
+              as Ingredient,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -1015,21 +1016,18 @@ class __$$IngredientAndQuantityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$IngredientAndQuantityImpl implements _IngredientAndQuantity {
-  const _$IngredientAndQuantityImpl(
-      {required this.ingredientAndQuantityId,
-      required this.ingredientId,
+class _$IngredientWithQuantityImpl implements _IngredientWithQuantity {
+  const _$IngredientWithQuantityImpl(
+      {required this.ingredient,
       required this.quantity,
       required this.measurementId,
       required this.recipeId});
 
-  factory _$IngredientAndQuantityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$IngredientAndQuantityImplFromJson(json);
+  factory _$IngredientWithQuantityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IngredientWithQuantityImplFromJson(json);
 
   @override
-  final String ingredientAndQuantityId;
-  @override
-  final String ingredientId;
+  final Ingredient ingredient;
   @override
   final String quantity;
   @override
@@ -1039,19 +1037,16 @@ class _$IngredientAndQuantityImpl implements _IngredientAndQuantity {
 
   @override
   String toString() {
-    return 'IngredientAndQuantity(ingredientAndQuantityId: $ingredientAndQuantityId, ingredientId: $ingredientId, quantity: $quantity, measurementId: $measurementId, recipeId: $recipeId)';
+    return 'IngredientWithQuantity(ingredient: $ingredient, quantity: $quantity, measurementId: $measurementId, recipeId: $recipeId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IngredientAndQuantityImpl &&
-            (identical(
-                    other.ingredientAndQuantityId, ingredientAndQuantityId) ||
-                other.ingredientAndQuantityId == ingredientAndQuantityId) &&
-            (identical(other.ingredientId, ingredientId) ||
-                other.ingredientId == ingredientId) &&
+            other is _$IngredientWithQuantityImpl &&
+            (identical(other.ingredient, ingredient) ||
+                other.ingredient == ingredient) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.measurementId, measurementId) ||
@@ -1062,39 +1057,36 @@ class _$IngredientAndQuantityImpl implements _IngredientAndQuantity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ingredientAndQuantityId,
-      ingredientId, quantity, measurementId, recipeId);
+  int get hashCode =>
+      Object.hash(runtimeType, ingredient, quantity, measurementId, recipeId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$IngredientAndQuantityImplCopyWith<_$IngredientAndQuantityImpl>
-      get copyWith => __$$IngredientAndQuantityImplCopyWithImpl<
-          _$IngredientAndQuantityImpl>(this, _$identity);
+  _$$IngredientWithQuantityImplCopyWith<_$IngredientWithQuantityImpl>
+      get copyWith => __$$IngredientWithQuantityImplCopyWithImpl<
+          _$IngredientWithQuantityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$IngredientAndQuantityImplToJson(
+    return _$$IngredientWithQuantityImplToJson(
       this,
     );
   }
 }
 
-abstract class _IngredientAndQuantity implements IngredientAndQuantity {
-  const factory _IngredientAndQuantity(
-      {required final String ingredientAndQuantityId,
-      required final String ingredientId,
+abstract class _IngredientWithQuantity implements IngredientWithQuantity {
+  const factory _IngredientWithQuantity(
+      {required final Ingredient ingredient,
       required final String quantity,
       required final String measurementId,
-      required final String recipeId}) = _$IngredientAndQuantityImpl;
+      required final String recipeId}) = _$IngredientWithQuantityImpl;
 
-  factory _IngredientAndQuantity.fromJson(Map<String, dynamic> json) =
-      _$IngredientAndQuantityImpl.fromJson;
+  factory _IngredientWithQuantity.fromJson(Map<String, dynamic> json) =
+      _$IngredientWithQuantityImpl.fromJson;
 
   @override
-  String get ingredientAndQuantityId;
-  @override
-  String get ingredientId;
+  Ingredient get ingredient;
   @override
   String get quantity;
   @override
@@ -1103,7 +1095,7 @@ abstract class _IngredientAndQuantity implements IngredientAndQuantity {
   String get recipeId;
   @override
   @JsonKey(ignore: true)
-  _$$IngredientAndQuantityImplCopyWith<_$IngredientAndQuantityImpl>
+  _$$IngredientWithQuantityImplCopyWith<_$IngredientWithQuantityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

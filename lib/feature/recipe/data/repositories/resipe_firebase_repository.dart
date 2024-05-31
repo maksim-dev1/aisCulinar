@@ -107,9 +107,20 @@ class RecipeFirebaseRepository implements RecipeRepository {
     return filteredIngredients;
   }
 
-  @override
-  Future<void> addRecipe(Recipe recipe) async {
-    await _firestore.collection('recipes').add(recipe.toJson());
+Future<void> addRecipe(Recipe recipe, List<IngredientWithQuantity> ingredientsWithQuantity) async {
+    // Создание транзакции для сохранения рецепта и ингредиентов атомарно
+    await _firestore.runTransaction((transaction) async {
+      // Сохранение рецепта
+      DocumentReference recipeRef = _firestore.collection('recipes').doc();
+      transaction.set(recipeRef, recipe.copyWith(recipeId: recipeRef.id).toJson());
+
+      // Сохранение ингредиентов с количеством и мерой измерения
+      for (final ingredientWithQuantity in ingredientsWithQuantity) {
+        DocumentReference ingredientRef = _firestore.collection('ingredientsAndQuantities').doc();
+        final ingredientData = ingredientWithQuantity.copyWith(recipeId: recipeRef.id).toJson();
+        transaction.set(ingredientRef, ingredientData);
+      }
+    });
   }
 
   @override

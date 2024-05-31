@@ -8,7 +8,7 @@ abstract class RecipeRepository {
   Future<List<Ingredient>> searchIngredients(String query);
   Future<List<Measurement>> getMeasurments(String title);
   Future<void> addIngredient(Ingredient ingredient);
-  Future<void> addRecipe(Recipe recipe); 
+  Future<void> addRecipe(Recipe recipe, List<IngredientWithQuantity> ingredientsWithQuantity); 
   Future<void> updateRecipe(Recipe recipe); 
   Future<void> deleteRecipe(String recipeId); 
   Future<List<Recipe>> searchRecipes(String query); 

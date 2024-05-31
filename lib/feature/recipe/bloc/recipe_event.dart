@@ -3,7 +3,7 @@ part of 'recipe_bloc.dart';
 @freezed
 class RecipeEvent with _$RecipeEvent {
   const factory RecipeEvent.loadRecipes() = LoadRecipes; 
-  const factory RecipeEvent.addRecipe(Recipe recipe) = AddRecipe; 
+  const factory RecipeEvent.addRecipe(Recipe recipe, List<IngredientWithQuantity> ingredientsWithQuantity) = AddRecipe; 
   const factory RecipeEvent.updateRecipe(Recipe recipe) = UpdateRecipe; 
   const factory RecipeEvent.deleteRecipe(String recipeId) = DeleteRecipe; 
   const factory RecipeEvent.getRecipeById(String recipeId) = GetRecipeById; 

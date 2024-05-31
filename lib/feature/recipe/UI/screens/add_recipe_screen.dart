@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-import 'package:culinar/feature/recipe/UI/widgets/selection_of_ingredient.dart';
+import 'package:culinar/feature/recipe/UI/widgets/add_ingredient_for_recipe.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
 
 class AddRecipeScreen extends StatelessWidget {
-  const AddRecipeScreen({Key? key});
+  const AddRecipeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,7 @@ class AddRecipeScreen extends StatelessWidget {
 
 class AddRecipeScreenBody extends StatefulWidget {
   final BuildContext context;
-  const AddRecipeScreenBody({Key? key, required this.context})
-      : super(key: key);
+  const AddRecipeScreenBody({super.key, required this.context});
 
   @override
   State<AddRecipeScreenBody> createState() => _AddRecipeScreenBodyState();
