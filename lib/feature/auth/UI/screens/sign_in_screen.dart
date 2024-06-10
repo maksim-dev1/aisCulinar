@@ -37,7 +37,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const AppView()),
-          );
+          ); 
         }
         if (state is Failure) {
           _closeLoadingDialog(); // Закрытие диалогового окна загрузки

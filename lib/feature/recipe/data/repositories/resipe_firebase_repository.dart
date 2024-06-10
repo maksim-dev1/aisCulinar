@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'recipe_repository.dart';
@@ -17,38 +19,76 @@ class RecipeFirebaseRepository implements RecipeRepository {
   @override
   Future<Recipe> getRecipeById(String recipeId) async {
     final doc = await _firestore.collection('recipes').doc(recipeId).get();
-    return Recipe.fromJson(doc.data()!);
+    if (doc.exists) {
+      return Recipe.fromJson(doc.data()!);
+    } else {
+      throw Exception('Recipe not found');
+    }
   }
 
   @override
   Future<List<Recipe>> getRecipesByCategory(String category) async {
     final snapshot = await _firestore
         .collection('recipes')
-        .where('category', isEqualTo: category)
+        .where('category.title', isEqualTo: category)
         .get();
     return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
   }
 
   @override
   Future<List<Ingredient>> getIngredients(String title) async {
-    final snapshot = await _firestore.collection('ingredients').get();
-    final ingredients =
-        snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
-    if (kDebugMode) {
-      print("Ingredients from Firestore: $ingredients");
+    Query query = _firestore.collection('ingredients');
+    if (title.isNotEmpty) {
+      query = query.where('title', isEqualTo: title);
     }
-    return ingredients;
+    final snapshot = await query.get();
+
+    return snapshot.docs.map((doc) {
+      final data = doc.data() as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Document data is null');
+      }
+      // Логирование данных для отладки
+      if (kDebugMode) {
+        print('Document data: $data');
+      }
+      // Проверка наличия необходимых полей и их значений
+      final ingredientId = data['ingredientId'] as String? ?? '';
+      final title = data['title'] as String? ?? '';
+      if (ingredientId.isEmpty || title.isEmpty) {
+        throw Exception('Missing required fields in document');
+      }
+      return Ingredient.fromJson({
+        'ingredientId': ingredientId,
+        'title': title,
+      });
+    }).toList();
   }
 
   @override
-  Future<List<Measurement>> getMeasurments(String title) async {
-    final snapshot = await _firestore.collection('measurements').get();
-    final measurements =
-        snapshot.docs.map((doc) => Measurement.fromJson(doc.data())).toList();
-    if (kDebugMode) {
-      print("Ingredients from Firestore: $measurements");
+  Future<List<Measurement>> getMeasurements(String title) async {
+    Query query = _firestore.collection('measurements');
+    if (title.isNotEmpty) {
+      query = query.where('title', isEqualTo: title);
     }
-    return measurements;
+    final snapshot = await query.get();
+
+    return snapshot.docs.map((doc) {
+      final data = doc.data() as Map<String, dynamic>?;
+      if (data == null) {
+        throw Exception('Document data is null');
+      }
+      // Логирование данных для отладки
+      if (kDebugMode) {
+        print('Document data: $data');
+      }
+      final measurementId = data['measurementId'] as String? ?? '';
+      final title = data['title'] as String? ?? '';
+      if (measurementId.isEmpty || title.isEmpty) {
+        throw Exception('Missing required fields in document');
+      }
+      return Measurement(measurementId: measurementId, title: title);
+    }).toList();
   }
 
   @override
@@ -107,21 +147,136 @@ class RecipeFirebaseRepository implements RecipeRepository {
     return filteredIngredients;
   }
 
-Future<void> addRecipe(Recipe recipe, List<IngredientWithQuantity> ingredientsWithQuantity) async {
-    // Создание транзакции для сохранения рецепта и ингредиентов атомарно
-    await _firestore.runTransaction((transaction) async {
-      // Сохранение рецепта
-      DocumentReference recipeRef = _firestore.collection('recipes').doc();
-      transaction.set(recipeRef, recipe.copyWith(recipeId: recipeRef.id).toJson());
+@override
+Future<void> addRecipe(
+    Recipe recipe,
+    List<IngredientWithQuantity> ingredients,
+    List<StepRecipe> steps,
+    File? image) async {
+  try {
+    // Создание документа рецепта
+    DocumentReference recipeDocRef = _firestore.collection('recipes').doc();
+    String recipeId = recipeDocRef.id;
+    if (kDebugMode) {
+      print('Создан документ рецепта с ID: $recipeId');
+    }
 
-      // Сохранение ингредиентов с количеством и мерой измерения
-      for (final ingredientWithQuantity in ingredientsWithQuantity) {
-        DocumentReference ingredientRef = _firestore.collection('ingredientsAndQuantities').doc();
-        final ingredientData = ingredientWithQuantity.copyWith(recipeId: recipeRef.id).toJson();
-        transaction.set(ingredientRef, ingredientData);
+    // Обновление recipeId в модели рецепта
+    recipe = recipe.copyWith(recipeId: recipeId);
+
+    // Создание документа ингредиентов с количествами
+    DocumentReference ingredientWithQuantityDocRef =
+        _firestore.collection('ingredientWithQuantity').doc();
+    String ingredientDocId = ingredientWithQuantityDocRef.id;
+    if (kDebugMode) {
+      print('Создан документ ингредиентов с ID: $ingredientDocId');
+    }
+
+    Map<String, Map<String, dynamic>> ingredientData = {};
+    for (var ingredient in ingredients) {
+      ingredientData[ingredient.ingredient.ingredientId] = {
+        'title': ingredient.ingredient.title,
+        'quantity': ingredient.quantity,
+        //'measurementId': ingredient.measurement.measurementId,
+        'measurementTitle': ingredient.measurement.title,
+      };
+    }
+    await ingredientWithQuantityDocRef
+        .set({'recipeId': recipeId, 'ingredients': ingredientData});
+    if (kDebugMode) {
+      print('Ингредиенты добавлены');
+    }
+
+    // Создание документа шагов рецепта
+    DocumentReference stepRecipeDocRef =
+        _firestore.collection('stepRecipe').doc();
+    String stepDocId = stepRecipeDocRef.id;
+    if (kDebugMode) {
+      print('Создан документ шагов рецепта с ID: $stepDocId');
+    }
+
+    Map<String, Map<String, dynamic>> stepData = {};
+    for (var step in steps) {
+      // Загрузка изображения для каждого шага в Firebase Storage и получение URL
+      String? stepImageUrl;
+      if (step.image.isNotEmpty) {
+        stepImageUrl = await _uploadImageToStorage(
+            File(step.image), recipeId); // Преобразование в File
+        if (kDebugMode) {
+          print(
+              'Изображение шага ${step.stepNumber} загружено с URL: $stepImageUrl');
+        }
       }
+
+      stepData[step.stepId] = {
+        'description': step.description,
+        'image': stepImageUrl ?? '',
+        'stepNumber': step.stepNumber,
+      };
+    }
+    await stepRecipeDocRef.set({'recipeId': recipeId, 'steps': stepData});
+    if (kDebugMode) {
+      print('Шаги добавлены');
+    }
+
+    // Загрузка изображения рецепта в Firebase Storage и получение URL
+    String? imageUrl;
+    if (image != null) {
+      try {
+        imageUrl = await _uploadImageToStorage(image, recipeId);
+        if (kDebugMode) {
+          print('Изображение загружено с URL: $imageUrl');
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print('Ошибка при загрузке изображения: ${e.toString()}');
+        }
+        throw Exception('Error uploading image: ${e.toString()}');
+      }
+    }
+
+    // Добавление основного документа рецепта с ссылками на ингредиенты и шаги
+    await recipeDocRef.set({
+      'recipeId': recipeId,
+      'userId': recipe.userId,
+      'imageUrl': imageUrl ?? '',
+      'title': recipe.title,
+      'description': recipe.description,
+      'cookingTime': recipe.cookingTime,
+      'portions': recipe.portions,
+      'categories': recipe.categories,
+      'ingredients': ingredientDocId,
+      'steps': stepDocId,
+      'rating': recipe.rating.toJson(),
+      'comments': [],
     });
+    if (kDebugMode) {
+      print('Рецепт добавлен в Firestore');
+    }
+  } catch (e) {
+    if (kDebugMode) {
+      print('Ошибка при добавлении рецепта: ${e.toString()}');
+    }
+    throw Exception("Error adding recipe: ${e.toString()}");
   }
+}
+
+Future<String> _uploadImageToStorage(File image, String recipeId) async {
+  try {
+    String filePath =
+        'recipe_images/$recipeId/${DateTime.now().millisecondsSinceEpoch}.jpg';
+    TaskSnapshot uploadTask =
+        await FirebaseStorage.instance.ref().child(filePath).putFile(image);
+    String downloadUrl = await uploadTask.ref.getDownloadURL();
+    return downloadUrl;
+  } catch (e) {
+    if (kDebugMode) {
+      print('Ошибка при загрузке изображения: ${e.toString()}');
+    }
+    throw Exception('Error uploading image: ${e.toString()}');
+  }
+}
+
 
   @override
   Future<void> updateRecipe(Recipe recipe) async {
@@ -211,5 +366,35 @@ Future<void> addRecipe(Recipe recipe, List<IngredientWithQuantity> ingredientsWi
         .collection('favorites')
         .doc(recipeId)
         .delete();
+  }
+
+  @override
+  Future<List<Categories>> getCategories(String title) async {
+    try {
+      final snapshot = await _firestore.collection('categories').get();
+      final categories = snapshot.docs.map((doc) {
+        return Categories(
+          categoryId: doc.id,
+          title: doc['title'],
+        );
+      }).toList();
+
+      // Выводим полученные категории в консоль
+      if (kDebugMode) {
+        print('Categories:');
+      }
+      for (var category in categories) {
+        if (kDebugMode) {
+          print('ID: ${category.categoryId}, Title: ${category.title}');
+        }
+      }
+
+      return categories;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting categories: $e');
+      }
+      return [];
+    }
   }
 }

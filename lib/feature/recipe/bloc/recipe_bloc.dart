@@ -1,7 +1,7 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
@@ -27,15 +27,25 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<AddRecipe>((event, emit) async {
       emit(const Loading());
       try {
-       // Сохранение рецепта и ингредиентов
-        await recipeRepository.addRecipe(event.recipe, event.ingredientsWithQuantity);
+        if (kDebugMode) {
+          print('Начато добавление рецепта');
+        }
+        await recipeRepository.addRecipe(event.recipe,
+            event.ingredientsWithQuantity, event.steps, event.image);
         emit(const RecipeAdded());
+        if (kDebugMode) {
+          print('Рецепт успешно добавлен');
+        }
       } catch (e) {
         emit(Error(e.toString()));
+        if (kDebugMode) {
+          print('Ошибка при добавлении рецепта: ${e.toString()}');
+        }
       }
     });
 
     on<UpdateRecipe>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.updateRecipe(event.recipe);
         final recipes = await recipeRepository.getRecipes();
@@ -46,6 +56,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<DeleteRecipe>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.deleteRecipe(event.recipeId);
         final recipes = await recipeRepository.getRecipes();
@@ -87,6 +98,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<AddComment>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.addComment(event.recipeId, event.comment);
         final comments =
@@ -98,6 +110,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<GetCommentsForRecipe>((event, emit) async {
+      emit(const Loading());
       try {
         final comments =
             await recipeRepository.getCommentsForRecipe(event.recipeId);
@@ -108,6 +121,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<DeleteComment>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.deleteComment(event.commentId);
       } catch (e) {
@@ -116,6 +130,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<AddToFavorites>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.addToFavorites(event.userId, event.recipeId);
         final favoriteRecipes =
@@ -131,13 +146,14 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       try {
         final favoriteRecipes =
             await recipeRepository.getFavoriteRecipesForUser(event.userId);
-        emit(Loaded(favoriteRecipes));
+        emit(FavoritesLoaded(favoriteRecipes));
       } catch (e) {
         emit(Error(e.toString()));
       }
     });
 
     on<RemoveFromFavorites>((event, emit) async {
+      emit(const Loading());
       try {
         await recipeRepository.removeFromFavorites(
             event.userId, event.recipeId);
@@ -150,6 +166,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<AddIngredient>((event, emit) async {
+      emit(const Loading());
       try {
         if (event.ingredient.title.trim().isEmpty) {
           throw 'Название ингредиента не может быть пустым';
@@ -174,19 +191,13 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-    on<SearchIngredient>((event, emit) async {
+    on<SearchIngredients>((event, emit) async {
       emit(const Loading());
       try {
         final ingredients =
             await recipeRepository.searchIngredients(event.query);
-        if (kDebugMode) {
-          print('Ingredients from Firestore: $ingredients');
-        }
         emit(IngredientsLoaded(ingredients));
       } catch (e) {
-        if (kDebugMode) {
-          print('Error fetching ingredients: $e');
-        }
         emit(Error(e.toString()));
       }
     });
@@ -194,8 +205,18 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<GetMeasurements>((event, emit) async {
       emit(const Loading());
       try {
-        final measurements = await recipeRepository.getMeasurments('');
+        final measurements = await recipeRepository.getMeasurements('');
         emit(MeasurementsLoaded(measurements));
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
+
+    on<GetCategories>((event, emit) async {
+      emit(const Loading());
+      try {
+        final categories = await recipeRepository.getCategories(event.title);
+        emit(CategoriesLoaded(categories));
       } catch (e) {
         emit(Error(e.toString()));
       }

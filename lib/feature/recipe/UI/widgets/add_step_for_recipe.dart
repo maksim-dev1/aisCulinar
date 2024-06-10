@@ -1,171 +1,188 @@
 import 'dart:io';
-
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/widgets/add_recipe_text_filed.dart';
+import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddStepForRecipe extends StatefulWidget {
-  const AddStepForRecipe({super.key});
+class AddStepWidget extends StatefulWidget {
+  final StepRecipe step;
+  final Function(StepRecipe, File?) onStepAdded;
+  final int stepNumber;
+  final Function onDelete;
+
+  const AddStepWidget({
+    super.key,
+    required this.step,
+    required this.onStepAdded,
+    required this.stepNumber,
+    required this.onDelete,
+  });
 
   @override
-  State<AddStepForRecipe> createState() => _AddStepForRecipeState();
+  State<AddStepWidget> createState() => _AddStepWidgetState();
 }
 
-class _AddStepForRecipeState extends State<AddStepForRecipe> {
-  File? _image;
-  final TextEditingController _descriptionController = TextEditingController();
+class _AddStepWidgetState extends State<AddStepWidget> {
+  TextEditingController _descriptionController = TextEditingController();
+  File? _stepImage;
+
+  @override
+  void initState() {
+    super.initState();
+    _descriptionController =
+        TextEditingController(text: widget.step.description);
+  }
 
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
-    final XFile? pickedFile =
+    final XFile? pickedImage =
         await picker.pickImage(source: ImageSource.gallery);
 
-    if (pickedFile != null) {
+    if (pickedImage != null) {
       setState(() {
-        _image = File(pickedFile.path);
+        _stepImage = File(pickedImage.path);
       });
+      widget.onStepAdded(widget.step.copyWith(image: pickedImage.path), _stepImage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(
-          constraints: BoxConstraints(minHeight: 400),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 14),
-                    child: Container(
-                      width: 65,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 14, left: 24, right: 24),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Шаг ${widget.stepNumber}',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
                       ),
-                      child: Center(
-                        child: Text(
-                          'Шаг 1',
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    ),
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                IconButton(
+                  onPressed: widget.onDelete as void Function()?,
+                  icon: deleteIcon,
+                )
+              ],
+            ),
+          ),
+          const SizedBox(height: 22),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Text(
+              'Фото шага',
+              style: GoogleFonts.inter(
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 9),
+          Padding(
+            padding: const EdgeInsets.only(left: 40, right: 40),
+            child: SizedBox(
+              height: 200,
+              child: _stepImage == null
+                  ? InkWell(
+                      onTap: _pickImage,
+                      child: Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Center(
+                          child: Transform.scale(
+                            scale: 1.5,
+                            child: const Icon(Icons.add_photo_alternate),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  const Expanded(child: SizedBox()),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 14, right: 24),
-                    child: Transform.scale(
-                      scale: 1.2,
-                      child: IconButton(
-                        onPressed: () {
-                          //TODO: Метод для удаления шага
-                        },
-                        icon: deleteIcon,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, top: 10),
-                child: Text(
-                  'Фото шага',
-                  style: GoogleFonts.inter(
-                    textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
-                child: SizedBox(
-                  height: 200,
-                  child: _image == null
-                      ? InkWell(
-                          onTap: _pickImage,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey[400],
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: Center(
-                              child: Transform.scale(
-                                scale: 1.5,
-                                child: addgalleryIcon,
-                              ),
+                    )
+                  : Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(24),
+                          child: Image.file(
+                            _stepImage!,
+                            width: double.infinity,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Transform.scale(
+                            scale: 1.2,
+                            child: IconButton(
+                              icon: editGalleryIcon,
+                              onPressed: _pickImage,
                             ),
                           ),
-                        )
-                      : Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(24),
-                              child: Image(
-                                image: FileImage(_image!),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Positioned(
-                              top: 0,
-                              right: 0,
-                              child: Transform.scale(
-                                scale: 1.2,
-                                child: IconButton(
-                                  icon: editGalleryIcon,
-                                  onPressed: _pickImage,
-                                ),
-                              ),
-                            ),
-                          ],
                         ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, top: 10),
-                child: Text(
-                  'Описание шага',
-                  style: GoogleFonts.inter(
-                    textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
+                      ],
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
-                child: AddRecipeTextFiled(
-                  labelText: 'Описание шага',
-                  maxLines: 3,
-                  controller: _descriptionController,
-                ),
-              ),
-              const SizedBox(height: 14)
-            ],
+            ),
           ),
-        ),
-      ],
+          const SizedBox(height: 22),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Text(
+              'Описание шага',
+              style: GoogleFonts.inter(
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 9),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: AddRecipeTextFiled(
+              controller: _descriptionController,
+              onChanged: (value) {
+                widget.onStepAdded(
+                    widget.step.copyWith(description: value), _stepImage);
+              },
+              labelText: 'Опишите что нужно сделать на этом шаге',
+              maxLines: 3,
+            ),
+          ),
+          const SizedBox(height: 24),
+        ],
+      ),
     );
   }
 }
+

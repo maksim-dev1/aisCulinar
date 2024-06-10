@@ -9,17 +9,14 @@ part of 'recipe_model.dart';
 _$RecipeImpl _$$RecipeImplFromJson(Map<String, dynamic> json) => _$RecipeImpl(
       recipeId: json['recipeId'] as String,
       userId: json['userId'] as String,
-      image: json['image'] as String,
+      imageUrl: json['imageUrl'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
-      cookingTime: (json['cookingTime'] as num).toInt(),
-      category: Category.fromJson(json['category'] as Map<String, dynamic>),
-      ingredients: (json['ingredients'] as List<dynamic>)
-          .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      steps: (json['steps'] as List<dynamic>)
-          .map((e) => Step.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      cookingTime: json['cookingTime'] as String,
+      portions: (json['portions'] as num).toInt(),
+      categories: json['categories'] as String,
+      ingredients: json['ingredients'] as String,
+      steps: json['steps'] as String,
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
       comments: (json['comments'] as List<dynamic>)
           .map((e) => Comment.fromJson(e as Map<String, dynamic>))
@@ -30,24 +27,25 @@ Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
     <String, dynamic>{
       'recipeId': instance.recipeId,
       'userId': instance.userId,
-      'image': instance.image,
+      'imageUrl': instance.imageUrl,
       'title': instance.title,
       'description': instance.description,
       'cookingTime': instance.cookingTime,
-      'category': instance.category,
+      'portions': instance.portions,
+      'categories': instance.categories,
       'ingredients': instance.ingredients,
       'steps': instance.steps,
       'rating': instance.rating,
       'comments': instance.comments,
     };
 
-_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
-    _$CategoryImpl(
+_$CategoriesImpl _$$CategoriesImplFromJson(Map<String, dynamic> json) =>
+    _$CategoriesImpl(
       categoryId: json['categoryId'] as String,
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
+Map<String, dynamic> _$$CategoriesImplToJson(_$CategoriesImpl instance) =>
     <String, dynamic>{
       'categoryId': instance.categoryId,
       'title': instance.title,
@@ -80,35 +78,41 @@ Map<String, dynamic> _$$MeasurementImplToJson(_$MeasurementImpl instance) =>
 _$IngredientWithQuantityImpl _$$IngredientWithQuantityImplFromJson(
         Map<String, dynamic> json) =>
     _$IngredientWithQuantityImpl(
+      ingredientWithQuantityId: json['ingredientWithQuantityId'] as String,
       ingredient:
           Ingredient.fromJson(json['ingredient'] as Map<String, dynamic>),
       quantity: json['quantity'] as String,
-      measurementId: json['measurementId'] as String,
+      measurement:
+          Measurement.fromJson(json['measurement'] as Map<String, dynamic>),
       recipeId: json['recipeId'] as String,
     );
 
 Map<String, dynamic> _$$IngredientWithQuantityImplToJson(
         _$IngredientWithQuantityImpl instance) =>
     <String, dynamic>{
+      'ingredientWithQuantityId': instance.ingredientWithQuantityId,
       'ingredient': instance.ingredient,
       'quantity': instance.quantity,
-      'measurementId': instance.measurementId,
+      'measurement': instance.measurement,
       'recipeId': instance.recipeId,
     };
 
-_$StepImpl _$$StepImplFromJson(Map<String, dynamic> json) => _$StepImpl(
+_$StepRecipeImpl _$$StepRecipeImplFromJson(Map<String, dynamic> json) =>
+    _$StepRecipeImpl(
       stepId: json['stepId'] as String,
       description: json['description'] as String,
       image: json['image'] as String,
       recipeId: json['recipeId'] as String,
+      stepNumber: (json['stepNumber'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$StepImplToJson(_$StepImpl instance) =>
+Map<String, dynamic> _$$StepRecipeImplToJson(_$StepRecipeImpl instance) =>
     <String, dynamic>{
       'stepId': instance.stepId,
       'description': instance.description,
       'image': instance.image,
       'recipeId': instance.recipeId,
+      'stepNumber': instance.stepNumber,
     };
 
 _$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
@@ -187,7 +191,7 @@ _$SeasonalProductImpl _$$SeasonalProductImplFromJson(
       title: json['title'] as String,
       description: json['description'] as String,
       history: json['history'] as String,
-      seson: json['seson'] as String,
+      season: json['season'] as String,
       taste: json['taste'] as String,
       benefitsAndHarms: json['benefitsAndHarms'] as String,
       storage: json['storage'] as String,
@@ -203,7 +207,7 @@ Map<String, dynamic> _$$SeasonalProductImplToJson(
       'title': instance.title,
       'description': instance.description,
       'history': instance.history,
-      'seson': instance.seson,
+      'season': instance.season,
       'taste': instance.taste,
       'benefitsAndHarms': instance.benefitsAndHarms,
       'storage': instance.storage,
