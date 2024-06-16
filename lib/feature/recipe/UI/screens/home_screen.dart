@@ -1,4 +1,7 @@
+import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
+import 'package:culinar/feature/recipe/UI/screens/recipe_list_screen.dart';
+import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -121,25 +124,40 @@ class HomeScreenBody extends StatelessWidget {
           ),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+            child: InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider(
+                    create: (context) => RecipeBloc(recipeRepository: RepositoryProvider.of<RecipeRepository>(context))..add(const LoadRecipes()),
+                    child: RecipeSearchScreen(),
+                  ),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: SearchBar(
-                  elevation: WidgetStateProperty.all(1),
-                  trailing: [
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () {},
-                    ),
-                  ],
+              child: Container(
+                height: 65,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
                 ),
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      width: double.infinity,
+                      height: 55,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(24)),
+                      child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: searchIcon,
+                          )),
+                    )),
               ),
             ),
           ),
@@ -221,7 +239,7 @@ class HomeScreenBody extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  AddRecipeScreen(),
+                        builder: (context) => const AddRecipeScreen(),
                       ),
                     );
                   },

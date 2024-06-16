@@ -3,18 +3,19 @@ import 'dart:io';
 import 'package:culinar/design/colors.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/widgets/add_ingredient_for_recipe.dart';
-import 'package:culinar/feature/recipe/UI/widgets/add_recipe_text_filed.dart';
+import 'package:culinar/feature/recipe/UI/widgets/custom_slider.dart';
+import 'package:culinar/feature/recipe/UI/widgets/custom_text_field.dart';
 import 'package:culinar/feature/recipe/UI/widgets/add_step_for_recipe.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
 import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 class AddRecipeScreen extends StatelessWidget {
   const AddRecipeScreen({super.key});
@@ -29,6 +30,8 @@ class AddRecipeScreen extends StatelessWidget {
   }
 }
 
+//TODO: По возможности добавить к каждому пункту кнопку с всплывающем окном, в котором будет указана информация по заполнению для пользователя
+
 class AddRecipeForm extends StatefulWidget {
   const AddRecipeForm({super.key});
 
@@ -41,9 +44,9 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _portionsController = TextEditingController();
-  TimeOfDay  time = TimeOfDay .now();
-  File? _image;
-  final List<IngredientWithQuantity> _ingredients = [];
+  double _cookingTimeValue = 30.0;
+  File? _mainIimage;
+  final List<IngredientWithQuantity> ingredients = [];
   final List<StepRecipe> _steps = [];
   Categories? _selectedCategory;
   List<Categories> categoriesList = [];
@@ -74,7 +77,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
 
     if (pickedFile != null) {
       setState(() {
-        _image = File(pickedFile.path);
+        _mainIimage = File(pickedFile.path);
       });
     }
   }
@@ -91,7 +94,6 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         stepId: UniqueKey().toString(),
         description: '',
         image: '',
-        recipeId: '',
         stepNumber: _steps.length + 1,
       ));
     });
@@ -99,13 +101,13 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
 
   void _addIngredient(IngredientWithQuantity value) {
     setState(() {
-      _ingredients.add(value);
+      ingredients.add(value);
     });
   }
 
   void _deleteIngredient(int index) {
     setState(() {
-      _ingredients.removeAt(index);
+      ingredients.removeAt(index);
     });
   }
 
@@ -131,36 +133,62 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
     }
 
     if (_formKey.currentState!.validate()) {
-      if (_ingredients.isNotEmpty &&
+      if (ingredients.isNotEmpty &&
           _steps.isNotEmpty &&
           _selectedCategory != null) {
-            final String cookingTime = "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}";
+        // Используем значение ползунка для времени приготовления
+        final String cookingTime = _cookingTimeValue.round().toString();
+
+        List<IngredientWithQuantity> ingredientsList = ingredients
+            .map(
+              (ingredient) => IngredientWithQuantity(
+                ingredientWithQuantityId: Uuid().v4(),
+                ingredient: Ingredient(
+                    ingredientId: ingredient.ingredient.ingredientId,
+                    title: ingredient.ingredient.title),
+                quantity: ingredient.quantity,
+                measurement: Measurement(
+                    measurementId: ingredient.measurement.measurementId,
+                    title: ingredient.measurement.title),
+              ),
+            )
+            .toList();
+
+        List<StepRecipe> stepsList = _steps
+            .map(
+              (step) => StepRecipe(
+                stepId: Uuid().v4(),
+                description: step.description,
+                image: step.image,
+                stepNumber: _steps.indexOf(step) + 1,
+              ),
+            )
+            .toList();
+
         Recipe recipe = Recipe(
-          recipeId: '',
+          recipeId: '', // Id будет сгенерирован внутри метода addRecipe
           userId: currentUser.uid,
           imageUrl: '',
           title: _titleController.text,
           description: _descriptionController.text,
           cookingTime: cookingTime,
           portions: int.parse(_portionsController.text),
-          categories: _selectedCategory!.title,
-          ingredients: '',
-          steps: '',
+          category:
+              _selectedCategory!.title, // Устанавливаем выбранную категорию
+          ingredients: [], // Данные об ингредиентах будут добавлены в методе addRecipe
+          steps: [], // Данные о шагах будут добавлены в методе addRecipe
           rating: const Rating(
             ratingId: '',
             userId: '',
             overallRating: 0,
-            totalRating: 0,
+            totalRating: 0, userName: '',
           ),
           comments: [],
         );
 
-        context
-            .read<RecipeBloc>()
-            .add(AddRecipe(recipe, _ingredients, _steps, _image));
-        if (kDebugMode) {
-          print('Рецепт отправлен на добавление');
-        }
+        context.read<RecipeBloc>().add(
+              AddRecipe(recipe, ingredientsList, stepsList, _mainIimage),
+            );
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -257,7 +285,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back),
+          icon: arrowLeftIcon,
         ),
       ),
       body: BlocListener<RecipeBloc, RecipeState>(
@@ -267,18 +295,67 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
               context: context,
               barrierDismissible: false,
               builder: (BuildContext context) {
-                return Center(
-                  child: CircularProgressIndicator(color: secondaryColor),
+                return AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircularProgressIndicator(
+                        color: secondaryColor,
+                      ),
+                      const SizedBox(height: 16),
+                      const Text('Loading...'),
+                    ],
+                  ),
                 );
               },
             );
           } else if (state is RecipeAdded) {
-            Navigator.of(context).pop(); 
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Рецепт успешно сохранен!'),
-                backgroundColor: Colors.green,
-              ),
+            Navigator.of(context).pop();
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(
+                    'Успех',
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: secondaryColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  content: Text(
+                    'Рецепт успешно сохранен!',
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text(
+                        'OK',
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
             );
           } else if (state is Error) {
             Navigator.of(context).pop();
@@ -313,7 +390,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                         ),
                       ),
                       const SizedBox(height: 9),
-                      _image == null
+                      _mainIimage == null
                           ? InkWell(
                               onTap: _pickImage,
                               child: Container(
@@ -333,7 +410,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(24),
                                   child: Image.file(
-                                    _image!,
+                                    _mainIimage!,
                                     width: double.infinity,
                                     height: 300,
                                     fit: BoxFit.cover,
@@ -364,7 +441,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                         ),
                       ),
                       const SizedBox(height: 9),
-                      AddRecipeTextFiled(
+                      CustomTextField(
                         controller: _titleController,
                         labelText: 'Например: Медовик',
                         maxLines: 1,
@@ -381,7 +458,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                         ),
                       ),
                       const SizedBox(height: 9),
-                      AddRecipeTextFiled(
+                      CustomTextField(
                         controller: _descriptionController,
                         labelText: 'Расскажите каким будет готовое блюдо',
                         maxLines: 3,
@@ -397,184 +474,16 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 9),
-                      InkWell(
-                        onTap: () => showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              elevation: 24.0,
-                              title: Text(
-                                'Выберите время',
-                                style: GoogleFonts.inter(
-                                  textStyle: TextStyle(
-                                    color: secondaryColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                              ),
-                              content: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.2,
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                child: CupertinoDatePicker(
-                                  initialDateTime: DateTime(
-                                    DateTime.now().year,
-                                    DateTime.now().month,
-                                    DateTime.now().day,
-                                    time.hour,
-                                    time.minute,
-                                  ),
-                                  mode: CupertinoDatePickerMode.time,
-                                  use24hFormat: true,
-                                  onDateTimeChanged: (DateTime newTime) {
-                                    setState(() {
-                                      time = TimeOfDay(
-                                        hour: newTime.hour,
-                                        minute: newTime.minute,
-                                      );
-                                    });
-                                  },
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: Text(
-                                    'Выбрать',
-                                    style: GoogleFonts.inter(
-                                      textStyle: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  height: 50,
-                                  decoration: const BoxDecoration(
-                                    border: Border(
-                                      top: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                      left: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                      bottom: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                    ),
-                                    borderRadius: BorderRadius.horizontal(
-                                        left: Radius.circular(24)),
-                                  ),
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 15),
-                                          child: Text(
-                                            'часы:',
-                                            style: GoogleFonts.inter(
-                                              textStyle: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const Expanded(child: SizedBox()),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: Text(
-                                            '${time.hour}',
-                                            style: GoogleFonts.inter(
-                                              textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const VerticalDivider(width: 3),
-                              Expanded(
-                                child: Container(
-                                  height: 50,
-                                  decoration: const BoxDecoration(
-                                    border: Border(
-                                      top: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                      right: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                      bottom: BorderSide(
-                                          width: 1.5, color: Colors.grey),
-                                    ),
-                                    borderRadius: BorderRadius.horizontal(
-                                        right: Radius.circular(24)),
-                                  ),
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 15),
-                                          child: Text(
-                                            'минуты:',
-                                            style: GoogleFonts.inter(
-                                              textStyle: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const Expanded(child: SizedBox()),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: Text(
-                                            '${time.minute}',
-                                            style: GoogleFonts.inter(
-                                              textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                      const SizedBox(height: 25),
+                      CustomAnimatedSlider(
+                        value: _cookingTimeValue,
+                        min: 0,
+                        max: 500,
+                        onChange: (double value) {
+                          setState(() {
+                            _cookingTimeValue = value;
+                          });
+                        },
                       ),
                       const SizedBox(height: 22),
                       Text(
@@ -588,7 +497,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                         ),
                       ),
                       const SizedBox(height: 9),
-                      AddRecipeTextFiled(
+                      CustomTextField(
                         controller: _portionsController,
                         labelText: 'Например: 4',
                         maxLines: 1,
@@ -655,7 +564,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                       ),
                       const SizedBox(height: 9),
                       ListIngredient(
-                        ingredients: _ingredients,
+                        ingredients: ingredients,
                         onAdd: _addIngredient,
                         onDelete: _deleteIngredient,
                       ),
@@ -683,7 +592,6 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                                 step: _steps[index],
                                 onStepAdded: (step, image) {
                                   _addStepAndUpdateWidget(index, step);
-                                  _image = image;
                                 },
                                 stepNumber: index + 1,
                                 onDelete: () {

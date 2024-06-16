@@ -14,9 +14,13 @@ _$RecipeImpl _$$RecipeImplFromJson(Map<String, dynamic> json) => _$RecipeImpl(
       description: json['description'] as String,
       cookingTime: json['cookingTime'] as String,
       portions: (json['portions'] as num).toInt(),
-      categories: json['categories'] as String,
-      ingredients: json['ingredients'] as String,
-      steps: json['steps'] as String,
+      category: json['category'] as String,
+      ingredients: (json['ingredients'] as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
+          .toList(),
+      steps: (json['steps'] as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
+          .toList(),
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
       comments: (json['comments'] as List<dynamic>)
           .map((e) => Comment.fromJson(e as Map<String, dynamic>))
@@ -32,7 +36,7 @@ Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
       'description': instance.description,
       'cookingTime': instance.cookingTime,
       'portions': instance.portions,
-      'categories': instance.categories,
+      'category': instance.category,
       'ingredients': instance.ingredients,
       'steps': instance.steps,
       'rating': instance.rating,
@@ -84,7 +88,6 @@ _$IngredientWithQuantityImpl _$$IngredientWithQuantityImplFromJson(
       quantity: json['quantity'] as String,
       measurement:
           Measurement.fromJson(json['measurement'] as Map<String, dynamic>),
-      recipeId: json['recipeId'] as String,
     );
 
 Map<String, dynamic> _$$IngredientWithQuantityImplToJson(
@@ -94,7 +97,6 @@ Map<String, dynamic> _$$IngredientWithQuantityImplToJson(
       'ingredient': instance.ingredient,
       'quantity': instance.quantity,
       'measurement': instance.measurement,
-      'recipeId': instance.recipeId,
     };
 
 _$StepRecipeImpl _$$StepRecipeImplFromJson(Map<String, dynamic> json) =>
@@ -102,7 +104,6 @@ _$StepRecipeImpl _$$StepRecipeImplFromJson(Map<String, dynamic> json) =>
       stepId: json['stepId'] as String,
       description: json['description'] as String,
       image: json['image'] as String,
-      recipeId: json['recipeId'] as String,
       stepNumber: (json['stepNumber'] as num).toInt(),
     );
 
@@ -111,7 +112,6 @@ Map<String, dynamic> _$$StepRecipeImplToJson(_$StepRecipeImpl instance) =>
       'stepId': instance.stepId,
       'description': instance.description,
       'image': instance.image,
-      'recipeId': instance.recipeId,
       'stepNumber': instance.stepNumber,
     };
 
@@ -120,6 +120,7 @@ _$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
       commentId: json['commentId'] as String,
       userId: json['userId'] as String,
       comment: json['comment'] as String,
+      userName: json['userName'] as String,
       time: DateTime.parse(json['time'] as String),
       recipeId: json['recipeId'] as String,
     );
@@ -129,6 +130,7 @@ Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
       'commentId': instance.commentId,
       'userId': instance.userId,
       'comment': instance.comment,
+      'userName': instance.userName,
       'time': instance.time.toIso8601String(),
       'recipeId': instance.recipeId,
     };
@@ -136,6 +138,7 @@ Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
 _$RatingImpl _$$RatingImplFromJson(Map<String, dynamic> json) => _$RatingImpl(
       ratingId: json['ratingId'] as String,
       userId: json['userId'] as String,
+      userName: json['userName'] as String,
       overallRating: (json['overallRating'] as num).toDouble(),
       totalRating: (json['totalRating'] as num).toInt(),
     );
@@ -144,6 +147,7 @@ Map<String, dynamic> _$$RatingImplToJson(_$RatingImpl instance) =>
     <String, dynamic>{
       'ratingId': instance.ratingId,
       'userId': instance.userId,
+      'userName': instance.userName,
       'overallRating': instance.overallRating,
       'totalRating': instance.totalRating,
     };

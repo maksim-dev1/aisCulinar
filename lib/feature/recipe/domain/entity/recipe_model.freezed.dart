@@ -27,9 +27,10 @@ mixin _$Recipe {
   String get description => throw _privateConstructorUsedError;
   String get cookingTime => throw _privateConstructorUsedError;
   int get portions => throw _privateConstructorUsedError;
-  String get categories => throw _privateConstructorUsedError;
-  String get ingredients => throw _privateConstructorUsedError;
-  String get steps => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get ingredients =>
+      throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get steps => throw _privateConstructorUsedError;
   Rating get rating => throw _privateConstructorUsedError;
   List<Comment> get comments => throw _privateConstructorUsedError;
 
@@ -51,9 +52,9 @@ abstract class $RecipeCopyWith<$Res> {
       String description,
       String cookingTime,
       int portions,
-      String categories,
-      String ingredients,
-      String steps,
+      String category,
+      List<Map<String, dynamic>> ingredients,
+      List<Map<String, dynamic>> steps,
       Rating rating,
       List<Comment> comments});
 
@@ -80,7 +81,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
     Object? description = null,
     Object? cookingTime = null,
     Object? portions = null,
-    Object? categories = null,
+    Object? category = null,
     Object? ingredients = null,
     Object? steps = null,
     Object? rating = null,
@@ -115,18 +116,18 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.portions
           : portions // ignore: cast_nullable_to_non_nullable
               as int,
-      categories: null == categories
-          ? _value.categories
-          : categories // ignore: cast_nullable_to_non_nullable
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Map<String, dynamic>>,
       steps: null == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Map<String, dynamic>>,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -162,9 +163,9 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       String description,
       String cookingTime,
       int portions,
-      String categories,
-      String ingredients,
-      String steps,
+      String category,
+      List<Map<String, dynamic>> ingredients,
+      List<Map<String, dynamic>> steps,
       Rating rating,
       List<Comment> comments});
 
@@ -190,7 +191,7 @@ class __$$RecipeImplCopyWithImpl<$Res>
     Object? description = null,
     Object? cookingTime = null,
     Object? portions = null,
-    Object? categories = null,
+    Object? category = null,
     Object? ingredients = null,
     Object? steps = null,
     Object? rating = null,
@@ -225,18 +226,18 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.portions
           : portions // ignore: cast_nullable_to_non_nullable
               as int,
-      categories: null == categories
-          ? _value.categories
-          : categories // ignore: cast_nullable_to_non_nullable
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       ingredients: null == ingredients
-          ? _value.ingredients
+          ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Map<String, dynamic>>,
       steps: null == steps
-          ? _value.steps
+          ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<Map<String, dynamic>>,
       rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -260,12 +261,14 @@ class _$RecipeImpl implements _Recipe {
       required this.description,
       required this.cookingTime,
       required this.portions,
-      required this.categories,
-      required this.ingredients,
-      required this.steps,
+      required this.category,
+      required final List<Map<String, dynamic>> ingredients,
+      required final List<Map<String, dynamic>> steps,
       required this.rating,
       required final List<Comment> comments})
-      : _comments = comments;
+      : _ingredients = ingredients,
+        _steps = steps,
+        _comments = comments;
 
   factory _$RecipeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeImplFromJson(json);
@@ -285,11 +288,23 @@ class _$RecipeImpl implements _Recipe {
   @override
   final int portions;
   @override
-  final String categories;
+  final String category;
+  final List<Map<String, dynamic>> _ingredients;
   @override
-  final String ingredients;
+  List<Map<String, dynamic>> get ingredients {
+    if (_ingredients is EqualUnmodifiableListView) return _ingredients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ingredients);
+  }
+
+  final List<Map<String, dynamic>> _steps;
   @override
-  final String steps;
+  List<Map<String, dynamic>> get steps {
+    if (_steps is EqualUnmodifiableListView) return _steps;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_steps);
+  }
+
   @override
   final Rating rating;
   final List<Comment> _comments;
@@ -302,7 +317,7 @@ class _$RecipeImpl implements _Recipe {
 
   @override
   String toString() {
-    return 'Recipe(recipeId: $recipeId, userId: $userId, imageUrl: $imageUrl, title: $title, description: $description, cookingTime: $cookingTime, portions: $portions, categories: $categories, ingredients: $ingredients, steps: $steps, rating: $rating, comments: $comments)';
+    return 'Recipe(recipeId: $recipeId, userId: $userId, imageUrl: $imageUrl, title: $title, description: $description, cookingTime: $cookingTime, portions: $portions, category: $category, ingredients: $ingredients, steps: $steps, rating: $rating, comments: $comments)';
   }
 
   @override
@@ -322,11 +337,11 @@ class _$RecipeImpl implements _Recipe {
                 other.cookingTime == cookingTime) &&
             (identical(other.portions, portions) ||
                 other.portions == portions) &&
-            (identical(other.categories, categories) ||
-                other.categories == categories) &&
-            (identical(other.ingredients, ingredients) ||
-                other.ingredients == ingredients) &&
-            (identical(other.steps, steps) || other.steps == steps) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            const DeepCollectionEquality()
+                .equals(other._ingredients, _ingredients) &&
+            const DeepCollectionEquality().equals(other._steps, _steps) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             const DeepCollectionEquality().equals(other._comments, _comments));
   }
@@ -342,9 +357,9 @@ class _$RecipeImpl implements _Recipe {
       description,
       cookingTime,
       portions,
-      categories,
-      ingredients,
-      steps,
+      category,
+      const DeepCollectionEquality().hash(_ingredients),
+      const DeepCollectionEquality().hash(_steps),
       rating,
       const DeepCollectionEquality().hash(_comments));
 
@@ -371,9 +386,9 @@ abstract class _Recipe implements Recipe {
       required final String description,
       required final String cookingTime,
       required final int portions,
-      required final String categories,
-      required final String ingredients,
-      required final String steps,
+      required final String category,
+      required final List<Map<String, dynamic>> ingredients,
+      required final List<Map<String, dynamic>> steps,
       required final Rating rating,
       required final List<Comment> comments}) = _$RecipeImpl;
 
@@ -394,11 +409,11 @@ abstract class _Recipe implements Recipe {
   @override
   int get portions;
   @override
-  String get categories;
+  String get category;
   @override
-  String get ingredients;
+  List<Map<String, dynamic>> get ingredients;
   @override
-  String get steps;
+  List<Map<String, dynamic>> get steps;
   @override
   Rating get rating;
   @override
@@ -885,7 +900,6 @@ mixin _$IngredientWithQuantity {
   Ingredient get ingredient => throw _privateConstructorUsedError;
   String get quantity => throw _privateConstructorUsedError;
   Measurement get measurement => throw _privateConstructorUsedError;
-  String get recipeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -903,8 +917,7 @@ abstract class $IngredientWithQuantityCopyWith<$Res> {
       {String ingredientWithQuantityId,
       Ingredient ingredient,
       String quantity,
-      Measurement measurement,
-      String recipeId});
+      Measurement measurement});
 
   $IngredientCopyWith<$Res> get ingredient;
   $MeasurementCopyWith<$Res> get measurement;
@@ -928,7 +941,6 @@ class _$IngredientWithQuantityCopyWithImpl<$Res,
     Object? ingredient = null,
     Object? quantity = null,
     Object? measurement = null,
-    Object? recipeId = null,
   }) {
     return _then(_value.copyWith(
       ingredientWithQuantityId: null == ingredientWithQuantityId
@@ -947,10 +959,6 @@ class _$IngredientWithQuantityCopyWithImpl<$Res,
           ? _value.measurement
           : measurement // ignore: cast_nullable_to_non_nullable
               as Measurement,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 
@@ -984,8 +992,7 @@ abstract class _$$IngredientWithQuantityImplCopyWith<$Res>
       {String ingredientWithQuantityId,
       Ingredient ingredient,
       String quantity,
-      Measurement measurement,
-      String recipeId});
+      Measurement measurement});
 
   @override
   $IngredientCopyWith<$Res> get ingredient;
@@ -1010,7 +1017,6 @@ class __$$IngredientWithQuantityImplCopyWithImpl<$Res>
     Object? ingredient = null,
     Object? quantity = null,
     Object? measurement = null,
-    Object? recipeId = null,
   }) {
     return _then(_$IngredientWithQuantityImpl(
       ingredientWithQuantityId: null == ingredientWithQuantityId
@@ -1029,10 +1035,6 @@ class __$$IngredientWithQuantityImplCopyWithImpl<$Res>
           ? _value.measurement
           : measurement // ignore: cast_nullable_to_non_nullable
               as Measurement,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -1044,8 +1046,7 @@ class _$IngredientWithQuantityImpl implements _IngredientWithQuantity {
       {required this.ingredientWithQuantityId,
       required this.ingredient,
       required this.quantity,
-      required this.measurement,
-      required this.recipeId});
+      required this.measurement});
 
   factory _$IngredientWithQuantityImpl.fromJson(Map<String, dynamic> json) =>
       _$$IngredientWithQuantityImplFromJson(json);
@@ -1058,12 +1059,10 @@ class _$IngredientWithQuantityImpl implements _IngredientWithQuantity {
   final String quantity;
   @override
   final Measurement measurement;
-  @override
-  final String recipeId;
 
   @override
   String toString() {
-    return 'IngredientWithQuantity(ingredientWithQuantityId: $ingredientWithQuantityId, ingredient: $ingredient, quantity: $quantity, measurement: $measurement, recipeId: $recipeId)';
+    return 'IngredientWithQuantity(ingredientWithQuantityId: $ingredientWithQuantityId, ingredient: $ingredient, quantity: $quantity, measurement: $measurement)';
   }
 
   @override
@@ -1079,15 +1078,13 @@ class _$IngredientWithQuantityImpl implements _IngredientWithQuantity {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.measurement, measurement) ||
-                other.measurement == measurement) &&
-            (identical(other.recipeId, recipeId) ||
-                other.recipeId == recipeId));
+                other.measurement == measurement));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ingredientWithQuantityId,
-      ingredient, quantity, measurement, recipeId);
+  int get hashCode => Object.hash(
+      runtimeType, ingredientWithQuantityId, ingredient, quantity, measurement);
 
   @JsonKey(ignore: true)
   @override
@@ -1109,8 +1106,7 @@ abstract class _IngredientWithQuantity implements IngredientWithQuantity {
       {required final String ingredientWithQuantityId,
       required final Ingredient ingredient,
       required final String quantity,
-      required final Measurement measurement,
-      required final String recipeId}) = _$IngredientWithQuantityImpl;
+      required final Measurement measurement}) = _$IngredientWithQuantityImpl;
 
   factory _IngredientWithQuantity.fromJson(Map<String, dynamic> json) =
       _$IngredientWithQuantityImpl.fromJson;
@@ -1123,8 +1119,6 @@ abstract class _IngredientWithQuantity implements IngredientWithQuantity {
   String get quantity;
   @override
   Measurement get measurement;
-  @override
-  String get recipeId;
   @override
   @JsonKey(ignore: true)
   _$$IngredientWithQuantityImplCopyWith<_$IngredientWithQuantityImpl>
@@ -1140,7 +1134,6 @@ mixin _$StepRecipe {
   String get stepId => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  String get recipeId => throw _privateConstructorUsedError;
   int get stepNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1155,12 +1148,7 @@ abstract class $StepRecipeCopyWith<$Res> {
           StepRecipe value, $Res Function(StepRecipe) then) =
       _$StepRecipeCopyWithImpl<$Res, StepRecipe>;
   @useResult
-  $Res call(
-      {String stepId,
-      String description,
-      String image,
-      String recipeId,
-      int stepNumber});
+  $Res call({String stepId, String description, String image, int stepNumber});
 }
 
 /// @nodoc
@@ -1179,7 +1167,6 @@ class _$StepRecipeCopyWithImpl<$Res, $Val extends StepRecipe>
     Object? stepId = null,
     Object? description = null,
     Object? image = null,
-    Object? recipeId = null,
     Object? stepNumber = null,
   }) {
     return _then(_value.copyWith(
@@ -1194,10 +1181,6 @@ class _$StepRecipeCopyWithImpl<$Res, $Val extends StepRecipe>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
               as String,
       stepNumber: null == stepNumber
           ? _value.stepNumber
@@ -1215,12 +1198,7 @@ abstract class _$$StepRecipeImplCopyWith<$Res>
       __$$StepRecipeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String stepId,
-      String description,
-      String image,
-      String recipeId,
-      int stepNumber});
+  $Res call({String stepId, String description, String image, int stepNumber});
 }
 
 /// @nodoc
@@ -1237,7 +1215,6 @@ class __$$StepRecipeImplCopyWithImpl<$Res>
     Object? stepId = null,
     Object? description = null,
     Object? image = null,
-    Object? recipeId = null,
     Object? stepNumber = null,
   }) {
     return _then(_$StepRecipeImpl(
@@ -1252,10 +1229,6 @@ class __$$StepRecipeImplCopyWithImpl<$Res>
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
               as String,
       stepNumber: null == stepNumber
           ? _value.stepNumber
@@ -1272,7 +1245,6 @@ class _$StepRecipeImpl implements _StepRecipe {
       {required this.stepId,
       required this.description,
       required this.image,
-      required this.recipeId,
       required this.stepNumber});
 
   factory _$StepRecipeImpl.fromJson(Map<String, dynamic> json) =>
@@ -1285,13 +1257,11 @@ class _$StepRecipeImpl implements _StepRecipe {
   @override
   final String image;
   @override
-  final String recipeId;
-  @override
   final int stepNumber;
 
   @override
   String toString() {
-    return 'StepRecipe(stepId: $stepId, description: $description, image: $image, recipeId: $recipeId, stepNumber: $stepNumber)';
+    return 'StepRecipe(stepId: $stepId, description: $description, image: $image, stepNumber: $stepNumber)';
   }
 
   @override
@@ -1303,16 +1273,14 @@ class _$StepRecipeImpl implements _StepRecipe {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.recipeId, recipeId) ||
-                other.recipeId == recipeId) &&
             (identical(other.stepNumber, stepNumber) ||
                 other.stepNumber == stepNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, stepId, description, image, recipeId, stepNumber);
+  int get hashCode =>
+      Object.hash(runtimeType, stepId, description, image, stepNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1333,7 +1301,6 @@ abstract class _StepRecipe implements StepRecipe {
       {required final String stepId,
       required final String description,
       required final String image,
-      required final String recipeId,
       required final int stepNumber}) = _$StepRecipeImpl;
 
   factory _StepRecipe.fromJson(Map<String, dynamic> json) =
@@ -1345,8 +1312,6 @@ abstract class _StepRecipe implements StepRecipe {
   String get description;
   @override
   String get image;
-  @override
-  String get recipeId;
   @override
   int get stepNumber;
   @override
@@ -1364,6 +1329,7 @@ mixin _$Comment {
   String get commentId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   DateTime get time => throw _privateConstructorUsedError;
   String get recipeId => throw _privateConstructorUsedError;
 
@@ -1381,6 +1347,7 @@ abstract class $CommentCopyWith<$Res> {
       {String commentId,
       String userId,
       String comment,
+      String userName,
       DateTime time,
       String recipeId});
 }
@@ -1401,6 +1368,7 @@ class _$CommentCopyWithImpl<$Res, $Val extends Comment>
     Object? commentId = null,
     Object? userId = null,
     Object? comment = null,
+    Object? userName = null,
     Object? time = null,
     Object? recipeId = null,
   }) {
@@ -1416,6 +1384,10 @@ class _$CommentCopyWithImpl<$Res, $Val extends Comment>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       time: null == time
           ? _value.time
@@ -1440,6 +1412,7 @@ abstract class _$$CommentImplCopyWith<$Res> implements $CommentCopyWith<$Res> {
       {String commentId,
       String userId,
       String comment,
+      String userName,
       DateTime time,
       String recipeId});
 }
@@ -1458,6 +1431,7 @@ class __$$CommentImplCopyWithImpl<$Res>
     Object? commentId = null,
     Object? userId = null,
     Object? comment = null,
+    Object? userName = null,
     Object? time = null,
     Object? recipeId = null,
   }) {
@@ -1473,6 +1447,10 @@ class __$$CommentImplCopyWithImpl<$Res>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       time: null == time
           ? _value.time
@@ -1493,6 +1471,7 @@ class _$CommentImpl implements _Comment {
       {required this.commentId,
       required this.userId,
       required this.comment,
+      required this.userName,
       required this.time,
       required this.recipeId});
 
@@ -1506,13 +1485,15 @@ class _$CommentImpl implements _Comment {
   @override
   final String comment;
   @override
+  final String userName;
+  @override
   final DateTime time;
   @override
   final String recipeId;
 
   @override
   String toString() {
-    return 'Comment(commentId: $commentId, userId: $userId, comment: $comment, time: $time, recipeId: $recipeId)';
+    return 'Comment(commentId: $commentId, userId: $userId, comment: $comment, userName: $userName, time: $time, recipeId: $recipeId)';
   }
 
   @override
@@ -1524,6 +1505,8 @@ class _$CommentImpl implements _Comment {
                 other.commentId == commentId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.recipeId, recipeId) ||
                 other.recipeId == recipeId));
@@ -1531,8 +1514,8 @@ class _$CommentImpl implements _Comment {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, commentId, userId, comment, time, recipeId);
+  int get hashCode => Object.hash(
+      runtimeType, commentId, userId, comment, userName, time, recipeId);
 
   @JsonKey(ignore: true)
   @override
@@ -1553,6 +1536,7 @@ abstract class _Comment implements Comment {
       {required final String commentId,
       required final String userId,
       required final String comment,
+      required final String userName,
       required final DateTime time,
       required final String recipeId}) = _$CommentImpl;
 
@@ -1564,6 +1548,8 @@ abstract class _Comment implements Comment {
   String get userId;
   @override
   String get comment;
+  @override
+  String get userName;
   @override
   DateTime get time;
   @override
@@ -1582,6 +1568,7 @@ Rating _$RatingFromJson(Map<String, dynamic> json) {
 mixin _$Rating {
   String get ratingId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
   double get overallRating => throw _privateConstructorUsedError;
   int get totalRating => throw _privateConstructorUsedError;
 
@@ -1596,7 +1583,11 @@ abstract class $RatingCopyWith<$Res> {
       _$RatingCopyWithImpl<$Res, Rating>;
   @useResult
   $Res call(
-      {String ratingId, String userId, double overallRating, int totalRating});
+      {String ratingId,
+      String userId,
+      String userName,
+      double overallRating,
+      int totalRating});
 }
 
 /// @nodoc
@@ -1614,6 +1605,7 @@ class _$RatingCopyWithImpl<$Res, $Val extends Rating>
   $Res call({
     Object? ratingId = null,
     Object? userId = null,
+    Object? userName = null,
     Object? overallRating = null,
     Object? totalRating = null,
   }) {
@@ -1625,6 +1617,10 @@ class _$RatingCopyWithImpl<$Res, $Val extends Rating>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       overallRating: null == overallRating
           ? _value.overallRating
@@ -1646,7 +1642,11 @@ abstract class _$$RatingImplCopyWith<$Res> implements $RatingCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String ratingId, String userId, double overallRating, int totalRating});
+      {String ratingId,
+      String userId,
+      String userName,
+      double overallRating,
+      int totalRating});
 }
 
 /// @nodoc
@@ -1662,6 +1662,7 @@ class __$$RatingImplCopyWithImpl<$Res>
   $Res call({
     Object? ratingId = null,
     Object? userId = null,
+    Object? userName = null,
     Object? overallRating = null,
     Object? totalRating = null,
   }) {
@@ -1673,6 +1674,10 @@ class __$$RatingImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       overallRating: null == overallRating
           ? _value.overallRating
@@ -1692,6 +1697,7 @@ class _$RatingImpl implements _Rating {
   const _$RatingImpl(
       {required this.ratingId,
       required this.userId,
+      required this.userName,
       required this.overallRating,
       required this.totalRating});
 
@@ -1703,13 +1709,15 @@ class _$RatingImpl implements _Rating {
   @override
   final String userId;
   @override
+  final String userName;
+  @override
   final double overallRating;
   @override
   final int totalRating;
 
   @override
   String toString() {
-    return 'Rating(ratingId: $ratingId, userId: $userId, overallRating: $overallRating, totalRating: $totalRating)';
+    return 'Rating(ratingId: $ratingId, userId: $userId, userName: $userName, overallRating: $overallRating, totalRating: $totalRating)';
   }
 
   @override
@@ -1720,6 +1728,8 @@ class _$RatingImpl implements _Rating {
             (identical(other.ratingId, ratingId) ||
                 other.ratingId == ratingId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
             (identical(other.overallRating, overallRating) ||
                 other.overallRating == overallRating) &&
             (identical(other.totalRating, totalRating) ||
@@ -1728,8 +1738,8 @@ class _$RatingImpl implements _Rating {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, ratingId, userId, overallRating, totalRating);
+  int get hashCode => Object.hash(
+      runtimeType, ratingId, userId, userName, overallRating, totalRating);
 
   @JsonKey(ignore: true)
   @override
@@ -1749,6 +1759,7 @@ abstract class _Rating implements Rating {
   const factory _Rating(
       {required final String ratingId,
       required final String userId,
+      required final String userName,
       required final double overallRating,
       required final int totalRating}) = _$RatingImpl;
 
@@ -1758,6 +1769,8 @@ abstract class _Rating implements Rating {
   String get ratingId;
   @override
   String get userId;
+  @override
+  String get userName;
   @override
   double get overallRating;
   @override

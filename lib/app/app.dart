@@ -16,7 +16,7 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>.value(value: authRepository),
-        RepositoryProvider<RecipeRepository>.value(value: recipeRepository), // добавлено предоставление репозитория для RecipeBloc
+        RepositoryProvider<RecipeRepository>.value(value: recipeRepository),
       ],
       child: MultiBlocProvider(
         providers: [

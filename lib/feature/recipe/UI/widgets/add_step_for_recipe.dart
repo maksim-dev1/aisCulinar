@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:culinar/design/icons.dart';
-import 'package:culinar/feature/recipe/UI/widgets/add_recipe_text_filed.dart';
+import 'package:culinar/feature/recipe/UI/widgets/custom_text_field.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -169,7 +169,7 @@ class _AddStepWidgetState extends State<AddStepWidget> {
           const SizedBox(height: 9),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: AddRecipeTextFiled(
+            child: CustomTextField(
               controller: _descriptionController,
               onChanged: (value) {
                 widget.onStepAdded(

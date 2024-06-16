@@ -19,6 +19,7 @@ mixin _$RecipeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -31,6 +32,7 @@ mixin _$RecipeEvent {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -42,11 +44,16 @@ mixin _$RecipeEvent {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -59,6 +66,7 @@ mixin _$RecipeEvent {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -69,11 +77,15 @@ mixin _$RecipeEvent {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -86,6 +98,7 @@ mixin _$RecipeEvent {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -96,12 +109,16 @@ mixin _$RecipeEvent {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -109,6 +126,7 @@ mixin _$RecipeEvent {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -120,11 +138,16 @@ mixin _$RecipeEvent {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -132,6 +155,7 @@ mixin _$RecipeEvent {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -143,11 +167,15 @@ mixin _$RecipeEvent {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -155,6 +183,7 @@ mixin _$RecipeEvent {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -166,6 +195,9 @@ mixin _$RecipeEvent {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -234,6 +266,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -246,6 +279,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -257,6 +291,10 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return loadRecipes();
   }
@@ -265,6 +303,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -277,6 +316,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -287,6 +327,9 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return loadRecipes?.call();
   }
@@ -295,6 +338,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -307,6 +351,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -317,6 +362,9 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -329,6 +377,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -336,6 +385,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -347,6 +397,10 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return loadRecipes(this);
   }
@@ -355,6 +409,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -362,6 +417,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -373,6 +429,9 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return loadRecipes?.call(this);
   }
@@ -381,6 +440,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -388,6 +448,7 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -399,6 +460,9 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -410,6 +474,299 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
 
 abstract class LoadRecipes implements RecipeEvent {
   const factory LoadRecipes() = _$LoadRecipesImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadRecipeDetailImplCopyWith<$Res> {
+  factory _$$LoadRecipeDetailImplCopyWith(_$LoadRecipeDetailImpl value,
+          $Res Function(_$LoadRecipeDetailImpl) then) =
+      __$$LoadRecipeDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String recipeId});
+}
+
+/// @nodoc
+class __$$LoadRecipeDetailImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadRecipeDetailImpl>
+    implements _$$LoadRecipeDetailImplCopyWith<$Res> {
+  __$$LoadRecipeDetailImplCopyWithImpl(_$LoadRecipeDetailImpl _value,
+      $Res Function(_$LoadRecipeDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? recipeId = null,
+  }) {
+    return _then(_$LoadRecipeDetailImpl(
+      null == recipeId
+          ? _value.recipeId
+          : recipeId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadRecipeDetailImpl
+    with DiagnosticableTreeMixin
+    implements LoadRecipeDetail {
+  const _$LoadRecipeDetailImpl(this.recipeId);
+
+  @override
+  final String recipeId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadRecipeDetail(recipeId: $recipeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.loadRecipeDetail'))
+      ..add(DiagnosticsProperty('recipeId', recipeId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadRecipeDetailImpl &&
+            (identical(other.recipeId, recipeId) ||
+                other.recipeId == recipeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, recipeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadRecipeDetailImplCopyWith<_$LoadRecipeDetailImpl> get copyWith =>
+      __$$LoadRecipeDetailImplCopyWithImpl<_$LoadRecipeDetailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId) getFavoriteRecipesForUser,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+  }) {
+    return loadRecipeDetail(recipeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId)? getFavoriteRecipesForUser,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+  }) {
+    return loadRecipeDetail?.call(recipeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId)? getFavoriteRecipesForUser,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (loadRecipeDetail != null) {
+      return loadRecipeDetail(recipeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(GetFavoriteRecipesForUser value)
+        getFavoriteRecipesForUser,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+  }) {
+    return loadRecipeDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+  }) {
+    return loadRecipeDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (loadRecipeDetail != null) {
+      return loadRecipeDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadRecipeDetail implements RecipeEvent {
+  const factory LoadRecipeDetail(final String recipeId) =
+      _$LoadRecipeDetailImpl;
+
+  String get recipeId;
+  @JsonKey(ignore: true)
+  _$$LoadRecipeDetailImplCopyWith<_$LoadRecipeDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -552,6 +909,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -564,6 +922,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -575,6 +934,10 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return addRecipe(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -583,6 +946,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -595,6 +959,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -605,6 +970,9 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return addRecipe?.call(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -613,6 +981,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -625,6 +994,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -635,6 +1005,9 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -647,6 +1020,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -654,6 +1028,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -665,6 +1040,10 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return addRecipe(this);
   }
@@ -673,6 +1052,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -680,6 +1060,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -691,6 +1072,9 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return addRecipe?.call(this);
   }
@@ -699,6 +1083,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -706,6 +1091,7 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -717,6 +1103,9 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -825,6 +1214,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -837,6 +1227,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -848,6 +1239,10 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return updateRecipe(recipe);
   }
@@ -856,6 +1251,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -868,6 +1264,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -878,6 +1275,9 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return updateRecipe?.call(recipe);
   }
@@ -886,6 +1286,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -898,6 +1299,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -908,6 +1310,9 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -920,6 +1325,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -927,6 +1333,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -938,6 +1345,10 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return updateRecipe(this);
   }
@@ -946,6 +1357,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -953,6 +1365,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -964,6 +1377,9 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return updateRecipe?.call(this);
   }
@@ -972,6 +1388,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -979,6 +1396,7 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -990,6 +1408,9 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -1082,6 +1503,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1094,6 +1516,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -1105,6 +1528,10 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return deleteRecipe(recipeId);
   }
@@ -1113,6 +1540,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1125,6 +1553,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -1135,6 +1564,9 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return deleteRecipe?.call(recipeId);
   }
@@ -1143,6 +1575,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1155,6 +1588,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -1165,6 +1599,9 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1177,6 +1614,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -1184,6 +1622,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -1195,6 +1634,10 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return deleteRecipe(this);
   }
@@ -1203,6 +1646,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -1210,6 +1654,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -1221,6 +1666,9 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return deleteRecipe?.call(this);
   }
@@ -1229,6 +1677,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -1236,6 +1685,7 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -1247,6 +1697,9 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1341,6 +1794,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1353,6 +1807,7 @@ class _$GetRecipeByIdImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -1364,6 +1819,10 @@ class _$GetRecipeByIdImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getRecipeById(recipeId);
   }
@@ -1372,6 +1831,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1384,6 +1844,7 @@ class _$GetRecipeByIdImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -1394,6 +1855,9 @@ class _$GetRecipeByIdImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getRecipeById?.call(recipeId);
   }
@@ -1402,6 +1866,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1414,6 +1879,7 @@ class _$GetRecipeByIdImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -1424,6 +1890,9 @@ class _$GetRecipeByIdImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -1436,6 +1905,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -1443,6 +1913,7 @@ class _$GetRecipeByIdImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -1454,6 +1925,10 @@ class _$GetRecipeByIdImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getRecipeById(this);
   }
@@ -1462,6 +1937,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -1469,6 +1945,7 @@ class _$GetRecipeByIdImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -1480,6 +1957,9 @@ class _$GetRecipeByIdImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getRecipeById?.call(this);
   }
@@ -1488,6 +1968,7 @@ class _$GetRecipeByIdImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -1495,6 +1976,7 @@ class _$GetRecipeByIdImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -1506,6 +1988,9 @@ class _$GetRecipeByIdImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -1602,6 +2087,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1614,6 +2100,7 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -1625,6 +2112,10 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getRecipesByCategory(category);
   }
@@ -1633,6 +2124,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1645,6 +2137,7 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -1655,6 +2148,9 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getRecipesByCategory?.call(category);
   }
@@ -1663,6 +2159,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1675,6 +2172,7 @@ class _$GetRecipesByCategoryImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -1685,6 +2183,9 @@ class _$GetRecipesByCategoryImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -1697,6 +2198,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -1704,6 +2206,7 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -1715,6 +2218,10 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getRecipesByCategory(this);
   }
@@ -1723,6 +2230,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -1730,6 +2238,7 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -1741,6 +2250,9 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getRecipesByCategory?.call(this);
   }
@@ -1749,6 +2261,7 @@ class _$GetRecipesByCategoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -1756,6 +2269,7 @@ class _$GetRecipesByCategoryImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -1767,6 +2281,9 @@ class _$GetRecipesByCategoryImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -1861,6 +2378,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1873,6 +2391,7 @@ class _$SearchRecipesImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -1884,6 +2403,10 @@ class _$SearchRecipesImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return searchRecipes(query);
   }
@@ -1892,6 +2415,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1904,6 +2428,7 @@ class _$SearchRecipesImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -1914,6 +2439,9 @@ class _$SearchRecipesImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return searchRecipes?.call(query);
   }
@@ -1922,6 +2450,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -1934,6 +2463,7 @@ class _$SearchRecipesImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -1944,6 +2474,9 @@ class _$SearchRecipesImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -1956,6 +2489,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -1963,6 +2497,7 @@ class _$SearchRecipesImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -1974,6 +2509,10 @@ class _$SearchRecipesImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return searchRecipes(this);
   }
@@ -1982,6 +2521,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -1989,6 +2529,7 @@ class _$SearchRecipesImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -2000,6 +2541,9 @@ class _$SearchRecipesImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return searchRecipes?.call(this);
   }
@@ -2008,6 +2552,7 @@ class _$SearchRecipesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -2015,6 +2560,7 @@ class _$SearchRecipesImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -2026,6 +2572,9 @@ class _$SearchRecipesImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -2070,11 +2619,11 @@ class __$$AddCommentImplCopyWithImpl<$Res>
     Object? comment = null,
   }) {
     return _then(_$AddCommentImpl(
-      null == recipeId
+      recipeId: null == recipeId
           ? _value.recipeId
           : recipeId // ignore: cast_nullable_to_non_nullable
               as String,
-      null == comment
+      comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as Comment,
@@ -2093,7 +2642,7 @@ class __$$AddCommentImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
-  const _$AddCommentImpl(this.recipeId, this.comment);
+  const _$AddCommentImpl({required this.recipeId, required this.comment});
 
   @override
   final String recipeId;
@@ -2137,6 +2686,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2149,6 +2699,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -2160,6 +2711,10 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return addComment(recipeId, comment);
   }
@@ -2168,6 +2723,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2180,6 +2736,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -2190,6 +2747,9 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return addComment?.call(recipeId, comment);
   }
@@ -2198,6 +2758,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2210,6 +2771,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -2220,6 +2782,9 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -2232,6 +2797,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -2239,6 +2805,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -2250,6 +2817,10 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return addComment(this);
   }
@@ -2258,6 +2829,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -2265,6 +2837,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -2276,6 +2849,9 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return addComment?.call(this);
   }
@@ -2284,6 +2860,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -2291,6 +2868,7 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -2302,6 +2880,9 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -2312,13 +2893,324 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
 }
 
 abstract class AddComment implements RecipeEvent {
-  const factory AddComment(final String recipeId, final Comment comment) =
-      _$AddCommentImpl;
+  const factory AddComment(
+      {required final String recipeId,
+      required final Comment comment}) = _$AddCommentImpl;
 
   String get recipeId;
   Comment get comment;
   @JsonKey(ignore: true)
   _$$AddCommentImplCopyWith<_$AddCommentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddRatingImplCopyWith<$Res> {
+  factory _$$AddRatingImplCopyWith(
+          _$AddRatingImpl value, $Res Function(_$AddRatingImpl) then) =
+      __$$AddRatingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String recipeId, Rating rating});
+
+  $RatingCopyWith<$Res> get rating;
+}
+
+/// @nodoc
+class __$$AddRatingImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$AddRatingImpl>
+    implements _$$AddRatingImplCopyWith<$Res> {
+  __$$AddRatingImplCopyWithImpl(
+      _$AddRatingImpl _value, $Res Function(_$AddRatingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? recipeId = null,
+    Object? rating = null,
+  }) {
+    return _then(_$AddRatingImpl(
+      null == recipeId
+          ? _value.recipeId
+          : recipeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as Rating,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RatingCopyWith<$Res> get rating {
+    return $RatingCopyWith<$Res>(_value.rating, (value) {
+      return _then(_value.copyWith(rating: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
+  const _$AddRatingImpl(this.recipeId, this.rating);
+
+  @override
+  final String recipeId;
+  @override
+  final Rating rating;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.addRating(recipeId: $recipeId, rating: $rating)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.addRating'))
+      ..add(DiagnosticsProperty('recipeId', recipeId))
+      ..add(DiagnosticsProperty('rating', rating));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddRatingImpl &&
+            (identical(other.recipeId, recipeId) ||
+                other.recipeId == recipeId) &&
+            (identical(other.rating, rating) || other.rating == rating));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, recipeId, rating);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddRatingImplCopyWith<_$AddRatingImpl> get copyWith =>
+      __$$AddRatingImplCopyWithImpl<_$AddRatingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId) getFavoriteRecipesForUser,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+  }) {
+    return addRating(recipeId, rating);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId)? getFavoriteRecipesForUser,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+  }) {
+    return addRating?.call(recipeId, rating);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId)? getFavoriteRecipesForUser,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (addRating != null) {
+      return addRating(recipeId, rating);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(GetFavoriteRecipesForUser value)
+        getFavoriteRecipesForUser,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+  }) {
+    return addRating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+  }) {
+    return addRating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (addRating != null) {
+      return addRating(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddRating implements RecipeEvent {
+  const factory AddRating(final String recipeId, final Rating rating) =
+      _$AddRatingImpl;
+
+  String get recipeId;
+  Rating get rating;
+  @JsonKey(ignore: true)
+  _$$AddRatingImplCopyWith<_$AddRatingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2400,6 +3292,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2412,6 +3305,7 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -2423,6 +3317,10 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getCommentsForRecipe(recipeId);
   }
@@ -2431,6 +3329,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2443,6 +3342,7 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -2453,6 +3353,9 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getCommentsForRecipe?.call(recipeId);
   }
@@ -2461,6 +3364,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2473,6 +3377,7 @@ class _$GetCommentsForRecipeImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -2483,6 +3388,9 @@ class _$GetCommentsForRecipeImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -2495,6 +3403,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -2502,6 +3411,7 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -2513,6 +3423,10 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getCommentsForRecipe(this);
   }
@@ -2521,6 +3435,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -2528,6 +3443,7 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -2539,6 +3455,9 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getCommentsForRecipe?.call(this);
   }
@@ -2547,6 +3466,7 @@ class _$GetCommentsForRecipeImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -2554,6 +3474,7 @@ class _$GetCommentsForRecipeImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -2565,6 +3486,9 @@ class _$GetCommentsForRecipeImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -2660,6 +3584,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2672,6 +3597,7 @@ class _$DeleteCommentImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -2683,6 +3609,10 @@ class _$DeleteCommentImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return deleteComment(commentId);
   }
@@ -2691,6 +3621,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2703,6 +3634,7 @@ class _$DeleteCommentImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -2713,6 +3645,9 @@ class _$DeleteCommentImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return deleteComment?.call(commentId);
   }
@@ -2721,6 +3656,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2733,6 +3669,7 @@ class _$DeleteCommentImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -2743,6 +3680,9 @@ class _$DeleteCommentImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -2755,6 +3695,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -2762,6 +3703,7 @@ class _$DeleteCommentImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -2773,6 +3715,10 @@ class _$DeleteCommentImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return deleteComment(this);
   }
@@ -2781,6 +3727,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -2788,6 +3735,7 @@ class _$DeleteCommentImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -2799,6 +3747,9 @@ class _$DeleteCommentImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return deleteComment?.call(this);
   }
@@ -2807,6 +3758,7 @@ class _$DeleteCommentImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -2814,6 +3766,7 @@ class _$DeleteCommentImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -2825,6 +3778,9 @@ class _$DeleteCommentImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -2929,6 +3885,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2941,6 +3898,7 @@ class _$AddToFavoritesImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -2952,6 +3910,10 @@ class _$AddToFavoritesImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return addToFavorites(userId, recipeId);
   }
@@ -2960,6 +3922,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -2972,6 +3935,7 @@ class _$AddToFavoritesImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -2982,6 +3946,9 @@ class _$AddToFavoritesImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return addToFavorites?.call(userId, recipeId);
   }
@@ -2990,6 +3957,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3002,6 +3970,7 @@ class _$AddToFavoritesImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -3012,6 +3981,9 @@ class _$AddToFavoritesImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addToFavorites != null) {
@@ -3024,6 +3996,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -3031,6 +4004,7 @@ class _$AddToFavoritesImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -3042,6 +4016,10 @@ class _$AddToFavoritesImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return addToFavorites(this);
   }
@@ -3050,6 +4028,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -3057,6 +4036,7 @@ class _$AddToFavoritesImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -3068,6 +4048,9 @@ class _$AddToFavoritesImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return addToFavorites?.call(this);
   }
@@ -3076,6 +4059,7 @@ class _$AddToFavoritesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -3083,6 +4067,7 @@ class _$AddToFavoritesImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -3094,6 +4079,9 @@ class _$AddToFavoritesImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addToFavorites != null) {
@@ -3193,6 +4181,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3205,6 +4194,7 @@ class _$GetFavoriteRecipesForUserImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -3216,6 +4206,10 @@ class _$GetFavoriteRecipesForUserImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getFavoriteRecipesForUser(userId);
   }
@@ -3224,6 +4218,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3236,6 +4231,7 @@ class _$GetFavoriteRecipesForUserImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -3246,6 +4242,9 @@ class _$GetFavoriteRecipesForUserImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getFavoriteRecipesForUser?.call(userId);
   }
@@ -3254,6 +4253,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3266,6 +4266,7 @@ class _$GetFavoriteRecipesForUserImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -3276,6 +4277,9 @@ class _$GetFavoriteRecipesForUserImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getFavoriteRecipesForUser != null) {
@@ -3288,6 +4292,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -3295,6 +4300,7 @@ class _$GetFavoriteRecipesForUserImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -3306,6 +4312,10 @@ class _$GetFavoriteRecipesForUserImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getFavoriteRecipesForUser(this);
   }
@@ -3314,6 +4324,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -3321,6 +4332,7 @@ class _$GetFavoriteRecipesForUserImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -3332,6 +4344,9 @@ class _$GetFavoriteRecipesForUserImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getFavoriteRecipesForUser?.call(this);
   }
@@ -3340,6 +4355,7 @@ class _$GetFavoriteRecipesForUserImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -3347,6 +4363,7 @@ class _$GetFavoriteRecipesForUserImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -3358,6 +4375,9 @@ class _$GetFavoriteRecipesForUserImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getFavoriteRecipesForUser != null) {
@@ -3463,6 +4483,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3475,6 +4496,7 @@ class _$RemoveFromFavoritesImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -3486,6 +4508,10 @@ class _$RemoveFromFavoritesImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return removeFromFavorites(userId, recipeId);
   }
@@ -3494,6 +4520,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3506,6 +4533,7 @@ class _$RemoveFromFavoritesImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -3516,6 +4544,9 @@ class _$RemoveFromFavoritesImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return removeFromFavorites?.call(userId, recipeId);
   }
@@ -3524,6 +4555,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3536,6 +4568,7 @@ class _$RemoveFromFavoritesImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -3546,6 +4579,9 @@ class _$RemoveFromFavoritesImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (removeFromFavorites != null) {
@@ -3558,6 +4594,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -3565,6 +4602,7 @@ class _$RemoveFromFavoritesImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -3576,6 +4614,10 @@ class _$RemoveFromFavoritesImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return removeFromFavorites(this);
   }
@@ -3584,6 +4626,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -3591,6 +4634,7 @@ class _$RemoveFromFavoritesImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -3602,6 +4646,9 @@ class _$RemoveFromFavoritesImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return removeFromFavorites?.call(this);
   }
@@ -3610,6 +4657,7 @@ class _$RemoveFromFavoritesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -3617,6 +4665,7 @@ class _$RemoveFromFavoritesImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -3628,6 +4677,9 @@ class _$RemoveFromFavoritesImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (removeFromFavorites != null) {
@@ -3734,6 +4786,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3746,6 +4799,7 @@ class _$AddIngredientImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -3757,6 +4811,10 @@ class _$AddIngredientImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return addIngredient(ingredient);
   }
@@ -3765,6 +4823,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3777,6 +4836,7 @@ class _$AddIngredientImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -3787,6 +4847,9 @@ class _$AddIngredientImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return addIngredient?.call(ingredient);
   }
@@ -3795,6 +4858,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -3807,6 +4871,7 @@ class _$AddIngredientImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -3817,6 +4882,9 @@ class _$AddIngredientImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -3829,6 +4897,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -3836,6 +4905,7 @@ class _$AddIngredientImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -3847,6 +4917,10 @@ class _$AddIngredientImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return addIngredient(this);
   }
@@ -3855,6 +4929,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -3862,6 +4937,7 @@ class _$AddIngredientImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -3873,6 +4949,9 @@ class _$AddIngredientImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return addIngredient?.call(this);
   }
@@ -3881,6 +4960,7 @@ class _$AddIngredientImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -3888,6 +4968,7 @@ class _$AddIngredientImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -3899,6 +4980,9 @@ class _$AddIngredientImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -3994,6 +5078,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4006,6 +5091,7 @@ class _$GetIngredientsImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -4017,6 +5103,10 @@ class _$GetIngredientsImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getIngredients(title);
   }
@@ -4025,6 +5115,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4037,6 +5128,7 @@ class _$GetIngredientsImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -4047,6 +5139,9 @@ class _$GetIngredientsImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getIngredients?.call(title);
   }
@@ -4055,6 +5150,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4067,6 +5163,7 @@ class _$GetIngredientsImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -4077,6 +5174,9 @@ class _$GetIngredientsImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4089,6 +5189,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -4096,6 +5197,7 @@ class _$GetIngredientsImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -4107,6 +5209,10 @@ class _$GetIngredientsImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getIngredients(this);
   }
@@ -4115,6 +5221,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -4122,6 +5229,7 @@ class _$GetIngredientsImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -4133,6 +5241,9 @@ class _$GetIngredientsImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getIngredients?.call(this);
   }
@@ -4141,6 +5252,7 @@ class _$GetIngredientsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -4148,6 +5260,7 @@ class _$GetIngredientsImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -4159,6 +5272,9 @@ class _$GetIngredientsImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4253,6 +5369,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4265,6 +5382,7 @@ class _$SearchIngredientsImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -4276,6 +5394,10 @@ class _$SearchIngredientsImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return searchIngredients(query);
   }
@@ -4284,6 +5406,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4296,6 +5419,7 @@ class _$SearchIngredientsImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -4306,6 +5430,9 @@ class _$SearchIngredientsImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return searchIngredients?.call(query);
   }
@@ -4314,6 +5441,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4326,6 +5454,7 @@ class _$SearchIngredientsImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -4336,6 +5465,9 @@ class _$SearchIngredientsImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4348,6 +5480,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -4355,6 +5488,7 @@ class _$SearchIngredientsImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -4366,6 +5500,10 @@ class _$SearchIngredientsImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return searchIngredients(this);
   }
@@ -4374,6 +5512,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -4381,6 +5520,7 @@ class _$SearchIngredientsImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -4392,6 +5532,9 @@ class _$SearchIngredientsImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return searchIngredients?.call(this);
   }
@@ -4400,6 +5543,7 @@ class _$SearchIngredientsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -4407,6 +5551,7 @@ class _$SearchIngredientsImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -4418,6 +5563,9 @@ class _$SearchIngredientsImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4512,6 +5660,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4524,6 +5673,7 @@ class _$GetMeasurementsImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -4535,6 +5685,10 @@ class _$GetMeasurementsImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getMeasurements(title);
   }
@@ -4543,6 +5697,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4555,6 +5710,7 @@ class _$GetMeasurementsImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -4565,6 +5721,9 @@ class _$GetMeasurementsImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getMeasurements?.call(title);
   }
@@ -4573,6 +5732,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4585,6 +5745,7 @@ class _$GetMeasurementsImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -4595,6 +5756,9 @@ class _$GetMeasurementsImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -4607,6 +5771,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -4614,6 +5779,7 @@ class _$GetMeasurementsImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -4625,6 +5791,10 @@ class _$GetMeasurementsImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getMeasurements(this);
   }
@@ -4633,6 +5803,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -4640,6 +5811,7 @@ class _$GetMeasurementsImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -4651,6 +5823,9 @@ class _$GetMeasurementsImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getMeasurements?.call(this);
   }
@@ -4659,6 +5834,7 @@ class _$GetMeasurementsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -4666,6 +5842,7 @@ class _$GetMeasurementsImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -4677,6 +5854,9 @@ class _$GetMeasurementsImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -4770,6 +5950,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
     required TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4782,6 +5963,7 @@ class _$GetCategoriesImpl
     required TResult Function(String category) getRecipesByCategory,
     required TResult Function(String query) searchRecipes,
     required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
     required TResult Function(String recipeId) getCommentsForRecipe,
     required TResult Function(String commentId) deleteComment,
     required TResult Function(String userId, String recipeId) addToFavorites,
@@ -4793,6 +5975,10 @@ class _$GetCategoriesImpl
     required TResult Function(String query) searchIngredients,
     required TResult Function(String title) getMeasurements,
     required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
   }) {
     return getCategories(title);
   }
@@ -4801,6 +5987,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
     TResult? Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4813,6 +6000,7 @@ class _$GetCategoriesImpl
     TResult? Function(String category)? getRecipesByCategory,
     TResult? Function(String query)? searchRecipes,
     TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
     TResult? Function(String recipeId)? getCommentsForRecipe,
     TResult? Function(String commentId)? deleteComment,
     TResult? Function(String userId, String recipeId)? addToFavorites,
@@ -4823,6 +6011,9 @@ class _$GetCategoriesImpl
     TResult? Function(String query)? searchIngredients,
     TResult? Function(String title)? getMeasurements,
     TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
   }) {
     return getCategories?.call(title);
   }
@@ -4831,6 +6022,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
     TResult Function(
             Recipe recipe,
             List<IngredientWithQuantity> ingredientsWithQuantity,
@@ -4843,6 +6035,7 @@ class _$GetCategoriesImpl
     TResult Function(String category)? getRecipesByCategory,
     TResult Function(String query)? searchRecipes,
     TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
     TResult Function(String recipeId)? getCommentsForRecipe,
     TResult Function(String commentId)? deleteComment,
     TResult Function(String userId, String recipeId)? addToFavorites,
@@ -4853,6 +6046,9 @@ class _$GetCategoriesImpl
     TResult Function(String query)? searchIngredients,
     TResult Function(String title)? getMeasurements,
     TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -4865,6 +6061,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
     required TResult Function(AddRecipe value) addRecipe,
     required TResult Function(UpdateRecipe value) updateRecipe,
     required TResult Function(DeleteRecipe value) deleteRecipe,
@@ -4872,6 +6069,7 @@ class _$GetCategoriesImpl
     required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
     required TResult Function(SearchRecipes value) searchRecipes,
     required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
     required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
     required TResult Function(DeleteComment value) deleteComment,
     required TResult Function(AddToFavorites value) addToFavorites,
@@ -4883,6 +6081,10 @@ class _$GetCategoriesImpl
     required TResult Function(SearchIngredients value) searchIngredients,
     required TResult Function(GetMeasurements value) getMeasurements,
     required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
   }) {
     return getCategories(this);
   }
@@ -4891,6 +6093,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult? Function(AddRecipe value)? addRecipe,
     TResult? Function(UpdateRecipe value)? updateRecipe,
     TResult? Function(DeleteRecipe value)? deleteRecipe,
@@ -4898,6 +6101,7 @@ class _$GetCategoriesImpl
     TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult? Function(SearchRecipes value)? searchRecipes,
     TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
     TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult? Function(DeleteComment value)? deleteComment,
     TResult? Function(AddToFavorites value)? addToFavorites,
@@ -4909,6 +6113,9 @@ class _$GetCategoriesImpl
     TResult? Function(SearchIngredients value)? searchIngredients,
     TResult? Function(GetMeasurements value)? getMeasurements,
     TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
   }) {
     return getCategories?.call(this);
   }
@@ -4917,6 +6124,7 @@ class _$GetCategoriesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
     TResult Function(AddRecipe value)? addRecipe,
     TResult Function(UpdateRecipe value)? updateRecipe,
     TResult Function(DeleteRecipe value)? deleteRecipe,
@@ -4924,6 +6132,7 @@ class _$GetCategoriesImpl
     TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
     TResult Function(SearchRecipes value)? searchRecipes,
     TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
     TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
     TResult Function(DeleteComment value)? deleteComment,
     TResult Function(AddToFavorites value)? addToFavorites,
@@ -4935,6 +6144,9 @@ class _$GetCategoriesImpl
     TResult Function(SearchIngredients value)? searchIngredients,
     TResult Function(GetMeasurements value)? getMeasurements,
     TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -4954,51 +6166,957 @@ abstract class GetCategories implements RecipeEvent {
 }
 
 /// @nodoc
+abstract class _$$FilterRecipesImplCopyWith<$Res> {
+  factory _$$FilterRecipesImplCopyWith(
+          _$FilterRecipesImpl value, $Res Function(_$FilterRecipesImpl) then) =
+      __$$FilterRecipesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String category, String cookingTime});
+}
+
+/// @nodoc
+class __$$FilterRecipesImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$FilterRecipesImpl>
+    implements _$$FilterRecipesImplCopyWith<$Res> {
+  __$$FilterRecipesImplCopyWithImpl(
+      _$FilterRecipesImpl _value, $Res Function(_$FilterRecipesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+    Object? cookingTime = null,
+  }) {
+    return _then(_$FilterRecipesImpl(
+      null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == cookingTime
+          ? _value.cookingTime
+          : cookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterRecipesImpl
+    with DiagnosticableTreeMixin
+    implements FilterRecipes {
+  const _$FilterRecipesImpl(this.category, this.cookingTime);
+
+  @override
+  final String category;
+  @override
+  final String cookingTime;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.filterRecipes(category: $category, cookingTime: $cookingTime)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.filterRecipes'))
+      ..add(DiagnosticsProperty('category', category))
+      ..add(DiagnosticsProperty('cookingTime', cookingTime));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterRecipesImpl &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.cookingTime, cookingTime) ||
+                other.cookingTime == cookingTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category, cookingTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterRecipesImplCopyWith<_$FilterRecipesImpl> get copyWith =>
+      __$$FilterRecipesImplCopyWithImpl<_$FilterRecipesImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId) getFavoriteRecipesForUser,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+  }) {
+    return filterRecipes(category, cookingTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId)? getFavoriteRecipesForUser,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+  }) {
+    return filterRecipes?.call(category, cookingTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId)? getFavoriteRecipesForUser,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (filterRecipes != null) {
+      return filterRecipes(category, cookingTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(GetFavoriteRecipesForUser value)
+        getFavoriteRecipesForUser,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+  }) {
+    return filterRecipes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+  }) {
+    return filterRecipes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (filterRecipes != null) {
+      return filterRecipes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterRecipes implements RecipeEvent {
+  const factory FilterRecipes(final String category, final String cookingTime) =
+      _$FilterRecipesImpl;
+
+  String get category;
+  String get cookingTime;
+  @JsonKey(ignore: true)
+  _$$FilterRecipesImplCopyWith<_$FilterRecipesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCategoryFilterImplCopyWith<$Res> {
+  factory _$$UpdateCategoryFilterImplCopyWith(_$UpdateCategoryFilterImpl value,
+          $Res Function(_$UpdateCategoryFilterImpl) then) =
+      __$$UpdateCategoryFilterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String category});
+}
+
+/// @nodoc
+class __$$UpdateCategoryFilterImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$UpdateCategoryFilterImpl>
+    implements _$$UpdateCategoryFilterImplCopyWith<$Res> {
+  __$$UpdateCategoryFilterImplCopyWithImpl(_$UpdateCategoryFilterImpl _value,
+      $Res Function(_$UpdateCategoryFilterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$UpdateCategoryFilterImpl(
+      null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCategoryFilterImpl
+    with DiagnosticableTreeMixin
+    implements UpdateCategoryFilter {
+  const _$UpdateCategoryFilterImpl(this.category);
+
+  @override
+  final String category;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.updateCategoryFilter(category: $category)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.updateCategoryFilter'))
+      ..add(DiagnosticsProperty('category', category));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCategoryFilterImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCategoryFilterImplCopyWith<_$UpdateCategoryFilterImpl>
+      get copyWith =>
+          __$$UpdateCategoryFilterImplCopyWithImpl<_$UpdateCategoryFilterImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId) getFavoriteRecipesForUser,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+  }) {
+    return updateCategoryFilter(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId)? getFavoriteRecipesForUser,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+  }) {
+    return updateCategoryFilter?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId)? getFavoriteRecipesForUser,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (updateCategoryFilter != null) {
+      return updateCategoryFilter(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(GetFavoriteRecipesForUser value)
+        getFavoriteRecipesForUser,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+  }) {
+    return updateCategoryFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+  }) {
+    return updateCategoryFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (updateCategoryFilter != null) {
+      return updateCategoryFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateCategoryFilter implements RecipeEvent {
+  const factory UpdateCategoryFilter(final String category) =
+      _$UpdateCategoryFilterImpl;
+
+  String get category;
+  @JsonKey(ignore: true)
+  _$$UpdateCategoryFilterImplCopyWith<_$UpdateCategoryFilterImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCookingTimeFilterImplCopyWith<$Res> {
+  factory _$$UpdateCookingTimeFilterImplCopyWith(
+          _$UpdateCookingTimeFilterImpl value,
+          $Res Function(_$UpdateCookingTimeFilterImpl) then) =
+      __$$UpdateCookingTimeFilterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String cookingTime});
+}
+
+/// @nodoc
+class __$$UpdateCookingTimeFilterImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$UpdateCookingTimeFilterImpl>
+    implements _$$UpdateCookingTimeFilterImplCopyWith<$Res> {
+  __$$UpdateCookingTimeFilterImplCopyWithImpl(
+      _$UpdateCookingTimeFilterImpl _value,
+      $Res Function(_$UpdateCookingTimeFilterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cookingTime = null,
+  }) {
+    return _then(_$UpdateCookingTimeFilterImpl(
+      null == cookingTime
+          ? _value.cookingTime
+          : cookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCookingTimeFilterImpl
+    with DiagnosticableTreeMixin
+    implements UpdateCookingTimeFilter {
+  const _$UpdateCookingTimeFilterImpl(this.cookingTime);
+
+  @override
+  final String cookingTime;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.updateCookingTimeFilter(cookingTime: $cookingTime)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.updateCookingTimeFilter'))
+      ..add(DiagnosticsProperty('cookingTime', cookingTime));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCookingTimeFilterImpl &&
+            (identical(other.cookingTime, cookingTime) ||
+                other.cookingTime == cookingTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cookingTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCookingTimeFilterImplCopyWith<_$UpdateCookingTimeFilterImpl>
+      get copyWith => __$$UpdateCookingTimeFilterImplCopyWithImpl<
+          _$UpdateCookingTimeFilterImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId) getFavoriteRecipesForUser,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+  }) {
+    return updateCookingTimeFilter(cookingTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId)? getFavoriteRecipesForUser,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+  }) {
+    return updateCookingTimeFilter?.call(cookingTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId)? getFavoriteRecipesForUser,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (updateCookingTimeFilter != null) {
+      return updateCookingTimeFilter(cookingTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(GetFavoriteRecipesForUser value)
+        getFavoriteRecipesForUser,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+  }) {
+    return updateCookingTimeFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+  }) {
+    return updateCookingTimeFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(GetFavoriteRecipesForUser value)?
+        getFavoriteRecipesForUser,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    required TResult orElse(),
+  }) {
+    if (updateCookingTimeFilter != null) {
+      return updateCookingTimeFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateCookingTimeFilter implements RecipeEvent {
+  const factory UpdateCookingTimeFilter(final String cookingTime) =
+      _$UpdateCookingTimeFilterImpl;
+
+  String get cookingTime;
+  @JsonKey(ignore: true)
+  _$$UpdateCookingTimeFilterImplCopyWith<_$UpdateCookingTimeFilterImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RecipeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -5006,45 +7124,51 @@ mixin _$RecipeState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -5114,16 +7238,22 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return initial();
   }
@@ -5133,15 +7263,19 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return initial?.call();
   }
@@ -5151,15 +7285,19 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -5173,15 +7311,17 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return initial(this);
   }
@@ -5191,15 +7331,17 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return initial?.call(this);
   }
@@ -5209,15 +7351,17 @@ class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -5277,16 +7421,22 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return loading();
   }
@@ -5296,15 +7446,19 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return loading?.call();
   }
@@ -5314,15 +7468,19 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -5336,15 +7494,17 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return loading(this);
   }
@@ -5354,15 +7514,17 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return loading?.call(this);
   }
@@ -5372,15 +7534,17 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -5392,6 +7556,228 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
 
 abstract class Loading implements RecipeState {
   const factory Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Recipe> recipes});
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? recipes = null,
+  }) {
+    return _then(_$LoadedImpl(
+      null == recipes
+          ? _value._recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
+              as List<Recipe>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
+  const _$LoadedImpl(final List<Recipe> recipes) : _recipes = recipes;
+
+  final List<Recipe> _recipes;
+  @override
+  List<Recipe> get recipes {
+    if (_recipes is EqualUnmodifiableListView) return _recipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipes);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.loaded(recipes: $recipes)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeState.loaded'))
+      ..add(DiagnosticsProperty('recipes', recipes));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedImpl &&
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_recipes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+  }) {
+    return loaded(recipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+  }) {
+    return loaded?.call(recipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(recipes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loaded implements RecipeState {
+  const factory Loaded(final List<Recipe> recipes) = _$LoadedImpl;
+
+  List<Recipe> get recipes;
+  @JsonKey(ignore: true)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -5476,16 +7862,22 @@ class _$RecipeLoadingImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return recipeLoading(recipes);
   }
@@ -5495,15 +7887,19 @@ class _$RecipeLoadingImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return recipeLoading?.call(recipes);
   }
@@ -5513,15 +7909,19 @@ class _$RecipeLoadingImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (recipeLoading != null) {
@@ -5535,15 +7935,17 @@ class _$RecipeLoadingImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return recipeLoading(this);
   }
@@ -5553,15 +7955,17 @@ class _$RecipeLoadingImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return recipeLoading?.call(this);
   }
@@ -5571,15 +7975,17 @@ class _$RecipeLoadingImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (recipeLoading != null) {
@@ -5595,208 +8001,6 @@ abstract class RecipeLoading implements RecipeState {
   List<Recipe> get recipes;
   @JsonKey(ignore: true)
   _$$RecipeLoadingImplCopyWith<_$RecipeLoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Recipe> recipes});
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$RecipeStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? recipes = null,
-  }) {
-    return _then(_$LoadedImpl(
-      null == recipes
-          ? _value._recipes
-          : recipes // ignore: cast_nullable_to_non_nullable
-              as List<Recipe>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
-  const _$LoadedImpl(final List<Recipe> recipes) : _recipes = recipes;
-
-  final List<Recipe> _recipes;
-  @override
-  List<Recipe> get recipes {
-    if (_recipes is EqualUnmodifiableListView) return _recipes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_recipes);
-  }
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecipeState.loaded(recipes: $recipes)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'RecipeState.loaded'))
-      ..add(DiagnosticsProperty('recipes', recipes));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._recipes, _recipes));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_recipes));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
-    required TResult Function(List<Recipe> recipes) loaded,
-    required TResult Function() recipeAdded,
-    required TResult Function(List<Comment> comments) commentsLoaded,
-    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
-    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
-    required TResult Function(List<Measurement> measurements)
-        measurementsLoaded,
-    required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
-  }) {
-    return loaded(recipes);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
-    TResult? Function(List<Recipe> recipes)? loaded,
-    TResult? Function()? recipeAdded,
-    TResult? Function(List<Comment> comments)? commentsLoaded,
-    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
-    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
-    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
-    TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
-  }) {
-    return loaded?.call(recipes);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
-    TResult Function(List<Recipe> recipes)? loaded,
-    TResult Function()? recipeAdded,
-    TResult Function(List<Comment> comments)? commentsLoaded,
-    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
-    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
-    TResult Function(List<Measurement> measurements)? measurementsLoaded,
-    TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(recipes);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(RecipeAdded value) recipeAdded,
-    required TResult Function(CommentsLoaded value) commentsLoaded,
-    required TResult Function(FavoritesLoaded value) favoritesLoaded,
-    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
-    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
-    required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
-    TResult? Function(Loaded value)? loaded,
-    TResult? Function(RecipeAdded value)? recipeAdded,
-    TResult? Function(CommentsLoaded value)? commentsLoaded,
-    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
-    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
-    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
-    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(RecipeAdded value)? recipeAdded,
-    TResult Function(CommentsLoaded value)? commentsLoaded,
-    TResult Function(FavoritesLoaded value)? favoritesLoaded,
-    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
-    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
-    TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loaded implements RecipeState {
-  const factory Loaded(final List<Recipe> recipes) = _$LoadedImpl;
-
-  List<Recipe> get recipes;
-  @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -5846,16 +8050,22 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return recipeAdded();
   }
@@ -5865,15 +8075,19 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return recipeAdded?.call();
   }
@@ -5883,15 +8097,19 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (recipeAdded != null) {
@@ -5905,15 +8123,17 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return recipeAdded(this);
   }
@@ -5923,15 +8143,17 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return recipeAdded?.call(this);
   }
@@ -5941,15 +8163,17 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (recipeAdded != null) {
@@ -5961,6 +8185,222 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
 
 abstract class RecipeAdded implements RecipeState {
   const factory RecipeAdded() = _$RecipeAddedImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
+  const _$ErrorImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.error(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeState.error'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements RecipeState {
+  const factory Error(final String message) = _$ErrorImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6047,16 +8487,22 @@ class _$CommentsLoadedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return commentsLoaded(comments);
   }
@@ -6066,15 +8512,19 @@ class _$CommentsLoadedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return commentsLoaded?.call(comments);
   }
@@ -6084,15 +8534,19 @@ class _$CommentsLoadedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (commentsLoaded != null) {
@@ -6106,15 +8560,17 @@ class _$CommentsLoadedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return commentsLoaded(this);
   }
@@ -6124,15 +8580,17 @@ class _$CommentsLoadedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return commentsLoaded?.call(this);
   }
@@ -6142,15 +8600,17 @@ class _$CommentsLoadedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (commentsLoaded != null) {
@@ -6255,16 +8715,22 @@ class _$FavoritesLoadedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return favoritesLoaded(favoriteRecipes);
   }
@@ -6274,15 +8740,19 @@ class _$FavoritesLoadedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return favoritesLoaded?.call(favoriteRecipes);
   }
@@ -6292,15 +8762,19 @@ class _$FavoritesLoadedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (favoritesLoaded != null) {
@@ -6314,15 +8788,17 @@ class _$FavoritesLoadedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return favoritesLoaded(this);
   }
@@ -6332,15 +8808,17 @@ class _$FavoritesLoadedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return favoritesLoaded?.call(this);
   }
@@ -6350,15 +8828,17 @@ class _$FavoritesLoadedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (favoritesLoaded != null) {
@@ -6463,16 +8943,22 @@ class _$IngredientsLoadedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return ingredientsLoaded(ingredients);
   }
@@ -6482,15 +8968,19 @@ class _$IngredientsLoadedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return ingredientsLoaded?.call(ingredients);
   }
@@ -6500,15 +8990,19 @@ class _$IngredientsLoadedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (ingredientsLoaded != null) {
@@ -6522,15 +9016,17 @@ class _$IngredientsLoadedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return ingredientsLoaded(this);
   }
@@ -6540,15 +9036,17 @@ class _$IngredientsLoadedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return ingredientsLoaded?.call(this);
   }
@@ -6558,15 +9056,17 @@ class _$IngredientsLoadedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (ingredientsLoaded != null) {
@@ -6583,6 +9083,225 @@ abstract class IngredientsLoaded implements RecipeState {
   List<Ingredient> get ingredients;
   @JsonKey(ignore: true)
   _$$IngredientsLoadedImplCopyWith<_$IngredientsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IngredientAddedImplCopyWith<$Res> {
+  factory _$$IngredientAddedImplCopyWith(_$IngredientAddedImpl value,
+          $Res Function(_$IngredientAddedImpl) then) =
+      __$$IngredientAddedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$IngredientAddedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$IngredientAddedImpl>
+    implements _$$IngredientAddedImplCopyWith<$Res> {
+  __$$IngredientAddedImplCopyWithImpl(
+      _$IngredientAddedImpl _value, $Res Function(_$IngredientAddedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$IngredientAddedImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IngredientAddedImpl
+    with DiagnosticableTreeMixin
+    implements IngredientAdded {
+  const _$IngredientAddedImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.ingredientAddedLoaded(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeState.ingredientAddedLoaded'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IngredientAddedImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IngredientAddedImplCopyWith<_$IngredientAddedImpl> get copyWith =>
+      __$$IngredientAddedImplCopyWithImpl<_$IngredientAddedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+  }) {
+    return ingredientAddedLoaded(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+  }) {
+    return ingredientAddedLoaded?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (ingredientAddedLoaded != null) {
+      return ingredientAddedLoaded(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+  }) {
+    return ingredientAddedLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+  }) {
+    return ingredientAddedLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    required TResult orElse(),
+  }) {
+    if (ingredientAddedLoaded != null) {
+      return ingredientAddedLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IngredientAdded implements RecipeState {
+  const factory IngredientAdded(final String message) = _$IngredientAddedImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$IngredientAddedImplCopyWith<_$IngredientAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -6671,16 +9390,22 @@ class _$MeasurementsLoadedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return measurementsLoaded(measurements);
   }
@@ -6690,15 +9415,19 @@ class _$MeasurementsLoadedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return measurementsLoaded?.call(measurements);
   }
@@ -6708,15 +9437,19 @@ class _$MeasurementsLoadedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (measurementsLoaded != null) {
@@ -6730,15 +9463,17 @@ class _$MeasurementsLoadedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return measurementsLoaded(this);
   }
@@ -6748,15 +9483,17 @@ class _$MeasurementsLoadedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return measurementsLoaded?.call(this);
   }
@@ -6766,15 +9503,17 @@ class _$MeasurementsLoadedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (measurementsLoaded != null) {
@@ -6879,16 +9618,22 @@ class _$CategoriesLoadedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
     return categoriesLoaded(categories);
   }
@@ -6898,15 +9643,19 @@ class _$CategoriesLoadedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
     return categoriesLoaded?.call(categories);
   }
@@ -6916,15 +9665,19 @@ class _$CategoriesLoadedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (categoriesLoaded != null) {
@@ -6938,15 +9691,17 @@ class _$CategoriesLoadedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
     return categoriesLoaded(this);
   }
@@ -6956,15 +9711,17 @@ class _$CategoriesLoadedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
     return categoriesLoaded?.call(this);
   }
@@ -6974,15 +9731,17 @@ class _$CategoriesLoadedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
     if (categoriesLoaded != null) {
@@ -7003,91 +9762,152 @@ abstract class CategoriesLoaded implements RecipeState {
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$RecipeDetailLoadedImplCopyWith<$Res> {
+  factory _$$RecipeDetailLoadedImplCopyWith(_$RecipeDetailLoadedImpl value,
+          $Res Function(_$RecipeDetailLoadedImpl) then) =
+      __$$RecipeDetailLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call(
+      {Recipe recipe,
+      List<Map<String, dynamic>> ingredients,
+      List<Map<String, dynamic>> steps});
+
+  $RecipeCopyWith<$Res> get recipe;
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$RecipeStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$RecipeDetailLoadedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$RecipeDetailLoadedImpl>
+    implements _$$RecipeDetailLoadedImplCopyWith<$Res> {
+  __$$RecipeDetailLoadedImplCopyWithImpl(_$RecipeDetailLoadedImpl _value,
+      $Res Function(_$RecipeDetailLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? recipe = null,
+    Object? ingredients = null,
+    Object? steps = null,
   }) {
-    return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$RecipeDetailLoadedImpl(
+      null == recipe
+          ? _value.recipe
+          : recipe // ignore: cast_nullable_to_non_nullable
+              as Recipe,
+      null == ingredients
+          ? _value._ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      null == steps
+          ? _value._steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RecipeCopyWith<$Res> get recipe {
+    return $RecipeCopyWith<$Res>(_value.recipe, (value) {
+      return _then(_value.copyWith(recipe: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
-  const _$ErrorImpl(this.message);
+class _$RecipeDetailLoadedImpl
+    with DiagnosticableTreeMixin
+    implements RecipeDetailLoaded {
+  const _$RecipeDetailLoadedImpl(
+      this.recipe,
+      final List<Map<String, dynamic>> ingredients,
+      final List<Map<String, dynamic>> steps)
+      : _ingredients = ingredients,
+        _steps = steps;
 
   @override
-  final String message;
+  final Recipe recipe;
+  final List<Map<String, dynamic>> _ingredients;
+  @override
+  List<Map<String, dynamic>> get ingredients {
+    if (_ingredients is EqualUnmodifiableListView) return _ingredients;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ingredients);
+  }
+
+  final List<Map<String, dynamic>> _steps;
+  @override
+  List<Map<String, dynamic>> get steps {
+    if (_steps is EqualUnmodifiableListView) return _steps;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_steps);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecipeState.error(message: $message)';
+    return 'RecipeState.recipeDetailLoaded(recipe: $recipe, ingredients: $ingredients, steps: $steps)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'RecipeState.error'))
-      ..add(DiagnosticsProperty('message', message));
+      ..add(DiagnosticsProperty('type', 'RecipeState.recipeDetailLoaded'))
+      ..add(DiagnosticsProperty('recipe', recipe))
+      ..add(DiagnosticsProperty('ingredients', ingredients))
+      ..add(DiagnosticsProperty('steps', steps));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$RecipeDetailLoadedImpl &&
+            (identical(other.recipe, recipe) || other.recipe == recipe) &&
+            const DeepCollectionEquality()
+                .equals(other._ingredients, _ingredients) &&
+            const DeepCollectionEquality().equals(other._steps, _steps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType,
+      recipe,
+      const DeepCollectionEquality().hash(_ingredients),
+      const DeepCollectionEquality().hash(_steps));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$RecipeDetailLoadedImplCopyWith<_$RecipeDetailLoadedImpl> get copyWith =>
+      __$$RecipeDetailLoadedImplCopyWithImpl<_$RecipeDetailLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
     required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
     required TResult Function(List<Comment> comments) commentsLoaded,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
     required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
     required TResult Function(List<Measurement> measurements)
         measurementsLoaded,
     required TResult Function(List<Categories> categories) categoriesLoaded,
-    required TResult Function(String message) error,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
   }) {
-    return error(message);
+    return recipeDetailLoaded(recipe, ingredients, steps);
   }
 
   @override
@@ -7095,17 +9915,21 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
     TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
     TResult? Function(List<Comment> comments)? commentsLoaded,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
     TResult? Function(List<Measurement> measurements)? measurementsLoaded,
     TResult? Function(List<Categories> categories)? categoriesLoaded,
-    TResult? Function(String message)? error,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
   }) {
-    return error?.call(message);
+    return recipeDetailLoaded?.call(recipe, ingredients, steps);
   }
 
   @override
@@ -7113,19 +9937,23 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
     TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
     TResult Function(List<Comment> comments)? commentsLoaded,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
     TResult Function(List<Measurement> measurements)? measurementsLoaded,
     TResult Function(List<Categories> categories)? categoriesLoaded,
-    TResult Function(String message)? error,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(message);
+    if (recipeDetailLoaded != null) {
+      return recipeDetailLoaded(recipe, ingredients, steps);
     }
     return orElse();
   }
@@ -7135,17 +9963,19 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
-    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
     required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
     required TResult Function(CommentsLoaded value) commentsLoaded,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
     required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
     required TResult Function(MeasurementsLoaded value) measurementsLoaded,
     required TResult Function(CategoriesLoaded value) categoriesLoaded,
-    required TResult Function(Error value) error,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
   }) {
-    return error(this);
+    return recipeDetailLoaded(this);
   }
 
   @override
@@ -7153,17 +9983,19 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
-    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
     TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
     TResult? Function(CommentsLoaded value)? commentsLoaded,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
     TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult? Function(Error value)? error,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
   }) {
-    return error?.call(this);
+    return recipeDetailLoaded?.call(this);
   }
 
   @override
@@ -7171,29 +10003,36 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
-    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
     TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
     TResult Function(CommentsLoaded value)? commentsLoaded,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
     TResult Function(MeasurementsLoaded value)? measurementsLoaded,
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
-    TResult Function(Error value)? error,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (recipeDetailLoaded != null) {
+      return recipeDetailLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class Error implements RecipeState {
-  const factory Error(final String message) = _$ErrorImpl;
+abstract class RecipeDetailLoaded implements RecipeState {
+  const factory RecipeDetailLoaded(
+      final Recipe recipe,
+      final List<Map<String, dynamic>> ingredients,
+      final List<Map<String, dynamic>> steps) = _$RecipeDetailLoadedImpl;
 
-  String get message;
+  Recipe get recipe;
+  List<Map<String, dynamic>> get ingredients;
+  List<Map<String, dynamic>> get steps;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$RecipeDetailLoadedImplCopyWith<_$RecipeDetailLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

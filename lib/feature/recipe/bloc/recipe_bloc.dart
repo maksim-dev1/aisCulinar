@@ -12,35 +12,49 @@ part 'recipe_bloc.freezed.dart';
 
 class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   final RecipeRepository recipeRepository;
+  List<Recipe> allRecipes = []; // Это список всех рецептов
+  String selectedCategory = '';
+  String selectedCookingTime = '';
 
   RecipeBloc({required this.recipeRepository}) : super(const Initial()) {
     on<LoadRecipes>((event, emit) async {
       emit(const Loading());
       try {
         final recipes = await recipeRepository.getRecipes();
+        allRecipes = recipes; // Сохраняем все рецепты
         emit(Loaded(recipes));
       } catch (e) {
         emit(Error(e.toString()));
       }
     });
 
-    on<AddRecipe>((event, emit) async {
+    on<LoadRecipeDetail>((event, emit) async {
       emit(const Loading());
       try {
-        if (kDebugMode) {
-          print('Начато добавление рецепта');
-        }
-        await recipeRepository.addRecipe(event.recipe,
-            event.ingredientsWithQuantity, event.steps, event.image);
+        print('Loading recipe detail for: ${event.recipeId}');
+        final recipe = await recipeRepository.getRecipeById(event.recipeId);
+
+        print('Ingredients and steps loaded for recipe: ${event.recipeId}');
+        emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
+      } catch (e) {
+        print('Error loading recipe detail: $e');
+        emit(Error(e.toString()));
+      }
+    });
+
+    on<AddRecipe>((event, emit) async {
+      emit(const RecipeLoading([]));
+      try {
+        await recipeRepository.addRecipe(
+          event.recipe,
+          event.ingredientsWithQuantity,
+          event.steps,
+          event.image,
+        );
         emit(const RecipeAdded());
-        if (kDebugMode) {
-          print('Рецепт успешно добавлен');
-        }
+        add(const LoadRecipes()); // Перезагружаем рецепты после добавления нового
       } catch (e) {
         emit(Error(e.toString()));
-        if (kDebugMode) {
-          print('Ошибка при добавлении рецепта: ${e.toString()}');
-        }
       }
     });
 
@@ -48,8 +62,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit(const Loading());
       try {
         await recipeRepository.updateRecipe(event.recipe);
-        final recipes = await recipeRepository.getRecipes();
-        emit(Loaded(recipes));
+        add(const LoadRecipes()); // Перезагружаем рецепты после обновления
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -59,8 +72,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit(const Loading());
       try {
         await recipeRepository.deleteRecipe(event.recipeId);
-        final recipes = await recipeRepository.getRecipes();
-        emit(Loaded(recipes));
+        add(const LoadRecipes()); // Перезагружаем рецепты после удаления
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -97,20 +109,63 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-    on<AddComment>((event, emit) async {
+    on<FilterRecipes>((event, emit) async {
       emit(const Loading());
       try {
+        List<Recipe> recipes = allRecipes;
+
+        if (event.cookingTime != '0') {
+          recipes =
+              await recipeRepository.getRecipesByCookingTime(event.cookingTime);
+        }
+
+        if (event.category.isNotEmpty) {
+          recipes = recipes
+              .where((recipe) => recipe.category.contains(event.category))
+              .toList();
+        }
+
+        emit(Loaded(recipes));
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
+
+    on<UpdateCategoryFilter>((event, emit) {
+      selectedCategory = event.category;
+      add(FilterRecipes(selectedCategory, selectedCookingTime));
+    });
+
+    on<UpdateCookingTimeFilter>((event, emit) {
+      selectedCookingTime = event.cookingTime;
+      add(FilterRecipes(selectedCategory, selectedCookingTime));
+    });
+
+    on<AddRating>((event, emit) async {
+      try {
+        await recipeRepository.addRating(event.recipeId, event.rating);
+        final recipe = await recipeRepository.getRecipeById(event.recipeId);
+        emit(RecipeDetailLoaded(
+          recipe,
+          recipe.ingredients,
+          recipe.steps,
+        ));
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
+
+    on<AddComment>((event, emit) async {
+      try {
         await recipeRepository.addComment(event.recipeId, event.comment);
-        final comments =
-            await recipeRepository.getCommentsForRecipe(event.recipeId);
-        emit(CommentsLoaded(comments));
+        final recipe = await recipeRepository.getRecipeById(event.recipeId);
+        emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
       } catch (e) {
         emit(Error(e.toString()));
       }
     });
 
     on<GetCommentsForRecipe>((event, emit) async {
-      emit(const Loading());
       try {
         final comments =
             await recipeRepository.getCommentsForRecipe(event.recipeId);
@@ -121,9 +176,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     });
 
     on<DeleteComment>((event, emit) async {
-      emit(const Loading());
       try {
         await recipeRepository.deleteComment(event.commentId);
+        final comments =
+            await recipeRepository.getCommentsForRecipe(event.commentId);
+        emit(CommentsLoaded(comments));
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -172,10 +229,9 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           throw 'Название ингредиента не может быть пустым';
         }
         await recipeRepository.addIngredient(event.ingredient);
-
-        List<Ingredient> updatedIngredients =
-            await recipeRepository.getIngredients('');
+        final updatedIngredients = await recipeRepository.getIngredients('');
         emit(IngredientsLoaded(updatedIngredients));
+        emit(const IngredientAdded('Ингредиент успешно добавлен'));
       } catch (e) {
         emit(Error(e.toString()));
       }

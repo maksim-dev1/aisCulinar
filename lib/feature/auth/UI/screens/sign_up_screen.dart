@@ -1,4 +1,5 @@
 import 'package:culinar/app/app_view.dart';
+import 'package:culinar/design/colors.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/auth/UI/screens/sign_in_screen.dart';
 import 'package:culinar/feature/auth/UI/widgets/auth_text_filed.dart';
@@ -54,13 +55,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return const AlertDialog(
+          return AlertDialog(
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 16),
-                Text('Loading...'),
+                CircularProgressIndicator(color: secondaryColor,),
+                const SizedBox(height: 16),
+                const Text('Loading...'),
               ],
             ),
           );
@@ -146,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 35),
                 SizedBox(
-                  width: 250,
+                  width: 270,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
@@ -188,7 +189,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           )),
                         ))
                   ],
-                )
+                ),
+                const SizedBox(height: 10)
               ],
             ),
           ),

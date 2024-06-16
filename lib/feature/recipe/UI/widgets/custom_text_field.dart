@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AddRecipeTextFiled extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String labelText;
   final TextEditingController? controller;
   final int maxLines;
@@ -11,7 +11,7 @@ class AddRecipeTextFiled extends StatelessWidget {
   final FormFieldSetter<String>? onSaved;
 
 
-  const AddRecipeTextFiled({
+  const CustomTextField({
     super.key,
     required this.labelText,
     this.controller,

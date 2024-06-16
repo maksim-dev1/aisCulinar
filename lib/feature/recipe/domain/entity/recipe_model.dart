@@ -13,9 +13,9 @@ class Recipe with _$Recipe {
     required String description,
     required String cookingTime,
     required int portions,
-    required String categories,
-    required String ingredients,
-    required String steps,
+    required String category,
+    required List<Map<String, dynamic>> ingredients,
+    required List<Map<String, dynamic>> steps,
     required Rating rating,
     required List<Comment> comments,
   }) = _Recipe;
@@ -30,7 +30,8 @@ class Categories with _$Categories {
     required String title,
   }) = _Categories;
 
-  factory Categories.fromJson(Map<String, dynamic> json) => _$CategoriesFromJson(json);
+  factory Categories.fromJson(Map<String, dynamic> json) =>
+      _$CategoriesFromJson(json);
 }
 
 @freezed
@@ -40,7 +41,8 @@ class Ingredient with _$Ingredient {
     required String title,
   }) = _Ingredient;
 
-  factory Ingredient.fromJson(Map<String, dynamic> json) => _$IngredientFromJson(json);
+  factory Ingredient.fromJson(Map<String, dynamic> json) =>
+      _$IngredientFromJson(json);
 }
 
 @freezed
@@ -50,7 +52,8 @@ class Measurement with _$Measurement {
     required String title,
   }) = _Measurement;
 
-  factory Measurement.fromJson(Map<String, dynamic> json) => _$MeasurementFromJson(json);
+  factory Measurement.fromJson(Map<String, dynamic> json) =>
+      _$MeasurementFromJson(json);
 }
 
 @freezed
@@ -60,10 +63,10 @@ class IngredientWithQuantity with _$IngredientWithQuantity {
     required Ingredient ingredient,
     required String quantity,
     required Measurement measurement,
-    required String recipeId
   }) = _IngredientWithQuantity;
 
-  factory IngredientWithQuantity.fromJson(Map<String, dynamic> json) => _$IngredientWithQuantityFromJson(json);
+  factory IngredientWithQuantity.fromJson(Map<String, dynamic> json) =>
+      _$IngredientWithQuantityFromJson(json);
 }
 
 @freezed
@@ -72,11 +75,11 @@ class StepRecipe with _$StepRecipe {
     required String stepId,
     required String description,
     required String image,
-    required String recipeId,
-    required int stepNumber,  
+    required int stepNumber,
   }) = _StepRecipe;
 
-  factory StepRecipe.fromJson(Map<String, dynamic> json) => _$StepRecipeFromJson(json);
+  factory StepRecipe.fromJson(Map<String, dynamic> json) =>
+      _$StepRecipeFromJson(json);
 }
 
 @freezed
@@ -85,11 +88,13 @@ class Comment with _$Comment {
     required String commentId,
     required String userId,
     required String comment,
+    required String userName,
     required DateTime time,
     required String recipeId,
   }) = _Comment;
 
-  factory Comment.fromJson(Map<String, dynamic> json) => _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, dynamic> json) =>
+      _$CommentFromJson(json);
 }
 
 @freezed
@@ -97,13 +102,13 @@ class Rating with _$Rating {
   const factory Rating({
     required String ratingId,
     required String userId,
+    required String userName,
     required double overallRating,
     required int totalRating,
   }) = _Rating;
 
   factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
 }
-
 
 @freezed
 class FavoriteRecipe with _$FavoriteRecipe {
