@@ -154,7 +154,20 @@ class _ListIngredientState extends State<ListIngredient> {
               child: BlocBuilder<RecipeBloc, RecipeState>(
                 builder: (context, state) {
                   if (state is Loading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                    child: AlertDialog(
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircularProgressIndicator(
+                            color: secondaryColor,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text('Loading...'),
+                        ],
+                      ),
+                    ),
+                  );
                   } else if (state is IngredientsLoaded) {
                     allIngredients = state.ingredients;
                   } else if (state is Error) {

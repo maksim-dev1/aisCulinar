@@ -14,117 +14,44 @@ class RecipeFirebaseRepository implements RecipeRepository {
   @override
   Future<List<Recipe>> getRecipes() async {
     try {
-      print('Загрузка рецептов...');
       QuerySnapshot querySnapshot =
           await _firestore.collection('recipes').get();
-      print('Загружено ${querySnapshot.docs.length} рецептов.');
-      List<Recipe> recipes = [];
-
-      for (var doc in querySnapshot.docs) {
-        print('Обрабатывается рецепт: ${doc.id}');
-        var data = doc.data() as Map<String, dynamic>;
-
-        // Вывод данных для отладки
-        print('Данные из Firestore: $data');
-
-        // Извлечение ингредиентов
-        List<Map<String, dynamic>> ingredients = [];
-        if (data.containsKey('ingredients')) {
-          var ingredientsData = data['ingredients'] as List<dynamic>;
-          ingredients = ingredientsData.map((ingredient) {
-            return {
-              'ingredientName': ingredient['ingredientName'] ?? '',
-              'measurement': ingredient['measurement'] ?? '',
-              'quantity': ingredient['quantity'] ?? '',
-            };
-          }).toList();
-        }
-
-        // Извлечение шагов
-        List<Map<String, dynamic>> steps = [];
-        if (data.containsKey('steps')) {
-          var stepsData = data['steps'] as List<dynamic>;
-          steps = stepsData.map((step) {
-            return {
-              'description': step['description'] ?? '',
-              'image': step['image'] ?? '',
-              'stepNumber': step['stepNumber'] ?? 0,
-            };
-          }).toList();
-        }
-
-        // Извлечение комментариев
-        List<Comment> comments = (data['comments'] as List<dynamic>?)
-                ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-                .toList() ??
-            [];
-
-        // Извлечение рейтинга
-        Rating rating = data['rating'] != null
-            ? Rating.fromJson(data['rating'] as Map<String, dynamic>)
-            : const Rating(
-                ratingId: '',
-                userId: '',
-                userName: '',
-                overallRating: 0.0,
-                totalRating: 0,
-              );
-
-        Recipe recipe = Recipe(
-          recipeId: doc.id,
-          userId: data['userId'] ?? '',
-          imageUrl: data['imageUrl'] ?? '',
-          title: data['title'] ?? 'Без названия',
-          description: data['description'] ?? '',
-          cookingTime: data['cookingTime'] ?? '',
-          portions: data['portions'] ?? 0,
-          category: data['category'] ?? '',
-          ingredients: ingredients,
-          steps: steps,
-          rating: rating,
-          comments: comments,
-        );
-
-        recipes.add(recipe);
-        print('Рецепт обработан: ${doc.id}');
-      }
-
-      print('Все рецепты обработаны.');
-      return recipes;
+      return querySnapshot.docs
+          .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
     } catch (e) {
-      print('Ошибка при загрузке рецептов: $e');
-      throw Exception('Ошибка при загрузке рецептов: $e');
+      print('Error loading recipes: $e');
+      throw Exception('Error loading recipes: $e');
     }
   }
 
   @override
   Future<List<Recipe>> getRecipesByCookingTime(String time) async {
     try {
-      print('Filtering recipes by cooking time: $time');
       if (time == '0') {
         final snapshot = await _firestore.collection('recipes').get();
-        return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
+        return snapshot.docs
+            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
+            .toList();
       } else if (time == '121') {
         final snapshot = await _firestore.collection('recipes').get();
-        final recipes =
-            snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
-        print('Total recipes: ${recipes.length}');
-        return recipes.where((recipe) {
-          final totalMinutes = int.parse(recipe.cookingTime);
-          print('Recipe time: $totalMinutes');
-          return totalMinutes > 120;
-        }).toList();
+        final recipes = snapshot.docs
+            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
+            .toList();
+        return recipes
+            .where((recipe) => int.parse(recipe.cookingTime) > 120)
+            .toList();
       } else {
         final snapshot = await _firestore
             .collection('recipes')
             .where('cookingTime', isEqualTo: time)
             .get();
-        return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
+        return snapshot.docs
+            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
+            .toList();
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('Error getting recipes by cooking time: $e');
-      }
+      print('Error getting recipes by cooking time: $e');
       throw Exception('Error getting recipes by cooking time: $e');
     }
   }
@@ -162,98 +89,37 @@ class RecipeFirebaseRepository implements RecipeRepository {
   @override
   Future<Recipe> getRecipeById(String recipeId) async {
     try {
-      print('Загрузка рецепта по ID: $recipeId');
+      print("Запрос к базе данных рецепта с recipeId: $recipeId");
       DocumentSnapshot doc =
           await _firestore.collection('recipes').doc(recipeId).get();
       if (!doc.exists) {
-        print('Рецепт не найден: $recipeId');
-        throw Exception('Рецепт не найден');
+        throw Exception('Recipe not found');
       }
-
-      var data = doc.data() as Map<String, dynamic>?;
-
-      if (data == null) {
-        print('Данные для рецепта не найдены: $recipeId');
-        throw Exception('Данные для рецепта не найдены.');
-      }
-
-      // Извлечение ингредиентов
-      List<Map<String, dynamic>> ingredients = [];
-      if (data.containsKey('ingredients')) {
-        var ingredientsData = data['ingredients'] as List<dynamic>;
-        ingredients = ingredientsData.map((ingredient) {
-          return {
-            'ingredientName': ingredient['ingredientName'] ?? '',
-            'measurement': ingredient['measurement'] ?? '',
-            'quantity': ingredient['quantity'] ?? '',
-          };
-        }).toList();
-      }
-
-      // Извлечение шагов
-      List<Map<String, dynamic>> steps = [];
-      if (data.containsKey('steps')) {
-        var stepsData = data['steps'] as List<dynamic>;
-        steps = stepsData.map((step) {
-          return {
-            'description': step['description'] ?? '',
-            'image': step['image'] ?? '',
-            'stepNumber': step['stepNumber'] ?? 0,
-          };
-        }).toList();
-      }
-
-      List<Comment> comments = (data['comments'] as List<dynamic>?)
-              ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [];
-
-      Rating rating = data['rating'] != null
-          ? Rating.fromJson(data['rating'] as Map<String, dynamic>)
-          : const Rating(
-              ratingId: '',
-              userId: '',
-              overallRating: 0.0,
-              totalRating: 0,
-              userName: '');
-
-      Recipe recipe = Recipe(
-        recipeId: doc.id,
-        userId: data['userId'] ?? '',
-        imageUrl: data['imageUrl'] ?? '',
-        title: data['title'] ?? 'Без названия',
-        description: data['description'] ?? '',
-        cookingTime: data['cookingTime'] ?? '',
-        portions: data['portions'] ?? 0,
-        category: data['category'] ?? '',
-        ingredients: ingredients,
-        steps: steps,
-        rating: rating,
-        comments: comments,
-      );
-
-      print('Рецепт обработан: $recipeId');
-      return recipe;
+      print("Рецепт успешно получен из репозитория.");
+      return Recipe.fromJson(doc.data() as Map<String, dynamic>);
     } catch (e) {
-      print('Ошибка при получении рецепта: $e');
-      throw Exception('Ошибка при получении рецепта: $e');
+      print("Ошибка при получении рецепта из репозитория: $e");
+      throw Exception("Ошибка при получении рецепта из репозитория: $e");
     }
   }
 
   @override
   Future<List<Recipe>> getRecipesByCategory(String category) async {
     try {
-      final snapshot = await _firestore
-          .collection('recipes')
-          .where('categories', isEqualTo: category)
-          .get();
+      QuerySnapshot snapshot;
+      if (category.isEmpty) {
+        snapshot = await _firestore.collection('recipes').get();
+      } else {
+        snapshot = await _firestore
+            .collection('recipes')
+            .where('category', isEqualTo: category)
+            .get();
+      }
       return snapshot.docs
           .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      if (kDebugMode) {
-        print('Error getting recipes by category: $e');
-      }
+      print('Error getting recipes by category: $e');
       throw Exception('Error getting recipes by category: $e');
     }
   }
@@ -402,14 +268,12 @@ class RecipeFirebaseRepository implements RecipeRepository {
     File? image,
   ) async {
     try {
-      // Создание документа рецепта
       DocumentReference recipeDocRef = _firestore.collection('recipes').doc();
       String recipeId = recipeDocRef.id;
       if (kDebugMode) {
         print('Создан документ рецепта с ID: $recipeId');
       }
 
-      // Обновление recipeId в модели рецепта
       recipe = recipe.copyWith(recipeId: recipeId);
 
       // Загрузка изображения рецепта в Firebase Storage и получение URL
@@ -421,7 +285,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
         }
       }
 
-// Подготовка данных для ингредиентов внутри рецепта
       List<Map<String, dynamic>> ingredientData = [];
       for (var ingredientWithQuantity in ingredients) {
         ingredientData.add({
@@ -433,7 +296,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
         });
       }
 
-// Подготовка данных для шагов внутри рецепта
       List<Map<String, dynamic>> stepData = [];
       for (var step in steps) {
         String stepImageUrl = '';
@@ -452,7 +314,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
         });
       }
 
-      // Сохранение данных рецепта в Firestore
       await recipeDocRef.set({
         'recipeId': recipeId,
         'userId': recipe.userId,
@@ -510,21 +371,34 @@ class RecipeFirebaseRepository implements RecipeRepository {
 
   @override
   Future<List<Recipe>> searchRecipes(String query) async {
-    final snapshot = await _firestore
-        .collection('recipes')
-        .where('title', isGreaterThanOrEqualTo: query)
-        .where('title', isLessThanOrEqualTo: '$query\uf8ff')
-        .get();
-    return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
+    try {
+      final snapshot = await _firestore
+          .collection('recipes')
+          .where('title', isGreaterThanOrEqualTo: query)
+          .where('title', isLessThanOrEqualTo: '$query\uf8ff')
+          .get();
+      return snapshot.docs
+          .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      print('Error searching recipes: $e');
+      throw Exception('Error searching recipes: $e');
+    }
   }
 
   @override
   Future<void> addComment(String recipeId, Comment comment) async {
+    await _firestore.collection('recipes').doc(recipeId).update({
+      'comments': FieldValue.arrayUnion([comment.toJson()])
+    });
+  }
+
+  @override
+  Future<void> addRating(String recipeId, Rating rating) async {
     await _firestore
         .collection('recipes')
         .doc(recipeId)
-        .collection('comments')
-        .add(comment.toJson());
+        .update({'rating': rating.toJson()});
   }
 
   @override
@@ -558,61 +432,57 @@ class RecipeFirebaseRepository implements RecipeRepository {
   }
 
   @override
-  Future<void> addRating(String recipeId, Rating rating) async {
-    await _firestore
-        .collection('recipes')
-        .doc(recipeId)
-        .collection('ratings')
-        .add(rating.toJson());
-
-    final recipeDoc = _firestore.collection('recipes').doc(recipeId);
-    final recipeSnapshot = await recipeDoc.get();
-    final recipeData = recipeSnapshot.data()!;
-    final currentRating = recipeData['rating']['overallRating'] as double;
-    final totalRatings = recipeData['rating']['totalRating'] as int;
-    final newOverallRating =
-        (currentRating * totalRatings + rating.overallRating) /
-            (totalRatings + 1);
-    final newTotalRatings = totalRatings + 1;
-    await recipeDoc.update({
-      'rating.overallRating': newOverallRating,
-      'rating.totalRating': newTotalRatings,
+  Future<void> addToFavorites(String userId, String recipeId) async {
+    DocumentReference docRef = _firestore.collection('users').doc(userId);
+    await _firestore.runTransaction((transaction) async {
+      DocumentSnapshot snapshot = await transaction.get(docRef);
+      if (snapshot.exists) {
+        Map<String, bool> recipeIds =
+            Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+        if (!recipeIds.containsKey(recipeId)) {
+          recipeIds[recipeId] = true;
+          transaction.update(docRef, {'recipeIds': recipeIds});
+        }
+      } else {
+        transaction.set(docRef, {
+          'recipeIds': {recipeId: true}
+        });
+      }
     });
   }
 
   @override
-  Future<void> addToFavorites(String userId, String recipeId) async {
-    await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('favorites')
-        .doc(recipeId)
-        .set({});
-  }
-
-  @override
   Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
-    final snapshot = await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('favorites')
-        .get();
-    List<String> recipeIds = snapshot.docs.map((doc) => doc.id).toList();
-    List<Recipe> recipes = [];
-    for (String id in recipeIds) {
-      recipes.add(await getRecipeById(id));
+    DocumentSnapshot snapshot =
+        await _firestore.collection('users').doc(userId).get();
+    if (snapshot.exists) {
+      Map<String, bool> recipeIdsMap =
+          Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+      List<String> recipeIds = recipeIdsMap.keys.toList();
+      List<Recipe> recipes = [];
+      for (String id in recipeIds) {
+        recipes.add(await getRecipeById(id));
+      }
+      return recipes;
+    } else {
+      return [];
     }
-    return recipes;
   }
 
   @override
   Future<void> removeFromFavorites(String userId, String recipeId) async {
-    await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('favorites')
-        .doc(recipeId)
-        .delete();
+    DocumentReference docRef = _firestore.collection('users').doc(userId);
+    await _firestore.runTransaction((transaction) async {
+      DocumentSnapshot snapshot = await transaction.get(docRef);
+      if (snapshot.exists) {
+        Map<String, bool> recipeIds =
+            Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+        if (recipeIds.containsKey(recipeId)) {
+          recipeIds.remove(recipeId);
+          transaction.update(docRef, {'recipeIds': recipeIds});
+        }
+      }
+    });
   }
 
   @override
@@ -636,6 +506,20 @@ class RecipeFirebaseRepository implements RecipeRepository {
     } catch (e) {
       print('Error getting categories: $e');
       throw Exception('Error getting categories: $e');
+    }
+  }
+
+  @override
+  Future<List<RecipeCollection>> fetchRecipeCollections() async {
+    try {
+      QuerySnapshot snapshot =
+          await _firestore.collection('recipeCollections').get();
+      return snapshot.docs
+          .map((doc) =>
+              RecipeCollection.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      throw Exception('Error fetching recipe collections: $e');
     }
   }
 }

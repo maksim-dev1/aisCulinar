@@ -1,30 +1,79 @@
-import 'package:culinar/design/icons.dart';
+import 'package:culinar/design/colors.dart';
 import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
+import 'package:culinar/feature/recipe/UI/screens/favorites_list_screen.dart';
 import 'package:culinar/feature/recipe/UI/screens/recipe_list_screen.dart';
 import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
-import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 
 class HomeScreen extends StatelessWidget {
-  final RecipeFirebaseRepository recipeRepository;
+  final RecipeRepository recipeRepository;
 
   const HomeScreen({super.key, required this.recipeRepository});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RecipeBloc(recipeRepository: recipeRepository),
+      create: (context) => RecipeBloc(recipeRepository: recipeRepository)
+        ..add(const LoadRecipes()),
       child: Scaffold(
         body: HomeScreenBody(),
       ),
     );
   }
 }
+
+List<String> categories = [
+  'Завтрак',
+  'Обед',
+  'Ужин',
+  'Десерт',
+  'Салаты',
+  'Закуски'
+];
+
+List<String> imagesCategories = [
+  'assets/breakfast.jpg',
+  'assets/Lunch.jpg',
+  'assets/dinner.jpg',
+  'assets/desserts.jpg',
+  'assets/Salads.jpg',
+  'assets/snacks.jpg'
+];
+
+void navigateToFavoritesScreen(BuildContext context) {
+  User? currentUser = FirebaseAuth.instance.currentUser;
+  if (currentUser == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Пользователь не авторизован'),
+        backgroundColor: Colors.red,
+      ),
+    );
+    if (kDebugMode) {
+      print('Пользователь не авторизован');
+    }
+    return;
+  }
+
+  String userId = currentUser.uid; // Используйте UID текущего пользователя
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => BlocProvider.value(
+        value: BlocProvider.of<AuthBloc>(context),
+        child: FavoritesListScreen(userId: userId),
+      ),
+    ),
+  );
+}
+
 
 class HomeScreenBody extends StatelessWidget {
   final PageController _pageController = PageController();
@@ -44,82 +93,99 @@ class HomeScreenBody extends StatelessWidget {
           automaticallyImplyLeading: false,
           expandedHeight: 500,
           flexibleSpace: FlexibleSpaceBar(
-            background: Stack(
-              children: [
-                PageView(
-                  controller: _pageController,
-                  scrollDirection: Axis.horizontal,
-                  onPageChanged: (int index) {
-                    // setState(() {});
-                  },
-                  children: [
-                    for (var i = 0; i < 3; i++)
-                      Stack(
+            background: BlocBuilder<RecipeBloc, RecipeState>(
+              builder: (context, state) {
+                if (state is RecipeLoading) {
+                  return Center(
+                    child: AlertDialog(
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Image.asset(
-                            'assets/test_image.jpg',
-                            fit: BoxFit.cover,
-                            width: double.infinity,
+                          CircularProgressIndicator(
+                            color: secondaryColor,
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(bottom: 100, left: 20),
-                            child: Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                'Подборка',
-                                style: GoogleFonts.inter(
-                                  textStyle: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
+                          const SizedBox(height: 16),
+                          const Text('Loading...'),
+                        ],
+                      ),
+                    ),
+                  );
+                } else if (state is RecipeCollectionsLoaded) {}
+                return Stack(
+                  children: [
+                    PageView(
+                      controller: _pageController,
+                      scrollDirection: Axis.horizontal,
+                      children: List.generate(
+                        3,
+                        (i) => Stack(
+                          children: [
+                            Image.asset(
+                              'assets/test_image.jpg',
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 100, left: 20),
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  'Подборка',
+                                  style: GoogleFonts.inter(
+                                    textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, right: 15),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Out(),
+                              ),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.account_circle_outlined,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(80),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: SmoothPageIndicator(
+                          controller: _pageController,
+                          count: 3,
+                          effect: ExpandingDotsEffect(
+                            activeDotColor: Colors.white,
+                            dotColor: Colors.white.withOpacity(0.5),
+                            dotHeight: 8,
+                            dotWidth: 8,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30, right: 15),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Out(),
-                          ),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.account_circle_outlined,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(80),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SmoothPageIndicator(
-                      controller: _pageController,
-                      count: 3,
-                      effect: ExpandingDotsEffect(
-                        activeDotColor: Colors.white,
-                        dotColor: Colors.white.withOpacity(0.5),
-                        dotHeight: 8,
-                        dotWidth: 8,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ),
           bottom: PreferredSize(
@@ -128,9 +194,11 @@ class HomeScreenBody extends StatelessWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                    create: (context) => RecipeBloc(recipeRepository: RepositoryProvider.of<RecipeRepository>(context))..add(const LoadRecipes()),
-                    child: RecipeSearchScreen(),
+                  builder: (context) => BlocProvider.value(
+                    value: BlocProvider.of<RecipeBloc>(context),
+                    child: const RecipeSearchScreen(
+                      category: '',
+                    ),
                   ),
                 ),
               ),
@@ -144,20 +212,23 @@ class HomeScreenBody extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Container(
-                      width: double.infinity,
-                      height: 55,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(24)),
-                      child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: searchIcon,
-                          )),
-                    )),
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    width: double.infinity,
+                    height: 55,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child: Icon(Icons.search),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -167,51 +238,48 @@ class HomeScreenBody extends StatelessWidget {
             [
               Container(
                 padding: const EdgeInsets.only(top: 20, left: 20),
-                child: Text(
+                child: const Text(
                   'Что хотите приготовить?',
-                  style: GoogleFonts.inter(
-                    textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
               const SizedBox(height: 5),
               Column(
-                children: [
-                  for (var i = 0; i < 2; i++)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        for (var j = 0; j < 3; j++)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 90,
-                                  width: 110,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.red,
-                                  ),
+                children: List.generate(
+                  2,
+                  (i) => Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      3,
+                      (j) => GestureDetector(
+                        onTap: () {
+                          String category = categories[i * 3 + j];
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider.value(
+                                value: BlocProvider.of<RecipeBloc>(context),
+                                child: RecipeSearchScreen(
+                                  category: category,
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Text('Завтрак'),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                      ],
+                          );
+                        },
+                        child: CategoryCard(
+                          title: categories[i * 3 + j],
+                          image: imagesCategories[i * 3 + j],
+                        ),
+                      ),
                     ),
-                ],
+                  ),
+                ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: InkWell(
@@ -245,9 +313,7 @@ class HomeScreenBody extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.only(top: 20, left: 20),
                 child: Text(
@@ -264,47 +330,53 @@ class HomeScreenBody extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: SizedBox(
-                  height: 80,
+                  height: 130,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: const [
-                      ServiceCard(title: 'Избранное'),
-                      SizedBox(width: 10),
-                      ServiceCard(title: 'Подбор рецепта'),
+                    children: [
+                      InkWell(
+                        child: ServiceCard(title: 'Избранное'),
+                        onTap: () {
+                          navigateToFavoritesScreen(context);
+                        },
+                      ),
+                      // SizedBox(width: 10),
+                      // ServiceCard(title: 'Подбор рецепта'),
                       SizedBox(width: 10),
                       ServiceCard(title: 'Мои рецепты'),
-                      SizedBox(width: 10),
-                      ServiceCard(title: 'Меню на неделю'),
+                      // SizedBox(width: 10),
+                      // ServiceCard(title: 'Меню на неделю'),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Container(
-                  padding: const EdgeInsets.only(top: 20, left: 20),
-                  child: Text(
-                    'Сезонные продукты',
-                    style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
+                padding: const EdgeInsets.only(top: 20, left: 20),
+                child: Text(
+                  'Сезонные продукты',
+                  style: GoogleFonts.inter(
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
-                  )),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: SizedBox(
                   height: 200,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: [
-                      for (var i = 0; i < 4; i++)
-                        Column(
-                          children: [
-                            Container(
+                    children: List.generate(
+                      4,
+                      (i) => Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Container(
                               height: 150,
                               width: 200,
                               decoration: BoxDecoration(
@@ -312,20 +384,89 @@ class HomeScreenBody extends StatelessWidget {
                                 color: Colors.red,
                               ),
                             ),
-                            const Text('Продукт'),
-                          ],
-                        ),
-                    ],
+                          ),
+                          const Align(
+                              alignment: Alignment.topLeft,
+                              child: Text('Продукт')),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class ServiceCard extends StatelessWidget {
+  final String title;
+
+  const ServiceCard({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 110,
+          height: 80,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.red,
+          ),
+        ),
+        const SizedBox(
+            height: 8), // добавить пространство между контейнером и текстом
+        Flexible(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 14),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CategoryCard extends StatelessWidget {
+  final String title;
+  final String image;
+
+  const CategoryCard({super.key, required this.title, required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          Container(
+            width: 110,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.red,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                image,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Align(alignment: Alignment.topLeft, child: Text(title))
+        ],
+      ),
     );
   }
 }
@@ -345,26 +486,6 @@ class Out extends StatelessWidget {
             icon: const Icon(Icons.login),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ServiceCard extends StatelessWidget {
-  final String title;
-
-  const ServiceCard({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 110,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.red,
-      ),
-      child: Center(
-        child: Text(title),
       ),
     );
   }

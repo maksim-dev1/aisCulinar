@@ -16,18 +16,13 @@ class RecipeEvent with _$RecipeEvent {
   const factory RecipeEvent.getRecipesByCategory(String category) =
       GetRecipesByCategory;
   const factory RecipeEvent.searchRecipes(String query) = SearchRecipes;
-const factory RecipeEvent.addComment({required String recipeId, required Comment comment}) = AddComment;
-  const factory RecipeEvent.addRating(String recipeId, Rating rating) =
-      AddRating;
+  const factory RecipeEvent.addComment(
+      {required String recipeId, required Comment comment}) = AddComment;
+  const factory RecipeEvent.addRating(
+      {required String recipeId, required Rating rating}) = AddRating;
   const factory RecipeEvent.getCommentsForRecipe(String recipeId) =
       GetCommentsForRecipe;
   const factory RecipeEvent.deleteComment(String commentId) = DeleteComment;
-  const factory RecipeEvent.addToFavorites(String userId, String recipeId) =
-      AddToFavorites;
-  const factory RecipeEvent.getFavoriteRecipesForUser(String userId) =
-      GetFavoriteRecipesForUser;
-  const factory RecipeEvent.removeFromFavorites(
-      String userId, String recipeId) = RemoveFromFavorites;
   const factory RecipeEvent.addIngredient(Ingredient ingredient) =
       AddIngredient;
   const factory RecipeEvent.getIngredients(String title) = GetIngredients;
@@ -42,4 +37,6 @@ const factory RecipeEvent.addComment({required String recipeId, required Comment
       UpdateCategoryFilter;
   const factory RecipeEvent.updateCookingTimeFilter(String cookingTime) =
       UpdateCookingTimeFilter;
+
+  const factory RecipeEvent.loadRecipeCollections() = LoadRecipeCollections;
 }

@@ -33,14 +33,14 @@ class _SignInScreenState extends State<SignInScreen> {
     return BlocListener<AuthBloc, AuthState>( 
       listener: (context, state) {
         if (state is Success) {
-          _closeLoadingDialog(); // Закрытие диалогового окна загрузки
+          _closeLoadingDialog();
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const AppView()),
+            MaterialPageRoute(builder: (context) => AppView()),
           ); 
         }
         if (state is Failure) {
-          _closeLoadingDialog(); // Закрытие диалогового окна загрузки
+          _closeLoadingDialog(); 
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -50,8 +50,8 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
         }
-        if (state is Loading) {
-          _showLoadingDialog(context); // Показ диалогового окна загрузки
+        if (state is LoadingAuth) {
+          _showLoadingDialog(context); 
         }
       },
       child: Scaffold(

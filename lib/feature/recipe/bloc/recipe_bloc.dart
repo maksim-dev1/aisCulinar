@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:flutter/foundation.dart';
@@ -16,7 +15,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
   String selectedCategory = '';
   String selectedCookingTime = '';
 
-  RecipeBloc({required this.recipeRepository}) : super(const Initial()) {
+  RecipeBloc({required this.recipeRepository}) : super(const InitialRecipe()) {
     on<LoadRecipes>((event, emit) async {
       emit(const Loading());
       try {
@@ -28,19 +27,20 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-    on<LoadRecipeDetail>((event, emit) async {
-      emit(const Loading());
-      try {
-        print('Loading recipe detail for: ${event.recipeId}');
-        final recipe = await recipeRepository.getRecipeById(event.recipeId);
+on<LoadRecipeDetail>((event, emit) async {
+  emit(const Loading());
+  try {
+    print("Запрос к репозиторию для получения рецепта с recipeId: ${event.recipeId}");
+    final recipe = await recipeRepository.getRecipeById(event.recipeId);
+    print("Рецепт успешно получен из репозитория.");
+    emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
+  } catch (e) {
+    print("Ошибка при получении рецепта: $e");
+    emit(Error(e.toString()));
+  }
+});
 
-        print('Ingredients and steps loaded for recipe: ${event.recipeId}');
-        emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
-      } catch (e) {
-        print('Error loading recipe detail: $e');
-        emit(Error(e.toString()));
-      }
-    });
+
 
     on<AddRecipe>((event, emit) async {
       emit(const RecipeLoading([]));
@@ -52,7 +52,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           event.image,
         );
         emit(const RecipeAdded());
-        add(const LoadRecipes()); // Перезагружаем рецепты после добавления нового
+        add(const LoadRecipes());
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -88,16 +88,16 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       }
     });
 
-    on<GetRecipesByCategory>((event, emit) async {
-      emit(const Loading());
-      try {
-        final recipes =
-            await recipeRepository.getRecipesByCategory(event.category);
-        emit(Loaded(recipes));
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
-    });
+on<GetRecipesByCategory>((event, emit) async {
+  emit(const Loading());
+  try {
+    final recipes = await recipeRepository.getRecipesByCategory(event.category);
+    emit(Loaded(recipes));
+  } catch (e) {
+    emit(Error(e.toString()));
+  }
+});
+
 
     on<SearchRecipes>((event, emit) async {
       emit(const Loading());
@@ -112,20 +112,20 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<FilterRecipes>((event, emit) async {
       emit(const Loading());
       try {
-        List<Recipe> recipes = allRecipes;
+        List<Recipe> filteredRecipes = allRecipes;
 
         if (event.cookingTime != '0') {
-          recipes =
+          filteredRecipes =
               await recipeRepository.getRecipesByCookingTime(event.cookingTime);
         }
 
         if (event.category.isNotEmpty) {
-          recipes = recipes
+          filteredRecipes = filteredRecipes
               .where((recipe) => recipe.category.contains(event.category))
               .toList();
         }
 
-        emit(Loaded(recipes));
+        emit(Loaded(filteredRecipes));
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -144,12 +144,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<AddRating>((event, emit) async {
       try {
         await recipeRepository.addRating(event.recipeId, event.rating);
-        final recipe = await recipeRepository.getRecipeById(event.recipeId);
-        emit(RecipeDetailLoaded(
-          recipe,
-          recipe.ingredients,
-          recipe.steps,
-        ));
+        add(LoadRecipeDetail(event
+            .recipeId)); // Перезагружаем детали рецепта после добавления рейтинга
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -158,8 +154,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     on<AddComment>((event, emit) async {
       try {
         await recipeRepository.addComment(event.recipeId, event.comment);
-        final recipe = await recipeRepository.getRecipeById(event.recipeId);
-        emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
+        add(LoadRecipeDetail(event
+            .recipeId)); // Перезагружаем детали рецепта после добавления комментария
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -181,42 +177,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         final comments =
             await recipeRepository.getCommentsForRecipe(event.commentId);
         emit(CommentsLoaded(comments));
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
-    });
-
-    on<AddToFavorites>((event, emit) async {
-      emit(const Loading());
-      try {
-        await recipeRepository.addToFavorites(event.userId, event.recipeId);
-        final favoriteRecipes =
-            await recipeRepository.getFavoriteRecipesForUser(event.userId);
-        emit(FavoritesLoaded(favoriteRecipes));
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
-    });
-
-    on<GetFavoriteRecipesForUser>((event, emit) async {
-      emit(const Loading());
-      try {
-        final favoriteRecipes =
-            await recipeRepository.getFavoriteRecipesForUser(event.userId);
-        emit(FavoritesLoaded(favoriteRecipes));
-      } catch (e) {
-        emit(Error(e.toString()));
-      }
-    });
-
-    on<RemoveFromFavorites>((event, emit) async {
-      emit(const Loading());
-      try {
-        await recipeRepository.removeFromFavorites(
-            event.userId, event.recipeId);
-        final favoriteRecipes =
-            await recipeRepository.getFavoriteRecipesForUser(event.userId);
-        emit(FavoritesLoaded(favoriteRecipes));
       } catch (e) {
         emit(Error(e.toString()));
       }
@@ -273,6 +233,16 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       try {
         final categories = await recipeRepository.getCategories(event.title);
         emit(CategoriesLoaded(categories));
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
+
+        on<LoadRecipeCollections>((event, emit) async {
+      emit(const Loading());
+      try {
+         final collections = await recipeRepository.fetchRecipeCollections();
+        emit(RecipeCollectionsLoaded(collections));
       } catch (e) {
         emit(Error(e.toString()));
       }

@@ -120,9 +120,9 @@ _$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
       commentId: json['commentId'] as String,
       userId: json['userId'] as String,
       comment: json['comment'] as String,
-      userName: json['userName'] as String,
       time: DateTime.parse(json['time'] as String),
       recipeId: json['recipeId'] as String,
+      userName: json['userName'] as String,
     );
 
 Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
@@ -130,48 +130,31 @@ Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
       'commentId': instance.commentId,
       'userId': instance.userId,
       'comment': instance.comment,
-      'userName': instance.userName,
       'time': instance.time.toIso8601String(),
       'recipeId': instance.recipeId,
+      'userName': instance.userName,
     };
 
 _$RatingImpl _$$RatingImplFromJson(Map<String, dynamic> json) => _$RatingImpl(
+      overallRating: (json['overallRating'] as num).toDouble(),
+      totalRatings: (json['totalRatings'] as num).toInt(),
       ratingId: json['ratingId'] as String,
       userId: json['userId'] as String,
-      userName: json['userName'] as String,
-      overallRating: (json['overallRating'] as num).toDouble(),
-      totalRating: (json['totalRating'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$RatingImplToJson(_$RatingImpl instance) =>
     <String, dynamic>{
+      'overallRating': instance.overallRating,
+      'totalRatings': instance.totalRatings,
       'ratingId': instance.ratingId,
       'userId': instance.userId,
-      'userName': instance.userName,
-      'overallRating': instance.overallRating,
-      'totalRating': instance.totalRating,
-    };
-
-_$FavoriteRecipeImpl _$$FavoriteRecipeImplFromJson(Map<String, dynamic> json) =>
-    _$FavoriteRecipeImpl(
-      favoriteRecipeId: json['favoriteRecipeId'] as String,
-      userId: json['userId'] as String,
-      recipeId: json['recipeId'] as String,
-    );
-
-Map<String, dynamic> _$$FavoriteRecipeImplToJson(
-        _$FavoriteRecipeImpl instance) =>
-    <String, dynamic>{
-      'favoriteRecipeId': instance.favoriteRecipeId,
-      'userId': instance.userId,
-      'recipeId': instance.recipeId,
     };
 
 _$RecipeCollectionImpl _$$RecipeCollectionImplFromJson(
         Map<String, dynamic> json) =>
     _$RecipeCollectionImpl(
       recipeCollectionId: json['recipeCollectionId'] as String,
-      recipeId: json['recipeId'] as String,
+      recipeId: json['recipeId'] as Map<String, dynamic>,
       recipeCollectionImage: json['recipeCollectionImage'] as String,
       title: json['title'] as String,
       description: json['description'] as String,

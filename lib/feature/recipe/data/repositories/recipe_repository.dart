@@ -28,4 +28,5 @@ abstract class RecipeRepository {
   Future<void> addToFavorites(String userId, String recipeId);
   Future<List<Recipe>> getFavoriteRecipesForUser(String userId);
   Future<void> removeFromFavorites(String userId, String recipeId);
+  Future<List<RecipeCollection>> fetchRecipeCollections();
 }

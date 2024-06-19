@@ -9,7 +9,8 @@ class MyUser with _$MyUser {
     required String userId,
     required String name,
     required String email,
-    String? photoProfil,
+    String? photoProfile,
+    required Map<String, bool> recipeIds,
   }) = _MyUser;
 
   factory MyUser.fromJson(Map<String, dynamic> json) => _$MyUserFromJson(json);

@@ -1,4 +1,5 @@
 import 'package:culinar/app/app_view.dart';
+import 'package:culinar/connectivity_service.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:culinar/feature/auth/data/repositories/auth_repository.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
@@ -9,14 +10,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class App extends StatelessWidget {
   final AuthRepository authRepository;
   final RecipeRepository recipeRepository;
-  const App(this.authRepository, this.recipeRepository, {super.key});
- 
+  final ConnectivityService connectivityService;
+
+  const App(this.authRepository, this.recipeRepository, this.connectivityService, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>.value(value: authRepository),
         RepositoryProvider<RecipeRepository>.value(value: recipeRepository),
+        RepositoryProvider<ConnectivityService>.value(value: connectivityService),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -27,7 +31,7 @@ class App extends StatelessWidget {
             create: (context) => RecipeBloc(recipeRepository: recipeRepository),
           ),
         ],
-        child: const AppView(),
+        child: AppView(),
       ),
     );
   }

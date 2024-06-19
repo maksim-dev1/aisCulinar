@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (state is Success) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const AppView()),
+            MaterialPageRoute(builder: (context) =>  AppView()),
           );
         }
         if (state is Failure) {
@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             );
             Navigator.of(context).pop();
         }
-        if (state is Loading) {
+        if (state is LoadingAuth) {
       showDialog(
         context: context,
         builder: (BuildContext context) {

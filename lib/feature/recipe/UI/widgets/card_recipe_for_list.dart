@@ -1,6 +1,6 @@
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/screens/recipe_detail_screen.dart';
-import 'package:culinar/feature/recipe/UI/widgets/reting_for_recipe.dart';
+import 'package:culinar/feature/recipe/UI/widgets/add_reting_for_recipe.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +22,9 @@ class CardRecipeForList extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RecipeDetailScreen(recipeId: recipe.recipeId,),
+              builder: (context) => RecipeDetailScreen(
+                recipeId: recipe.recipeId,
+              ),
             ),
           );
         },
@@ -86,11 +88,10 @@ class CardRecipeForList extends StatelessWidget {
                     Expanded(child: SizedBox()),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: SvgStarRating(
-                        rating: recipe.rating.overallRating,
-                        fullStar: fullStar,
-                        halfStar: halfStar,
-                        emptyStar: emptyStar,
+                      child: AddStarRating(
+                        initialRating: recipe.rating.overallRating,
+                        fullStarGrey: emptyStar,
+                        fullStarYellow: fullStar,
                       ),
                     ),
                   ],

@@ -23,7 +23,8 @@ mixin _$MyUser {
   String get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String? get photoProfil => throw _privateConstructorUsedError;
+  String? get photoProfile => throw _privateConstructorUsedError;
+  Map<String, bool> get recipeIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,12 @@ abstract class $MyUserCopyWith<$Res> {
   factory $MyUserCopyWith(MyUser value, $Res Function(MyUser) then) =
       _$MyUserCopyWithImpl<$Res, MyUser>;
   @useResult
-  $Res call({String userId, String name, String email, String? photoProfil});
+  $Res call(
+      {String userId,
+      String name,
+      String email,
+      String? photoProfile,
+      Map<String, bool> recipeIds});
 }
 
 /// @nodoc
@@ -54,7 +60,8 @@ class _$MyUserCopyWithImpl<$Res, $Val extends MyUser>
     Object? userId = null,
     Object? name = null,
     Object? email = null,
-    Object? photoProfil = freezed,
+    Object? photoProfile = freezed,
+    Object? recipeIds = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -69,10 +76,14 @@ class _$MyUserCopyWithImpl<$Res, $Val extends MyUser>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      photoProfil: freezed == photoProfil
-          ? _value.photoProfil
-          : photoProfil // ignore: cast_nullable_to_non_nullable
+      photoProfile: freezed == photoProfile
+          ? _value.photoProfile
+          : photoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      recipeIds: null == recipeIds
+          ? _value.recipeIds
+          : recipeIds // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ) as $Val);
   }
 }
@@ -84,7 +95,12 @@ abstract class _$$MyUserImplCopyWith<$Res> implements $MyUserCopyWith<$Res> {
       __$$MyUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String name, String email, String? photoProfil});
+  $Res call(
+      {String userId,
+      String name,
+      String email,
+      String? photoProfile,
+      Map<String, bool> recipeIds});
 }
 
 /// @nodoc
@@ -101,7 +117,8 @@ class __$$MyUserImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? name = null,
     Object? email = null,
-    Object? photoProfil = freezed,
+    Object? photoProfile = freezed,
+    Object? recipeIds = null,
   }) {
     return _then(_$MyUserImpl(
       userId: null == userId
@@ -116,10 +133,14 @@ class __$$MyUserImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      photoProfil: freezed == photoProfil
-          ? _value.photoProfil
-          : photoProfil // ignore: cast_nullable_to_non_nullable
+      photoProfile: freezed == photoProfile
+          ? _value.photoProfile
+          : photoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      recipeIds: null == recipeIds
+          ? _value._recipeIds
+          : recipeIds // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ));
   }
 }
@@ -131,7 +152,9 @@ class _$MyUserImpl implements _MyUser {
       {required this.userId,
       required this.name,
       required this.email,
-      this.photoProfil});
+      this.photoProfile,
+      required final Map<String, bool> recipeIds})
+      : _recipeIds = recipeIds;
 
   factory _$MyUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyUserImplFromJson(json);
@@ -143,11 +166,18 @@ class _$MyUserImpl implements _MyUser {
   @override
   final String email;
   @override
-  final String? photoProfil;
+  final String? photoProfile;
+  final Map<String, bool> _recipeIds;
+  @override
+  Map<String, bool> get recipeIds {
+    if (_recipeIds is EqualUnmodifiableMapView) return _recipeIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_recipeIds);
+  }
 
   @override
   String toString() {
-    return 'MyUser(userId: $userId, name: $name, email: $email, photoProfil: $photoProfil)';
+    return 'MyUser(userId: $userId, name: $name, email: $email, photoProfile: $photoProfile, recipeIds: $recipeIds)';
   }
 
   @override
@@ -158,14 +188,16 @@ class _$MyUserImpl implements _MyUser {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.photoProfil, photoProfil) ||
-                other.photoProfil == photoProfil));
+            (identical(other.photoProfile, photoProfile) ||
+                other.photoProfile == photoProfile) &&
+            const DeepCollectionEquality()
+                .equals(other._recipeIds, _recipeIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, name, email, photoProfil);
+  int get hashCode => Object.hash(runtimeType, userId, name, email,
+      photoProfile, const DeepCollectionEquality().hash(_recipeIds));
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +218,8 @@ abstract class _MyUser implements MyUser {
       {required final String userId,
       required final String name,
       required final String email,
-      final String? photoProfil}) = _$MyUserImpl;
+      final String? photoProfile,
+      required final Map<String, bool> recipeIds}) = _$MyUserImpl;
 
   factory _MyUser.fromJson(Map<String, dynamic> json) = _$MyUserImpl.fromJson;
 
@@ -197,7 +230,9 @@ abstract class _MyUser implements MyUser {
   @override
   String get email;
   @override
-  String? get photoProfil;
+  String? get photoProfile;
+  @override
+  Map<String, bool> get recipeIds;
   @override
   @JsonKey(ignore: true)
   _$$MyUserImplCopyWith<_$MyUserImpl> get copyWith =>

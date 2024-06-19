@@ -88,45 +88,31 @@ class Comment with _$Comment {
     required String commentId,
     required String userId,
     required String comment,
-    required String userName,
     required DateTime time,
     required String recipeId,
+    required String userName,
   }) = _Comment;
 
-  factory Comment.fromJson(Map<String, dynamic> json) =>
-      _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, dynamic> json) => _$CommentFromJson(json);
 }
 
 @freezed
 class Rating with _$Rating {
   const factory Rating({
+    required double overallRating,
+    required int totalRatings,
     required String ratingId,
     required String userId,
-    required String userName,
-    required double overallRating,
-    required int totalRating,
   }) = _Rating;
 
   factory Rating.fromJson(Map<String, dynamic> json) => _$RatingFromJson(json);
 }
 
 @freezed
-class FavoriteRecipe with _$FavoriteRecipe {
-  const factory FavoriteRecipe({
-    required String favoriteRecipeId,
-    required String userId,
-    required String recipeId,
-  }) = _FavoriteRecipe;
-
-  factory FavoriteRecipe.fromJson(Map<String, dynamic> json) =>
-      _$FavoriteRecipeFromJson(json);
-}
-
-@freezed
 class RecipeCollection with _$RecipeCollection {
   const factory RecipeCollection({
     required String recipeCollectionId,
-    required String recipeId,
+    required Map<String, dynamic> recipeId,
     required String recipeCollectionImage,
     required String title,
     required String description,

@@ -142,7 +142,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         List<IngredientWithQuantity> ingredientsList = ingredients
             .map(
               (ingredient) => IngredientWithQuantity(
-                ingredientWithQuantityId: Uuid().v4(),
+                ingredientWithQuantityId: const Uuid().v4(),
                 ingredient: Ingredient(
                     ingredientId: ingredient.ingredient.ingredientId,
                     title: ingredient.ingredient.title),
@@ -157,7 +157,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         List<StepRecipe> stepsList = _steps
             .map(
               (step) => StepRecipe(
-                stepId: Uuid().v4(),
+                stepId: const Uuid().v4(),
                 description: step.description,
                 image: step.image,
                 stepNumber: _steps.indexOf(step) + 1,
@@ -166,7 +166,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
             .toList();
 
         Recipe recipe = Recipe(
-          recipeId: '', // Id будет сгенерирован внутри метода addRecipe
+          recipeId: '',
           userId: currentUser.uid,
           imageUrl: '',
           title: _titleController.text,
@@ -174,14 +174,14 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
           cookingTime: cookingTime,
           portions: int.parse(_portionsController.text),
           category:
-              _selectedCategory!.title, // Устанавливаем выбранную категорию
-          ingredients: [], // Данные об ингредиентах будут добавлены в методе addRecipe
-          steps: [], // Данные о шагах будут добавлены в методе addRecipe
+              _selectedCategory!.title,
+          ingredients: [], 
+          steps: [],
           rating: const Rating(
             ratingId: '',
             userId: '',
-            overallRating: 0,
-            totalRating: 0, userName: '',
+            overallRating: 0, totalRatings: 0,
+          
           ),
           comments: [],
         );

@@ -6,14 +6,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RecipeSearchScreen extends StatefulWidget {
-  const RecipeSearchScreen({super.key});
+class RecipeSearchScreen extends StatelessWidget {
+  final String category;
+
+  const RecipeSearchScreen({super.key, required this.category});
 
   @override
-  State<RecipeSearchScreen> createState() => _RecipeSearchScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider.value(
+      value: BlocProvider.of<RecipeBloc>(context),
+      child: Scaffold(
+        body: RecipeSearchScreenBody(category: category),
+      ),
+    );
+  }
 }
 
-class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
+class RecipeSearchScreenBody extends StatefulWidget {
+  final String category;
+
+  const RecipeSearchScreenBody({Key? key, required this.category})
+      : super(key: key);
+
+  @override
+  State<RecipeSearchScreenBody> createState() => _RecipeSearchScreenBodyState();
+}
+
+class _RecipeSearchScreenBodyState extends State<RecipeSearchScreenBody> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocusNode = FocusNode();
   String? _selectedCategory;
@@ -38,7 +57,9 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(_searchFocusNode);
     });
-    BlocProvider.of<RecipeBloc>(context).add(const LoadRecipes());
+    _selectedCategory = widget.category.isNotEmpty ? widget.category : null;
+    _filterRecipes();
+    _loadRecipes();
   }
 
   @override
@@ -58,6 +79,11 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
     BlocProvider.of<RecipeBloc>(context).add(SearchRecipes(query));
   }
 
+  void _loadRecipes() {
+    final category = widget.category.isNotEmpty ? widget.category : '';
+    BlocProvider.of<RecipeBloc>(context).add(GetRecipesByCategory(category));
+  }
+
   void _filterRecipes() {
     if (_selectedCategory != null || _selectedCookingTime != 0) {
       String selectedTime = _selectedCookingTime.toString();
@@ -66,7 +92,11 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
         selectedTime,
       ));
       setState(() {
-        _isClearButtonActive = _countActiveFilters() > 0;
+        _isClearButtonActive = true;
+      });
+    } else {
+      setState(() {
+        _isClearButtonActive = false;
       });
     }
   }
@@ -283,29 +313,38 @@ class _RecipeSearchScreenState extends State<RecipeSearchScreen> {
               child: BlocBuilder<RecipeBloc, RecipeState>(
                 builder: (context, state) {
                   if (state is Loading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                    child: AlertDialog(
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircularProgressIndicator(
+                            color: secondaryColor,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text('Loading...'),
+                        ],
+                      ),
+                    ),
+                  );
                   } else if (state is Loaded) {
                     if (state.recipes.isEmpty) {
-                      return const Center(
-                          child: Text(
-                              'К сожалению, мы ничего не нашли по вашему запросу.'));
+                      return Center(child: Text('No recipes found.'));
                     }
                     return ListView.builder(
                       itemCount: state.recipes.length,
                       itemBuilder: (context, index) {
                         final recipe = state.recipes[index];
-                        return CardRecipeForList(
-                          recipe: recipe,
-                        );
+                        return CardRecipeForList(recipe: recipe);
                       },
                     );
                   } else if (state is Error) {
-                    return Center(child: Text('Ошибка: ${state.message}'));
+                    return Center(child: Text('Error: ${state.message}'));
                   }
-                  return const Center(child: Text('Начните поиск рецептов.'));
+                  return Center(child: Text('Start searching for recipes.'));
                 },
               ),
-            ),
+            )
           ],
         ),
       ),

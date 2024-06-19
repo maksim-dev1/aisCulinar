@@ -1,5 +1,5 @@
 import 'package:culinar/app/app.dart';
-
+import 'package:culinar/connectivity_service.dart';
 import 'package:culinar/feature/auth/data/repositories/auth_firebase_repository.dart';
 import 'package:culinar/feature/recipe/data/repositories/resipe_firebase_repository.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -13,5 +13,14 @@ void main() async {
     androidProvider: AndroidProvider.debug,
     appleProvider: AppleProvider.appAttest,
   );
-  runApp(App(AuthFirebaseRepository(), RecipeFirebaseRepository()));
+
+  ConnectivityService connectivityService = ConnectivityService();
+  connectivityService.simulateNoConnection(false); // Имитация отсутствия интернета
+
+  runApp(App(
+    AuthFirebaseRepository(), 
+    RecipeFirebaseRepository(), 
+    connectivityService,
+  ));
 }
+
