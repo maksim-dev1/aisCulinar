@@ -20,27 +20,25 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       emit(const Loading());
       try {
         final recipes = await recipeRepository.getRecipes();
-        allRecipes = recipes; // Сохраняем все рецепты
         emit(Loaded(recipes));
       } catch (e) {
         emit(Error(e.toString()));
       }
     });
 
-on<LoadRecipeDetail>((event, emit) async {
-  emit(const Loading());
-  try {
-    print("Запрос к репозиторию для получения рецепта с recipeId: ${event.recipeId}");
-    final recipe = await recipeRepository.getRecipeById(event.recipeId);
-    print("Рецепт успешно получен из репозитория.");
-    emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
-  } catch (e) {
-    print("Ошибка при получении рецепта: $e");
-    emit(Error(e.toString()));
-  }
-});
-
-
+    on<LoadRecipeDetail>((event, emit) async {
+      emit(const Loading());
+      try {
+        print(
+            "Запрос к репозиторию для получения рецепта с recipeId: ${event.recipeId}");
+        final recipe = await recipeRepository.getRecipeById(event.recipeId);
+        print("Рецепт успешно получен из репозитория.");
+        emit(RecipeDetailLoaded(recipe, recipe.ingredients, recipe.steps));
+      } catch (e) {
+        print("Ошибка при получении рецепта: $e");
+        emit(Error(e.toString()));
+      }
+    });
 
     on<AddRecipe>((event, emit) async {
       emit(const RecipeLoading([]));
@@ -88,16 +86,16 @@ on<LoadRecipeDetail>((event, emit) async {
       }
     });
 
-on<GetRecipesByCategory>((event, emit) async {
-  emit(const Loading());
-  try {
-    final recipes = await recipeRepository.getRecipesByCategory(event.category);
-    emit(Loaded(recipes));
-  } catch (e) {
-    emit(Error(e.toString()));
-  }
-});
-
+    on<GetRecipesByCategory>((event, emit) async {
+      emit(const Loading());
+      try {
+        final recipes =
+            await recipeRepository.getRecipesByCategory(event.category);
+        emit(Loaded(recipes));
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
 
     on<SearchRecipes>((event, emit) async {
       emit(const Loading());
@@ -238,11 +236,42 @@ on<GetRecipesByCategory>((event, emit) async {
       }
     });
 
-        on<LoadRecipeCollections>((event, emit) async {
+    on<LoadRecipeCollections>((event, emit) async {
+      emit(Loading());
+      try {
+        List<RecipeCollection> collections =
+            await recipeRepository.getRecipeCollections();
+        if (collections.isEmpty) {
+          emit(RecipeCollectionsLoaded([]));
+        } else {
+          emit(RecipeCollectionsLoaded(collections));
+        }
+      } catch (e) {
+        emit(Error(e.toString()));
+      }
+    });
+
+on<LoadRecipesForCollection>((event, emit) async {
+  emit(Loading());
+  try {
+    List<String> recipeIds = event.recipeIds;
+
+    // Получаем рецепты по фактическим идентификаторам
+    List<Recipe> recipes = await recipeRepository.getRecipesByIds(recipeIds);
+
+    emit(Loaded(recipes));
+  } catch (e) {
+    print("Ошибка при получении рецептов: $e");
+    emit(Error(e.toString()));
+  }
+});
+
+
+    on<LoadUserRecipes>((event, emit) async {
       emit(const Loading());
       try {
-         final collections = await recipeRepository.fetchRecipeCollections();
-        emit(RecipeCollectionsLoaded(collections));
+        final userRecipes = await recipeRepository.getUserRecipes(event.userId);
+        emit(Loaded(userRecipes));
       } catch (e) {
         emit(Error(e.toString()));
       }

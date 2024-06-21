@@ -45,6 +45,8 @@ mixin _$RecipeEvent {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +77,8 @@ mixin _$RecipeEvent {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +109,8 @@ mixin _$RecipeEvent {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,9 @@ mixin _$RecipeEvent {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -158,6 +167,8 @@ mixin _$RecipeEvent {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -183,6 +194,8 @@ mixin _$RecipeEvent {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -277,6 +290,8 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return loadRecipes();
   }
@@ -310,6 +325,8 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return loadRecipes?.call();
   }
@@ -343,6 +360,8 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -377,6 +396,9 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return loadRecipes(this);
   }
@@ -405,6 +427,8 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return loadRecipes?.call(this);
   }
@@ -433,6 +457,8 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -549,6 +575,8 @@ class _$LoadRecipeDetailImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return loadRecipeDetail(recipeId);
   }
@@ -582,6 +610,8 @@ class _$LoadRecipeDetailImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return loadRecipeDetail?.call(recipeId);
   }
@@ -615,6 +645,8 @@ class _$LoadRecipeDetailImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeDetail != null) {
@@ -649,6 +681,9 @@ class _$LoadRecipeDetailImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return loadRecipeDetail(this);
   }
@@ -677,6 +712,8 @@ class _$LoadRecipeDetailImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return loadRecipeDetail?.call(this);
   }
@@ -705,6 +742,8 @@ class _$LoadRecipeDetailImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeDetail != null) {
@@ -890,6 +929,8 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return addRecipe(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -923,6 +964,8 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return addRecipe?.call(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -956,6 +999,8 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -990,6 +1035,9 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return addRecipe(this);
   }
@@ -1018,6 +1066,8 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return addRecipe?.call(this);
   }
@@ -1046,6 +1096,8 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -1180,6 +1232,8 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return updateRecipe(recipe);
   }
@@ -1213,6 +1267,8 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return updateRecipe?.call(recipe);
   }
@@ -1246,6 +1302,8 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -1280,6 +1338,9 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return updateRecipe(this);
   }
@@ -1308,6 +1369,8 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return updateRecipe?.call(this);
   }
@@ -1336,6 +1399,8 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -1454,6 +1519,8 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return deleteRecipe(recipeId);
   }
@@ -1487,6 +1554,8 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return deleteRecipe?.call(recipeId);
   }
@@ -1520,6 +1589,8 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1554,6 +1625,9 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return deleteRecipe(this);
   }
@@ -1582,6 +1656,8 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return deleteRecipe?.call(this);
   }
@@ -1610,6 +1686,8 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1730,6 +1808,8 @@ class _$GetRecipeByIdImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getRecipeById(recipeId);
   }
@@ -1763,6 +1843,8 @@ class _$GetRecipeByIdImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getRecipeById?.call(recipeId);
   }
@@ -1796,6 +1878,8 @@ class _$GetRecipeByIdImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -1830,6 +1914,9 @@ class _$GetRecipeByIdImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getRecipeById(this);
   }
@@ -1858,6 +1945,8 @@ class _$GetRecipeByIdImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getRecipeById?.call(this);
   }
@@ -1886,6 +1975,8 @@ class _$GetRecipeByIdImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -2008,6 +2099,8 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getRecipesByCategory(category);
   }
@@ -2041,6 +2134,8 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getRecipesByCategory?.call(category);
   }
@@ -2074,6 +2169,8 @@ class _$GetRecipesByCategoryImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -2108,6 +2205,9 @@ class _$GetRecipesByCategoryImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getRecipesByCategory(this);
   }
@@ -2136,6 +2236,8 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getRecipesByCategory?.call(this);
   }
@@ -2164,6 +2266,8 @@ class _$GetRecipesByCategoryImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -2284,6 +2388,8 @@ class _$SearchRecipesImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return searchRecipes(query);
   }
@@ -2317,6 +2423,8 @@ class _$SearchRecipesImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return searchRecipes?.call(query);
   }
@@ -2350,6 +2458,8 @@ class _$SearchRecipesImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -2384,6 +2494,9 @@ class _$SearchRecipesImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return searchRecipes(this);
   }
@@ -2412,6 +2525,8 @@ class _$SearchRecipesImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return searchRecipes?.call(this);
   }
@@ -2440,6 +2555,8 @@ class _$SearchRecipesImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -2577,6 +2694,8 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return addComment(recipeId, comment);
   }
@@ -2610,6 +2729,8 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return addComment?.call(recipeId, comment);
   }
@@ -2643,6 +2764,8 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -2677,6 +2800,9 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return addComment(this);
   }
@@ -2705,6 +2831,8 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return addComment?.call(this);
   }
@@ -2733,6 +2861,8 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -2873,6 +3003,8 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return addRating(recipeId, rating);
   }
@@ -2906,6 +3038,8 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return addRating?.call(recipeId, rating);
   }
@@ -2939,6 +3073,8 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addRating != null) {
@@ -2973,6 +3109,9 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return addRating(this);
   }
@@ -3001,6 +3140,8 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return addRating?.call(this);
   }
@@ -3029,6 +3170,8 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addRating != null) {
@@ -3154,6 +3297,8 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getCommentsForRecipe(recipeId);
   }
@@ -3187,6 +3332,8 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getCommentsForRecipe?.call(recipeId);
   }
@@ -3220,6 +3367,8 @@ class _$GetCommentsForRecipeImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -3254,6 +3403,9 @@ class _$GetCommentsForRecipeImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getCommentsForRecipe(this);
   }
@@ -3282,6 +3434,8 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getCommentsForRecipe?.call(this);
   }
@@ -3310,6 +3464,8 @@ class _$GetCommentsForRecipeImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -3431,6 +3587,8 @@ class _$DeleteCommentImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return deleteComment(commentId);
   }
@@ -3464,6 +3622,8 @@ class _$DeleteCommentImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return deleteComment?.call(commentId);
   }
@@ -3497,6 +3657,8 @@ class _$DeleteCommentImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -3531,6 +3693,9 @@ class _$DeleteCommentImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return deleteComment(this);
   }
@@ -3559,6 +3724,8 @@ class _$DeleteCommentImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return deleteComment?.call(this);
   }
@@ -3587,6 +3754,8 @@ class _$DeleteCommentImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -3717,6 +3886,8 @@ class _$AddIngredientImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return addIngredient(ingredient);
   }
@@ -3750,6 +3921,8 @@ class _$AddIngredientImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return addIngredient?.call(ingredient);
   }
@@ -3783,6 +3956,8 @@ class _$AddIngredientImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -3817,6 +3992,9 @@ class _$AddIngredientImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return addIngredient(this);
   }
@@ -3845,6 +4023,8 @@ class _$AddIngredientImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return addIngredient?.call(this);
   }
@@ -3873,6 +4053,8 @@ class _$AddIngredientImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -3994,6 +4176,8 @@ class _$GetIngredientsImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getIngredients(title);
   }
@@ -4027,6 +4211,8 @@ class _$GetIngredientsImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getIngredients?.call(title);
   }
@@ -4060,6 +4246,8 @@ class _$GetIngredientsImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4094,6 +4282,9 @@ class _$GetIngredientsImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getIngredients(this);
   }
@@ -4122,6 +4313,8 @@ class _$GetIngredientsImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getIngredients?.call(this);
   }
@@ -4150,6 +4343,8 @@ class _$GetIngredientsImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4270,6 +4465,8 @@ class _$SearchIngredientsImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return searchIngredients(query);
   }
@@ -4303,6 +4500,8 @@ class _$SearchIngredientsImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return searchIngredients?.call(query);
   }
@@ -4336,6 +4535,8 @@ class _$SearchIngredientsImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4370,6 +4571,9 @@ class _$SearchIngredientsImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return searchIngredients(this);
   }
@@ -4398,6 +4602,8 @@ class _$SearchIngredientsImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return searchIngredients?.call(this);
   }
@@ -4426,6 +4632,8 @@ class _$SearchIngredientsImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4546,6 +4754,8 @@ class _$GetMeasurementsImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getMeasurements(title);
   }
@@ -4579,6 +4789,8 @@ class _$GetMeasurementsImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getMeasurements?.call(title);
   }
@@ -4612,6 +4824,8 @@ class _$GetMeasurementsImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -4646,6 +4860,9 @@ class _$GetMeasurementsImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getMeasurements(this);
   }
@@ -4674,6 +4891,8 @@ class _$GetMeasurementsImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getMeasurements?.call(this);
   }
@@ -4702,6 +4921,8 @@ class _$GetMeasurementsImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -4821,6 +5042,8 @@ class _$GetCategoriesImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return getCategories(title);
   }
@@ -4854,6 +5077,8 @@ class _$GetCategoriesImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return getCategories?.call(title);
   }
@@ -4887,6 +5112,8 @@ class _$GetCategoriesImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -4921,6 +5148,9 @@ class _$GetCategoriesImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return getCategories(this);
   }
@@ -4949,6 +5179,8 @@ class _$GetCategoriesImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return getCategories?.call(this);
   }
@@ -4977,6 +5209,8 @@ class _$GetCategoriesImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -5107,6 +5341,8 @@ class _$FilterRecipesImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return filterRecipes(category, cookingTime);
   }
@@ -5140,6 +5376,8 @@ class _$FilterRecipesImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return filterRecipes?.call(category, cookingTime);
   }
@@ -5173,6 +5411,8 @@ class _$FilterRecipesImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (filterRecipes != null) {
@@ -5207,6 +5447,9 @@ class _$FilterRecipesImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return filterRecipes(this);
   }
@@ -5235,6 +5478,8 @@ class _$FilterRecipesImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return filterRecipes?.call(this);
   }
@@ -5263,6 +5508,8 @@ class _$FilterRecipesImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (filterRecipes != null) {
@@ -5387,6 +5634,8 @@ class _$UpdateCategoryFilterImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return updateCategoryFilter(category);
   }
@@ -5420,6 +5669,8 @@ class _$UpdateCategoryFilterImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return updateCategoryFilter?.call(category);
   }
@@ -5453,6 +5704,8 @@ class _$UpdateCategoryFilterImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateCategoryFilter != null) {
@@ -5487,6 +5740,9 @@ class _$UpdateCategoryFilterImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return updateCategoryFilter(this);
   }
@@ -5515,6 +5771,8 @@ class _$UpdateCategoryFilterImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return updateCategoryFilter?.call(this);
   }
@@ -5543,6 +5801,8 @@ class _$UpdateCategoryFilterImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateCategoryFilter != null) {
@@ -5667,6 +5927,8 @@ class _$UpdateCookingTimeFilterImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return updateCookingTimeFilter(cookingTime);
   }
@@ -5700,6 +5962,8 @@ class _$UpdateCookingTimeFilterImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return updateCookingTimeFilter?.call(cookingTime);
   }
@@ -5733,6 +5997,8 @@ class _$UpdateCookingTimeFilterImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateCookingTimeFilter != null) {
@@ -5767,6 +6033,9 @@ class _$UpdateCookingTimeFilterImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return updateCookingTimeFilter(this);
   }
@@ -5795,6 +6064,8 @@ class _$UpdateCookingTimeFilterImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return updateCookingTimeFilter?.call(this);
   }
@@ -5823,6 +6094,8 @@ class _$UpdateCookingTimeFilterImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (updateCookingTimeFilter != null) {
@@ -5918,6 +6191,8 @@ class _$LoadRecipeCollectionsImpl
     required TResult Function(String category) updateCategoryFilter,
     required TResult Function(String cookingTime) updateCookingTimeFilter,
     required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
   }) {
     return loadRecipeCollections();
   }
@@ -5951,6 +6226,8 @@ class _$LoadRecipeCollectionsImpl
     TResult? Function(String category)? updateCategoryFilter,
     TResult? Function(String cookingTime)? updateCookingTimeFilter,
     TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
   }) {
     return loadRecipeCollections?.call();
   }
@@ -5984,6 +6261,8 @@ class _$LoadRecipeCollectionsImpl
     TResult Function(String category)? updateCategoryFilter,
     TResult Function(String cookingTime)? updateCookingTimeFilter,
     TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeCollections != null) {
@@ -6018,6 +6297,9 @@ class _$LoadRecipeCollectionsImpl
         updateCookingTimeFilter,
     required TResult Function(LoadRecipeCollections value)
         loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
   }) {
     return loadRecipeCollections(this);
   }
@@ -6046,6 +6328,8 @@ class _$LoadRecipeCollectionsImpl
     TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
   }) {
     return loadRecipeCollections?.call(this);
   }
@@ -6074,6 +6358,8 @@ class _$LoadRecipeCollectionsImpl
     TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
     TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeCollections != null) {
@@ -6085,6 +6371,595 @@ class _$LoadRecipeCollectionsImpl
 
 abstract class LoadRecipeCollections implements RecipeEvent {
   const factory LoadRecipeCollections() = _$LoadRecipeCollectionsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadRecipesForCollectionImplCopyWith<$Res> {
+  factory _$$LoadRecipesForCollectionImplCopyWith(
+          _$LoadRecipesForCollectionImpl value,
+          $Res Function(_$LoadRecipesForCollectionImpl) then) =
+      __$$LoadRecipesForCollectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> recipeIds});
+}
+
+/// @nodoc
+class __$$LoadRecipesForCollectionImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadRecipesForCollectionImpl>
+    implements _$$LoadRecipesForCollectionImplCopyWith<$Res> {
+  __$$LoadRecipesForCollectionImplCopyWithImpl(
+      _$LoadRecipesForCollectionImpl _value,
+      $Res Function(_$LoadRecipesForCollectionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? recipeIds = null,
+  }) {
+    return _then(_$LoadRecipesForCollectionImpl(
+      null == recipeIds
+          ? _value._recipeIds
+          : recipeIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadRecipesForCollectionImpl
+    with DiagnosticableTreeMixin
+    implements LoadRecipesForCollection {
+  const _$LoadRecipesForCollectionImpl(final List<String> recipeIds)
+      : _recipeIds = recipeIds;
+
+  final List<String> _recipeIds;
+  @override
+  List<String> get recipeIds {
+    if (_recipeIds is EqualUnmodifiableListView) return _recipeIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipeIds);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadRecipesForCollection(recipeIds: $recipeIds)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.loadRecipesForCollection'))
+      ..add(DiagnosticsProperty('recipeIds', recipeIds));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadRecipesForCollectionImpl &&
+            const DeepCollectionEquality()
+                .equals(other._recipeIds, _recipeIds));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_recipeIds));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadRecipesForCollectionImplCopyWith<_$LoadRecipesForCollectionImpl>
+      get copyWith => __$$LoadRecipesForCollectionImplCopyWithImpl<
+          _$LoadRecipesForCollectionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+  }) {
+    return loadRecipesForCollection(recipeIds);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+  }) {
+    return loadRecipesForCollection?.call(recipeIds);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadRecipesForCollection != null) {
+      return loadRecipesForCollection(recipeIds);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+  }) {
+    return loadRecipesForCollection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+  }) {
+    return loadRecipesForCollection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadRecipesForCollection != null) {
+      return loadRecipesForCollection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadRecipesForCollection implements RecipeEvent {
+  const factory LoadRecipesForCollection(final List<String> recipeIds) =
+      _$LoadRecipesForCollectionImpl;
+
+  List<String> get recipeIds;
+  @JsonKey(ignore: true)
+  _$$LoadRecipesForCollectionImplCopyWith<_$LoadRecipesForCollectionImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadUserRecipesImplCopyWith<$Res> {
+  factory _$$LoadUserRecipesImplCopyWith(_$LoadUserRecipesImpl value,
+          $Res Function(_$LoadUserRecipesImpl) then) =
+      __$$LoadUserRecipesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$LoadUserRecipesImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadUserRecipesImpl>
+    implements _$$LoadUserRecipesImplCopyWith<$Res> {
+  __$$LoadUserRecipesImplCopyWithImpl(
+      _$LoadUserRecipesImpl _value, $Res Function(_$LoadUserRecipesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$LoadUserRecipesImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadUserRecipesImpl
+    with DiagnosticableTreeMixin
+    implements LoadUserRecipes {
+  const _$LoadUserRecipesImpl(this.userId);
+
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadUserRecipes(userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.loadUserRecipes'))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadUserRecipesImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadUserRecipesImplCopyWith<_$LoadUserRecipesImpl> get copyWith =>
+      __$$LoadUserRecipesImplCopyWithImpl<_$LoadUserRecipesImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+  }) {
+    return loadUserRecipes(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+  }) {
+    return loadUserRecipes?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadUserRecipes != null) {
+      return loadUserRecipes(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+  }) {
+    return loadUserRecipes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+  }) {
+    return loadUserRecipes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadUserRecipes != null) {
+      return loadUserRecipes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadUserRecipes implements RecipeEvent {
+  const factory LoadUserRecipes(final String userId) = _$LoadUserRecipesImpl;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$LoadUserRecipesImplCopyWith<_$LoadUserRecipesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

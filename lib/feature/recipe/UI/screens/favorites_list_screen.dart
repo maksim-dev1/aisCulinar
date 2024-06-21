@@ -11,10 +11,9 @@ class FavoritesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc =
-        BlocProvider.of<AuthBloc>(context); // Использование существующего блока
+    final authBloc = BlocProvider.of<AuthBloc>(context);
     authBloc.add(GetFavoriteRecipes(
-        userId)); // Добавление события для получения избранных рецептов
+        userId)); // Добавляем запрос для загрузки избранных рецептов
 
     return Scaffold(
       appBar: AppBar(
@@ -24,18 +23,21 @@ class FavoritesListScreen extends StatelessWidget {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () => {Navigator.pop(context)},
+          onPressed: () {
+            Navigator.pop(context); // Закрываем страницу
+          },
           icon: arrowLeftIcon,
         ),
       ),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
-          print('Текущее состояние: $state');
+          print(
+              'Текущее состояние: $state'); // Вывод состояния в консоль для отладки
+
           if (state is LoadingAuth) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is FavoritesLoaded) {
             final favoriteRecipes = state.favoriteRecipes;
-            print('Количество избранных рецептов: ${favoriteRecipes.length}');
             return ListView.builder(
               itemCount: favoriteRecipes.length,
               itemBuilder: (context, index) {
@@ -43,6 +45,14 @@ class FavoritesListScreen extends StatelessWidget {
                 return CardRecipeForList(recipe: recipe);
               },
             );
+          } else if (state is AuthAuthenticated) {
+            return const Center(
+                child: Text('Нет избранных рецептов или произошла ошибка.'));
+          } else if (state is Failure) {
+            print(
+                'Произошла ошибка при загрузке избранных рецептов: ${state.error}'); // Вывод ошибки в консоль
+            return const Center(
+                child: Text('Не удалось загрузить избранные рецепты.'));
           } else {
             return const Center(
                 child: Text('Не удалось загрузить избранные рецепты.'));

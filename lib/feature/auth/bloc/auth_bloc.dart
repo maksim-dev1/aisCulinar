@@ -104,29 +104,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
-on<GetFavoriteRecipes>((event, emit) async {
-  final currentState = state;
-  print("GetFavoriteRecipes event: ${event.userId}");
-  if (currentState is AuthAuthenticated) {
-    try {
-      emit(LoadingAuth());
-      final favorites = await authRepository.getFavoriteRecipesForUser(event.userId);
-      print("Favorites loaded successfully");
-      emit(FavoritesLoaded(favorites));
-      // Ensure user remains authenticated
-      emit(AuthAuthenticated(currentState.user));
-    } catch (e) {
-      print("Ошибка при получении избранных рецептов: $e");
-      emit(Failure(e.toString()));
-    }
-  } else {
-    emit(const AuthUnauthenticated());
-  }
-});
-
-
-
-
-
+    on<GetFavoriteRecipes>((event, emit) async {
+      final currentState = state;
+      print("GetFavoriteRecipes event: ${event.userId}");
+      if (currentState is AuthAuthenticated) {
+        try {
+          emit(LoadingAuth());
+          final favorites =
+              await authRepository.getFavoriteRecipesForUser(event.userId);
+          print("Favorites loaded successfully");
+          emit(FavoritesLoaded(favorites));
+        } catch (e) {
+          print("Ошибка при получении избранных рецептов: $e");
+          emit(Failure(e.toString()));
+        }
+      } else {
+        emit(const AuthUnauthenticated());
+      }
+    });
   }
 }

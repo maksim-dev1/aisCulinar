@@ -153,46 +153,44 @@ class AuthFirebaseRepository implements AuthRepository {
   }
 
   @override
-  Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
-    print('getFavoriteRecipesForUser: $userId');
-    try {
-      DocumentSnapshot snapshot =
-          await _firestore.collection('users').doc(userId).get();
-      if (snapshot.exists) {
-        print('Snapshot exists: ${snapshot.data()}');
-        Map<String, bool> recipeIdsMap =
-            Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
-        List<String> recipeIds = recipeIdsMap.keys.toList();
-        List<Recipe> recipes = [];
-        for (String id in recipeIds) {
-          recipes.add(await getRecipeById(id));
-        }
-        print('Найдено рецептов: ${recipes.length}');
-        return recipes;
-      } else {
-        print('Пользователь не найден');
-        return [];
+Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
+  print('getFavoriteRecipesForUser: $userId');
+  try {
+    DocumentSnapshot snapshot = await _firestore.collection('users').doc(userId).get();
+    if (snapshot.exists) {
+      print('Snapshot exists: ${snapshot.data()}');
+      Map<String, bool> recipeIdsMap = Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+      List<String> recipeIds = recipeIdsMap.keys.toList();
+      List<Recipe> recipes = [];
+      for (String id in recipeIds) {
+        recipes.add(await getRecipeById(id));
       }
-    } catch (e) {
-      print('Ошибка при получении данных из Firestore: $e');
+      print('Найдено рецептов: ${recipes.length}');
+      return recipes;
+    } else {
+      print('Пользователь не найден');
       return [];
     }
+  } catch (e) {
+    print('Ошибка при получении данных из Firestore: $e');
+    return [];
   }
+}
 
-  @override
-  Future<Recipe> getRecipeById(String recipeId) async {
-    try {
-      print("Запрос к базе данных рецепта с recipeId: $recipeId");
-      DocumentSnapshot doc =
-          await _firestore.collection('recipes').doc(recipeId).get();
-      if (!doc.exists) {
-        throw Exception('Recipe not found');
-      }
-      print("Рецепт успешно получен из репозитория.");
-      return Recipe.fromJson(doc.data() as Map<String, dynamic>);
-    } catch (e) {
-      print("Ошибка при получении рецепта из репозитория: $e");
-      throw Exception("Ошибка при получении рецепта из репозитория: $e");
+@override
+Future<Recipe> getRecipeById(String recipeId) async {
+  try {
+    print("Запрос к базе данных рецепта с recipeId: $recipeId");
+    DocumentSnapshot doc = await _firestore.collection('recipes').doc(recipeId).get();
+    if (!doc.exists) {
+      throw Exception('Recipe not found');
     }
+    print("Рецепт успешно получен из репозитория.");
+    return Recipe.fromJson(doc.data() as Map<String, dynamic>);
+  } catch (e) {
+    print("Ошибка при получении рецепта из репозитория: $e");
+    throw Exception("Ошибка при получении рецепта из репозитория: $e");
   }
+}
+
 }

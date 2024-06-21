@@ -104,6 +104,22 @@ class RecipeFirebaseRepository implements RecipeRepository {
   }
 
   @override
+  Future<List<Recipe>> getUserRecipes(String userId) async {
+    try {
+      var querySnapshot = await _firestore
+          .collection('recipes')
+          .where('userId', isEqualTo: userId)
+          .get();
+
+      return querySnapshot.docs
+          .map((doc) => Recipe.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      throw Exception('Failed to load user recipes: $e');
+    }
+  }
+
+  @override
   Future<List<Recipe>> getRecipesByCategory(String category) async {
     try {
       QuerySnapshot snapshot;
@@ -509,17 +525,64 @@ class RecipeFirebaseRepository implements RecipeRepository {
     }
   }
 
+@override
+Future<List<RecipeCollection>> getRecipeCollections() async {
+  try {
+    print('Fetching recipe collections from Firestore...');
+
+    QuerySnapshot querySnapshot =
+        await _firestore.collection('RecipeCollection').get();
+    print("Number of documents found: ${querySnapshot.docs.length}");
+
+    if (querySnapshot.docs.isEmpty) {
+      print("No recipe collections found.");
+      return [];
+    }
+
+    List<RecipeCollection> collections = querySnapshot.docs.map((doc) {
+      print('Document data: ${doc.data()}');
+
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      if (!data.containsKey('recipeCollectionId') ||
+          !data.containsKey('recipeCollectionImage') ||
+          !data.containsKey('title') ||
+          !data.containsKey('description') ||
+          !(data['recipes'] is List)) {
+        throw Exception("Invalid data structure.");
+      }
+
+      // Преобразуем массив `recipes` в List<String>
+      List<String> recipes = List<String>.from(data['recipes']);
+
+      return RecipeCollection(
+        recipeCollectionId: data['recipeCollectionId'],
+        recipes: recipes,
+        recipeCollectionImage: data['recipeCollectionImage'],
+        title: data['title'],
+        description: data['description'],
+      );
+    }).toList();
+
+    return collections;
+  } catch (e) {
+    print("Error fetching recipe collections: $e");
+    throw Exception("Failed to fetch recipe collections from Firestore.");
+  }
+}
+
+
   @override
-  Future<List<RecipeCollection>> fetchRecipeCollections() async {
+  Future<List<Recipe>> getRecipesByIds(List<String> recipeIds) async {
     try {
-      QuerySnapshot snapshot =
-          await _firestore.collection('recipeCollections').get();
-      return snapshot.docs
-          .map((doc) =>
-              RecipeCollection.fromJson(doc.data() as Map<String, dynamic>))
-          .toList();
+      List<Recipe> recipes = [];
+      for (String recipeId in recipeIds) {
+        Recipe recipe = await getRecipeById(recipeId);
+        recipes.add(recipe);
+      }
+      return recipes;
     } catch (e) {
-      throw Exception('Error fetching recipe collections: $e');
+      print("Ошибка при получении рецептов: $e");
+      throw Exception("Ошибка при получении рецептов: $e");
     }
   }
 }

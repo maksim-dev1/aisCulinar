@@ -103,16 +103,17 @@ class _AppViewState extends State<AppView> {
                 } else if (state is AuthUnauthenticated) {
                   return const SignInScreen();
                 } else {
-                  return Center(
+                  return const Center(
                     child: AlertDialog(
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircularProgressIndicator(
-                            color: secondaryColor,
+                            color: Colors.red,
+                            //secondaryColor,
                           ),
-                          const SizedBox(height: 16),
-                          const Text('Loading...'),
+                          SizedBox(height: 16),
+                          Text('Loading...'),
                         ],
                       ),
                     ),

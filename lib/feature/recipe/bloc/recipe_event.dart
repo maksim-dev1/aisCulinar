@@ -39,4 +39,8 @@ class RecipeEvent with _$RecipeEvent {
       UpdateCookingTimeFilter;
 
   const factory RecipeEvent.loadRecipeCollections() = LoadRecipeCollections;
+  const factory RecipeEvent.loadRecipesForCollection(List<String> recipeIds) = LoadRecipesForCollection;
+
+  const factory RecipeEvent.loadUserRecipes(String userId) = LoadUserRecipes;
+  
 }

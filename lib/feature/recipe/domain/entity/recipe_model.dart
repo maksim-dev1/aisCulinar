@@ -112,7 +112,7 @@ class Rating with _$Rating {
 class RecipeCollection with _$RecipeCollection {
   const factory RecipeCollection({
     required String recipeCollectionId,
-    required Map<String, dynamic> recipeId,
+    required List<String> recipes,
     required String recipeCollectionImage,
     required String title,
     required String description,
@@ -121,6 +121,7 @@ class RecipeCollection with _$RecipeCollection {
   factory RecipeCollection.fromJson(Map<String, dynamic> json) =>
       _$RecipeCollectionFromJson(json);
 }
+
 
 @freezed
 class SeasonalProduct with _$SeasonalProduct {

@@ -1761,7 +1761,7 @@ RecipeCollection _$RecipeCollectionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RecipeCollection {
   String get recipeCollectionId => throw _privateConstructorUsedError;
-  Map<String, dynamic> get recipeId => throw _privateConstructorUsedError;
+  List<String> get recipes => throw _privateConstructorUsedError;
   String get recipeCollectionImage => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -1780,7 +1780,7 @@ abstract class $RecipeCollectionCopyWith<$Res> {
   @useResult
   $Res call(
       {String recipeCollectionId,
-      Map<String, dynamic> recipeId,
+      List<String> recipes,
       String recipeCollectionImage,
       String title,
       String description});
@@ -1800,7 +1800,7 @@ class _$RecipeCollectionCopyWithImpl<$Res, $Val extends RecipeCollection>
   @override
   $Res call({
     Object? recipeCollectionId = null,
-    Object? recipeId = null,
+    Object? recipes = null,
     Object? recipeCollectionImage = null,
     Object? title = null,
     Object? description = null,
@@ -1810,10 +1810,10 @@ class _$RecipeCollectionCopyWithImpl<$Res, $Val extends RecipeCollection>
           ? _value.recipeCollectionId
           : recipeCollectionId // ignore: cast_nullable_to_non_nullable
               as String,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+      recipes: null == recipes
+          ? _value.recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       recipeCollectionImage: null == recipeCollectionImage
           ? _value.recipeCollectionImage
           : recipeCollectionImage // ignore: cast_nullable_to_non_nullable
@@ -1840,7 +1840,7 @@ abstract class _$$RecipeCollectionImplCopyWith<$Res>
   @useResult
   $Res call(
       {String recipeCollectionId,
-      Map<String, dynamic> recipeId,
+      List<String> recipes,
       String recipeCollectionImage,
       String title,
       String description});
@@ -1858,7 +1858,7 @@ class __$$RecipeCollectionImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? recipeCollectionId = null,
-    Object? recipeId = null,
+    Object? recipes = null,
     Object? recipeCollectionImage = null,
     Object? title = null,
     Object? description = null,
@@ -1868,10 +1868,10 @@ class __$$RecipeCollectionImplCopyWithImpl<$Res>
           ? _value.recipeCollectionId
           : recipeCollectionId // ignore: cast_nullable_to_non_nullable
               as String,
-      recipeId: null == recipeId
-          ? _value._recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+      recipes: null == recipes
+          ? _value._recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       recipeCollectionImage: null == recipeCollectionImage
           ? _value.recipeCollectionImage
           : recipeCollectionImage // ignore: cast_nullable_to_non_nullable
@@ -1893,23 +1893,23 @@ class __$$RecipeCollectionImplCopyWithImpl<$Res>
 class _$RecipeCollectionImpl implements _RecipeCollection {
   const _$RecipeCollectionImpl(
       {required this.recipeCollectionId,
-      required final Map<String, dynamic> recipeId,
+      required final List<String> recipes,
       required this.recipeCollectionImage,
       required this.title,
       required this.description})
-      : _recipeId = recipeId;
+      : _recipes = recipes;
 
   factory _$RecipeCollectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeCollectionImplFromJson(json);
 
   @override
   final String recipeCollectionId;
-  final Map<String, dynamic> _recipeId;
+  final List<String> _recipes;
   @override
-  Map<String, dynamic> get recipeId {
-    if (_recipeId is EqualUnmodifiableMapView) return _recipeId;
+  List<String> get recipes {
+    if (_recipes is EqualUnmodifiableListView) return _recipes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_recipeId);
+    return EqualUnmodifiableListView(_recipes);
   }
 
   @override
@@ -1921,7 +1921,7 @@ class _$RecipeCollectionImpl implements _RecipeCollection {
 
   @override
   String toString() {
-    return 'RecipeCollection(recipeCollectionId: $recipeCollectionId, recipeId: $recipeId, recipeCollectionImage: $recipeCollectionImage, title: $title, description: $description)';
+    return 'RecipeCollection(recipeCollectionId: $recipeCollectionId, recipes: $recipes, recipeCollectionImage: $recipeCollectionImage, title: $title, description: $description)';
   }
 
   @override
@@ -1931,7 +1931,7 @@ class _$RecipeCollectionImpl implements _RecipeCollection {
             other is _$RecipeCollectionImpl &&
             (identical(other.recipeCollectionId, recipeCollectionId) ||
                 other.recipeCollectionId == recipeCollectionId) &&
-            const DeepCollectionEquality().equals(other._recipeId, _recipeId) &&
+            const DeepCollectionEquality().equals(other._recipes, _recipes) &&
             (identical(other.recipeCollectionImage, recipeCollectionImage) ||
                 other.recipeCollectionImage == recipeCollectionImage) &&
             (identical(other.title, title) || other.title == title) &&
@@ -1944,7 +1944,7 @@ class _$RecipeCollectionImpl implements _RecipeCollection {
   int get hashCode => Object.hash(
       runtimeType,
       recipeCollectionId,
-      const DeepCollectionEquality().hash(_recipeId),
+      const DeepCollectionEquality().hash(_recipes),
       recipeCollectionImage,
       title,
       description);
@@ -1967,7 +1967,7 @@ class _$RecipeCollectionImpl implements _RecipeCollection {
 abstract class _RecipeCollection implements RecipeCollection {
   const factory _RecipeCollection(
       {required final String recipeCollectionId,
-      required final Map<String, dynamic> recipeId,
+      required final List<String> recipes,
       required final String recipeCollectionImage,
       required final String title,
       required final String description}) = _$RecipeCollectionImpl;
@@ -1978,7 +1978,7 @@ abstract class _RecipeCollection implements RecipeCollection {
   @override
   String get recipeCollectionId;
   @override
-  Map<String, dynamic> get recipeId;
+  List<String> get recipes;
   @override
   String get recipeCollectionImage;
   @override

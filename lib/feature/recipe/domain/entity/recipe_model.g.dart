@@ -154,7 +154,8 @@ _$RecipeCollectionImpl _$$RecipeCollectionImplFromJson(
         Map<String, dynamic> json) =>
     _$RecipeCollectionImpl(
       recipeCollectionId: json['recipeCollectionId'] as String,
-      recipeId: json['recipeId'] as Map<String, dynamic>,
+      recipes:
+          (json['recipes'] as List<dynamic>).map((e) => e as String).toList(),
       recipeCollectionImage: json['recipeCollectionImage'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
@@ -164,7 +165,7 @@ Map<String, dynamic> _$$RecipeCollectionImplToJson(
         _$RecipeCollectionImpl instance) =>
     <String, dynamic>{
       'recipeCollectionId': instance.recipeCollectionId,
-      'recipeId': instance.recipeId,
+      'recipes': instance.recipes,
       'recipeCollectionImage': instance.recipeCollectionImage,
       'title': instance.title,
       'description': instance.description,

@@ -5,6 +5,7 @@ import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 abstract class RecipeRepository {
   Future<List<Recipe>> getRecipes();
   Future<Recipe> getRecipeById(String recipeId);
+  Future<List<Recipe>> getUserRecipes(String userId);
   //Future<List<Recipe>> getRecipesByIngredients(List<String> ingredients);
   Future<List<Recipe>> getRecipesByCookingTime(String time);
   Future<List<Recipe>> getRecipesByCategory(String category);
@@ -28,5 +29,7 @@ abstract class RecipeRepository {
   Future<void> addToFavorites(String userId, String recipeId);
   Future<List<Recipe>> getFavoriteRecipesForUser(String userId);
   Future<void> removeFromFavorites(String userId, String recipeId);
-  Future<List<RecipeCollection>> fetchRecipeCollections();
+  Future<List<RecipeCollection>> getRecipeCollections();
+  Future<List<Recipe>> getRecipesByIds(List<String> recipeIds);
+
 }
