@@ -7,7 +7,8 @@ class AddStarRating extends StatefulWidget {
   final double size;
   final SvgPicture fullStarGrey;
   final SvgPicture fullStarYellow;
-  final ValueChanged<double>? onRatingChanged; // Добавленный параметр
+  final ValueChanged<double>? onRatingChanged;
+  final bool isEditable; // Добавленный параметр
 
   AddStarRating({
     required this.initialRating,
@@ -15,8 +16,8 @@ class AddStarRating extends StatefulWidget {
     this.size = 20.0,
     required this.fullStarGrey,
     required this.fullStarYellow,
-
-    this.onRatingChanged, // Инициализация параметра
+    this.onRatingChanged,
+    this.isEditable = false, // Инициализация параметра
   });
 
   @override
@@ -47,11 +48,10 @@ class _AddStarRatingState extends State<AddStarRating> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (details) {
+      onTapDown: widget.isEditable ? (details) {
         final RenderBox renderBox = context.findRenderObject() as RenderBox;
         final double starWidth = widget.size; // Adjusted width for tapping
-        final double offset =
-            renderBox.globalToLocal(details.globalPosition).dx;
+        final double offset = renderBox.globalToLocal(details.globalPosition).dx;
         final int tappedStar = (offset / starWidth).floor();
 
         setState(() {
@@ -62,7 +62,7 @@ class _AddStarRatingState extends State<AddStarRating> {
         if (widget.onRatingChanged != null) {
           widget.onRatingChanged!(_currentRating); // Вызов коллбэка
         }
-      },
+      } : null, // Отключаем изменение рейтинга, если isEditable = false
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: _starWidgets.map((star) {
@@ -76,3 +76,4 @@ class _AddStarRatingState extends State<AddStarRating> {
     );
   }
 }
+

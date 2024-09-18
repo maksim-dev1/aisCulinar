@@ -2007,7 +2007,6 @@ mixin _$SeasonalProduct {
   String get benefitsAndHarms => throw _privateConstructorUsedError;
   String get storage => throw _privateConstructorUsedError;
   String get recommendation => throw _privateConstructorUsedError;
-  String get evidence => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2031,8 +2030,7 @@ abstract class $SeasonalProductCopyWith<$Res> {
       String taste,
       String benefitsAndHarms,
       String storage,
-      String recommendation,
-      String evidence});
+      String recommendation});
 }
 
 /// @nodoc
@@ -2058,7 +2056,6 @@ class _$SeasonalProductCopyWithImpl<$Res, $Val extends SeasonalProduct>
     Object? benefitsAndHarms = null,
     Object? storage = null,
     Object? recommendation = null,
-    Object? evidence = null,
   }) {
     return _then(_value.copyWith(
       productId: null == productId
@@ -2101,10 +2098,6 @@ class _$SeasonalProductCopyWithImpl<$Res, $Val extends SeasonalProduct>
           ? _value.recommendation
           : recommendation // ignore: cast_nullable_to_non_nullable
               as String,
-      evidence: null == evidence
-          ? _value.evidence
-          : evidence // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -2127,8 +2120,7 @@ abstract class _$$SeasonalProductImplCopyWith<$Res>
       String taste,
       String benefitsAndHarms,
       String storage,
-      String recommendation,
-      String evidence});
+      String recommendation});
 }
 
 /// @nodoc
@@ -2152,7 +2144,6 @@ class __$$SeasonalProductImplCopyWithImpl<$Res>
     Object? benefitsAndHarms = null,
     Object? storage = null,
     Object? recommendation = null,
-    Object? evidence = null,
   }) {
     return _then(_$SeasonalProductImpl(
       productId: null == productId
@@ -2195,10 +2186,6 @@ class __$$SeasonalProductImplCopyWithImpl<$Res>
           ? _value.recommendation
           : recommendation // ignore: cast_nullable_to_non_nullable
               as String,
-      evidence: null == evidence
-          ? _value.evidence
-          : evidence // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -2216,8 +2203,7 @@ class _$SeasonalProductImpl implements _SeasonalProduct {
       required this.taste,
       required this.benefitsAndHarms,
       required this.storage,
-      required this.recommendation,
-      required this.evidence});
+      required this.recommendation});
 
   factory _$SeasonalProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeasonalProductImplFromJson(json);
@@ -2242,12 +2228,10 @@ class _$SeasonalProductImpl implements _SeasonalProduct {
   final String storage;
   @override
   final String recommendation;
-  @override
-  final String evidence;
 
   @override
   String toString() {
-    return 'SeasonalProduct(productId: $productId, productIdImage: $productIdImage, title: $title, description: $description, history: $history, season: $season, taste: $taste, benefitsAndHarms: $benefitsAndHarms, storage: $storage, recommendation: $recommendation, evidence: $evidence)';
+    return 'SeasonalProduct(productId: $productId, productIdImage: $productIdImage, title: $title, description: $description, history: $history, season: $season, taste: $taste, benefitsAndHarms: $benefitsAndHarms, storage: $storage, recommendation: $recommendation)';
   }
 
   @override
@@ -2269,9 +2253,7 @@ class _$SeasonalProductImpl implements _SeasonalProduct {
                 other.benefitsAndHarms == benefitsAndHarms) &&
             (identical(other.storage, storage) || other.storage == storage) &&
             (identical(other.recommendation, recommendation) ||
-                other.recommendation == recommendation) &&
-            (identical(other.evidence, evidence) ||
-                other.evidence == evidence));
+                other.recommendation == recommendation));
   }
 
   @JsonKey(ignore: true)
@@ -2287,8 +2269,7 @@ class _$SeasonalProductImpl implements _SeasonalProduct {
       taste,
       benefitsAndHarms,
       storage,
-      recommendation,
-      evidence);
+      recommendation);
 
   @JsonKey(ignore: true)
   @override
@@ -2316,8 +2297,7 @@ abstract class _SeasonalProduct implements SeasonalProduct {
       required final String taste,
       required final String benefitsAndHarms,
       required final String storage,
-      required final String recommendation,
-      required final String evidence}) = _$SeasonalProductImpl;
+      required final String recommendation}) = _$SeasonalProductImpl;
 
   factory _SeasonalProduct.fromJson(Map<String, dynamic> json) =
       _$SeasonalProductImpl.fromJson;
@@ -2342,8 +2322,6 @@ abstract class _SeasonalProduct implements SeasonalProduct {
   String get storage;
   @override
   String get recommendation;
-  @override
-  String get evidence;
   @override
   @JsonKey(ignore: true)
   _$$SeasonalProductImplCopyWith<_$SeasonalProductImpl> get copyWith =>

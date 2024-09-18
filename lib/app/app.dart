@@ -12,7 +12,9 @@ class App extends StatelessWidget {
   final RecipeRepository recipeRepository;
   final ConnectivityService connectivityService;
 
-  const App(this.authRepository, this.recipeRepository, this.connectivityService, {super.key});
+  const App(
+      this.authRepository, this.recipeRepository, this.connectivityService,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +22,24 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider<AuthRepository>.value(value: authRepository),
         RepositoryProvider<RecipeRepository>.value(value: recipeRepository),
-        RepositoryProvider<ConnectivityService>.value(value: connectivityService),
+        RepositoryProvider<ConnectivityService>.value(
+            value: connectivityService),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<AuthBloc>(
-            create: (context) => AuthBloc(authRepository: authRepository),
+            create: (context) => AuthBloc(authRepository: authRepository)
+              ..add(const AppStarted()),
           ),
           BlocProvider<RecipeBloc>(
             create: (context) => RecipeBloc(recipeRepository: recipeRepository),
           ),
+          BlocProvider<SesonalProductBloc>(
+            create: (context) =>
+                SesonalProductBloc(recipeRepository: recipeRepository),
+          ),
         ],
-        child: AppView(),
+        child: const AppView(),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:culinar/connectivity_service.dart';
 import 'package:culinar/design/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:culinar/feature/recipe/UI/screens/home_screen.dart';
 import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
 
+// Основной виджет приложения
 class AppView extends StatefulWidget {
   const AppView({super.key});
 
@@ -21,9 +23,11 @@ class _AppViewState extends State<AppView> {
   @override
   void initState() {
     super.initState();
+    // Проверяем подключение к интернету при инициализации виджета
     _checkConnection();
   }
 
+  // Асинхронная функция для проверки подключения к интернету
   Future<void> _checkConnection() async {
     var connectivityService =
         RepositoryProvider.of<ConnectivityService>(context);
@@ -33,11 +37,16 @@ class _AppViewState extends State<AppView> {
     });
   }
 
+  // Функция для обновления статуса подключения
+  void _updateConnectionStatus(ConnectivityResult result) {
+    bool isConnected = result != ConnectivityResult.none;
+    setState(() {
+      _isConnected = isConnected;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final authBloc = BlocProvider.of<AuthBloc>(context);
-    authBloc.add(const AppStarted());
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -96,28 +105,29 @@ class _AppViewState extends State<AppView> {
       home: _isConnected
           ? BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
+                // Определяем, сохранено ли состояние AuthAuthenticated
                 if (state is AuthAuthenticated) {
                   return HomeScreen(
-                      recipeRepository:
-                          RepositoryProvider.of<RecipeRepository>(context));
+                    recipeRepository:
+                        RepositoryProvider.of<RecipeRepository>(context),
+                  );
                 } else if (state is AuthUnauthenticated) {
                   return const SignInScreen();
                 } else {
-                  return const Center(
-                    child: AlertDialog(
+                  // Добавляем обработку для других состояний, если это необходимо
+                  return Center(
+                      child: AlertDialog(
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           CircularProgressIndicator(
-                            color: Colors.red,
-                            //secondaryColor,
+                            color: secondaryColor,
                           ),
-                          SizedBox(height: 16),
-                          Text('Loading...'),
+                          const SizedBox(height: 16),
+                          const Text('Loading...'),
                         ],
                       ),
-                    ),
-                  );
+                    ),);
                 }
               },
             )
@@ -126,6 +136,7 @@ class _AppViewState extends State<AppView> {
   }
 }
 
+// Экран, отображаемый при отсутствии подключения к интернету
 class NoInternetScreen extends StatelessWidget {
   const NoInternetScreen({super.key});
 

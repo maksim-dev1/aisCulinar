@@ -7,7 +7,7 @@ class AuthTextFormField extends StatelessWidget {
   final bool isPassword;
   final String? Function(String?)? validator;
   final InputDecoration? decoration;
-  final SvgPicture prefixIcon;
+  final SvgPicture? prefixIcon;
 
   const AuthTextFormField({
     super.key,
@@ -16,7 +16,7 @@ class AuthTextFormField extends StatelessWidget {
     this.isPassword = false,
     this.validator,
     this.decoration,
-    required this.prefixIcon,
+     this.prefixIcon,
   });
 
   @override

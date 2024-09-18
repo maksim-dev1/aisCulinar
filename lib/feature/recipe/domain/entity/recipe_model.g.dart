@@ -184,7 +184,6 @@ _$SeasonalProductImpl _$$SeasonalProductImplFromJson(
       benefitsAndHarms: json['benefitsAndHarms'] as String,
       storage: json['storage'] as String,
       recommendation: json['recommendation'] as String,
-      evidence: json['evidence'] as String,
     );
 
 Map<String, dynamic> _$$SeasonalProductImplToJson(
@@ -200,5 +199,4 @@ Map<String, dynamic> _$$SeasonalProductImplToJson(
       'benefitsAndHarms': instance.benefitsAndHarms,
       'storage': instance.storage,
       'recommendation': instance.recommendation,
-      'evidence': instance.evidence,
     };

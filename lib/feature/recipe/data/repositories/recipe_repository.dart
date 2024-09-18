@@ -6,7 +6,6 @@ abstract class RecipeRepository {
   Future<List<Recipe>> getRecipes();
   Future<Recipe> getRecipeById(String recipeId);
   Future<List<Recipe>> getUserRecipes(String userId);
-  //Future<List<Recipe>> getRecipesByIngredients(List<String> ingredients);
   Future<List<Recipe>> getRecipesByCookingTime(String time);
   Future<List<Recipe>> getRecipesByCategory(String category);
   Future<List<Ingredient>> getIngredients(String title);
@@ -26,10 +25,12 @@ abstract class RecipeRepository {
   Future<List<Comment>> getCommentsForRecipe(String recipeId);
   Future<void> deleteComment(String commentId);
   Future<void> addRating(String recipeId, Rating rating);
-  Future<void> addToFavorites(String userId, String recipeId);
-  Future<List<Recipe>> getFavoriteRecipesForUser(String userId);
-  Future<void> removeFromFavorites(String userId, String recipeId);
   Future<List<RecipeCollection>> getRecipeCollections();
   Future<List<Recipe>> getRecipesByIds(List<String> recipeIds);
+Future<List<SeasonalProduct>> getSeasonalProducts();
+Future<SeasonalProduct> getSeasonalProductById(String productId);
 
+  Future<void> addToFavorites(String userId, String recipeId);
+  Future<void> removeFromFavorites(String userId, String recipeId);
+  Future<List<Recipe>> getFavoriteRecipesForUser(String userId);
 }

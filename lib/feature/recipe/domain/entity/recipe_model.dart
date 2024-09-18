@@ -126,7 +126,8 @@ class RecipeCollection with _$RecipeCollection {
 @freezed
 class SeasonalProduct with _$SeasonalProduct {
   const factory SeasonalProduct(
-      {required String productId,
+      {
+      required String productId,
       required String productIdImage,
       required String title,
       required String description,
@@ -136,7 +137,7 @@ class SeasonalProduct with _$SeasonalProduct {
       required String benefitsAndHarms,
       required String storage,
       required String recommendation,
-      required String evidence}) = _SeasonalProduct;
+      }) = _SeasonalProduct;
 
   factory SeasonalProduct.fromJson(Map<String, dynamic> json) =>
       _$SeasonalProductFromJson(json);

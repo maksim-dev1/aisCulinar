@@ -1,7 +1,11 @@
+import 'package:culinar/design/colors.dart';
+import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/UI/screens/add_recipe_screen.dart';
 import 'package:culinar/feature/recipe/UI/screens/favorites_list_screen.dart';
+import 'package:culinar/feature/recipe/UI/screens/profile_screen.dart';
 import 'package:culinar/feature/recipe/UI/screens/recipe_collection_screen.dart';
-import 'package:culinar/feature/recipe/UI/screens/recipe_list_screen.dart';
+import 'package:culinar/feature/recipe/UI/screens/recipes_search_screen.dart';
+import 'package:culinar/feature/recipe/UI/screens/sesonal_product_scren.dart';
 import 'package:culinar/feature/recipe/UI/screens/user_recipe_list_screen.dart';
 import 'package:culinar/feature/recipe/data/repositories/recipe_repository.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
@@ -12,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:culinar/feature/auth/bloc/auth_bloc.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
   final RecipeRepository recipeRepository;
@@ -20,21 +25,36 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RecipeBloc(recipeRepository: recipeRepository)
-        ..add(const LoadRecipeCollections()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RecipeBloc(recipeRepository: recipeRepository)
+            ..add(const LoadRecipeCollections()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              SesonalProductBloc(recipeRepository: recipeRepository)
+                ..add(const LoadSeasonalProducts()),
+        ),
+      ],
       child: Scaffold(
-        body: HomeScreenBody(),
+        body: HomeScreenBody(
+          recipeRepository: recipeRepository,
+        ),
       ),
     );
   }
 }
 
 class HomeScreenBody extends StatelessWidget {
-  HomeScreenBody({super.key});
+  final RecipeRepository recipeRepository;
+
+  const HomeScreenBody({super.key, required this.recipeRepository});
 
   @override
   Widget build(BuildContext context) {
+    final PageController pageController = PageController();
+
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -49,16 +69,16 @@ class HomeScreenBody extends StatelessWidget {
             background: BlocBuilder<RecipeBloc, RecipeState>(
               builder: (context, state) {
                 if (state is RecipeLoading) {
-                  print('UI: Loading state');
                   return _buildLoadingDialog(context);
                 } else if (state is RecipeCollectionsLoaded) {
-                  print('UI: RecipeCollectionsLoaded state with ${state.collections.length} collections');
-                  return _buildRecipeCollections(state.collections);
+                  if (kDebugMode) {
+                    print('State collection: ${state.collections}');
+                  }
+                  return _buildRecipeCollections(
+                      context, state.collections, pageController);
                 } else if (state is Error) {
-                  print('UI: Error state with message: ${state.message}');
                   return Center(child: Text(state.message));
                 }
-                print('UI: Unexpected state: $state');
                 return Container();
               },
             ),
@@ -66,50 +86,179 @@ class HomeScreenBody extends StatelessWidget {
           bottom: _buildSearchBar(context),
         ),
         SliverList(
-          delegate: SliverChildListDelegate([
-            _buildQueryPrompt(),
-            _buildCategoryRow(context),
-            _buildAddRecipeButton(context),
-            _buildServices(context),
-            _buildSeasonalProducts(),
-          ]),
+            delegate: SliverChildListDelegate([
+          Container(
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              _buildQueryPrompt(),
+              _buildCategoryRow(context),
+              _buildAddRecipeButton(context),
+              _buildServices(context),
+              BlocBuilder<SesonalProductBloc, RecipeState>(
+                builder: (context, state) {
+                  if (state is SeasonalProductsLoaded) {
+                    if (kDebugMode) {
+                      print('State products: ${state.seasonalProducts}');
+                    }
+                    return _buildSeasonalProducts(
+                        context, state.seasonalProducts);
+                  } else if (state is Error) {
+                    return Center(child: Text(state.message));
+                  }
+                  return Container();
+                },
+              ),
+            ]),
+          ),
+        ])),
+      ],
+    );
+  }
+
+  Widget _buildRecipeCollections(BuildContext context,
+      List<RecipeCollection> collections, PageController pageController) {
+    if (kDebugMode) {
+      print('UI: Building ${collections.length} recipe collections');
+    }
+    for (var collection in collections) {
+      if (kDebugMode) {
+        print('UI: Collection data: ${collection.toJson()}');
+      }
+    }
+
+    return Stack(
+      children: [
+        PageView.builder(
+          controller: pageController,
+          scrollDirection: Axis.horizontal,
+          itemCount: collections.length,
+          itemBuilder: (context, index) {
+            final collection = collections[index];
+            print('UI: Building collection item: ${collection.title}');
+            return GestureDetector(
+              onTap: () {
+                print('UI: Tapped on collection: ${collection.title}');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        RecipeCollectionScreen(collection: collection),
+                  ),
+                );
+              },
+              child: Stack(
+                children: [
+                  Image.network(
+                    collection.recipeCollectionImage,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: AlertDialog(
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircularProgressIndicator(
+                                color: secondaryColor,
+                              ),
+                              const SizedBox(height: 16),
+                              const Text('Loading...'),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      print('UI: Error loading image: $error');
+                      return const Center(
+                        child: Icon(
+                          Icons.error,
+                          color: Colors.red,
+                        ),
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 100, left: 20),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        collection.title,
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 35, right: 15),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileScreen(),
+                    ),
+                  );
+                },
+                icon: profileIcon,
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(80),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: SmoothPageIndicator(
+              controller: pageController,
+              count: collections.length,
+              effect: ExpandingDotsEffect(
+                activeDotColor: Colors.white,
+                dotColor: Colors.white.withOpacity(0.5),
+                dotHeight: 8,
+                dotWidth: 8,
+              ),
+            ),
+          ),
         ),
       ],
     );
   }
 
-   Widget _buildRecipeCollections(List<RecipeCollection> collections) {
-    return ListView.builder(
-      itemCount: collections.length,
-      itemBuilder: (context, index) {
-        final collection = collections[index];
-        print('UI: Building collection item: ${collection.title}');
-        return ListTile(
-          leading: Image.network(collection.recipeCollectionImage),
-          title: Text(collection.title),
-          subtitle: Text(collection.description),
-          onTap: () {
-            print('UI: Tapped on collection: ${collection.title}');
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => RecipeCollectionScreen(collection: collection),
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-
   Widget _buildLoadingDialog(BuildContext context) {
-    return const Center(
+    return Center(
       child: AlertDialog(
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CircularProgressIndicator(
-              color: Colors.red,
+            AlertDialog(
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(
+                    color: secondaryColor,
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Loading...'),
+                ],
+              ),
             ),
             SizedBox(height: 16),
             Text('Loading...'),
@@ -150,12 +299,30 @@ class HomeScreenBody extends StatelessWidget {
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(24),
               ),
-              child: const Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Icon(Icons.search),
-                ),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      'Поиск...',
+                      style: GoogleFonts.inter(
+                        textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: searchIcon,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -167,12 +334,14 @@ class HomeScreenBody extends StatelessWidget {
   Widget _buildQueryPrompt() {
     return Container(
       padding: const EdgeInsets.only(top: 20, left: 20),
-      child: const Text(
+      child: Text(
         'Что хотите приготовить?',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
+        style: GoogleFonts.inter(
+          textStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -189,12 +358,12 @@ class HomeScreenBody extends StatelessWidget {
     ];
 
     List<String> imagesCategories = [
-      'assets/breakfast.jpg',
-      'assets/Lunch.jpg',
-      'assets/dinner.jpg',
-      'assets/desserts.jpg',
-      'assets/Salads.jpg',
-      'assets/snacks.jpg'
+      'assets/images/breakfast_button.jpg',
+      'assets/images/lunch_button.jpg',
+      'assets/images/dinner_button.jpg',
+      'assets/images/dessert_button.jpg',
+      'assets/images/salad_button .jpg',
+      'assets/images/snacks_button.jpg'
     ];
 
     return Column(
@@ -232,27 +401,20 @@ class HomeScreenBody extends StatelessWidget {
 
   Widget _buildAddRecipeButton(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
       child: InkWell(
         child: Container(
           height: 100,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.red,
           ),
-          child: Center(
-            child: Text(
-              'Добавить рецепт',
-              style: GoogleFonts.inter(
-                textStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/images/add_recipe_button.jpg',
+                fit: BoxFit.cover,
+              )),
         ),
         onTap: () {
           Navigator.push(
@@ -269,15 +431,18 @@ class HomeScreenBody extends StatelessWidget {
   Widget _buildServices(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.only(top: 20, left: 20),
-          child: Text(
-            'Сервисы',
-            style: GoogleFonts.inter(
-              textStyle: const TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+            child: Text(
+              'Сервисы',
+              style: GoogleFonts.inter(
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
@@ -290,14 +455,18 @@ class HomeScreenBody extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: [
                 InkWell(
-                  child: const ServiceCard(title: 'Избранное'),
+                  child: const ServiceCard(
+                    image: 'assets/images/favorite_button.jpg',
+                  ),
                   onTap: () {
-                    navigateToFavoritesScreen(context);
+                    navigateToFavoriteRecipesScreen(context);
                   },
                 ),
                 const SizedBox(width: 10),
                 InkWell(
-                  child: const ServiceCard(title: 'Мои рецепты'),
+                  child: const ServiceCard(
+                    image: 'assets/images/my_recipe_button.jpg',
+                  ),
                   onTap: () {
                     navigateToUserRecipesScreen(context);
                   },
@@ -310,18 +479,31 @@ class HomeScreenBody extends StatelessWidget {
     );
   }
 
-  Widget _buildSeasonalProducts() {
+  Widget _buildSeasonalProducts(
+      BuildContext context, List<SeasonalProduct> seasonalProducts) {
+    if (kDebugMode) {
+      print('UI: Building ${seasonalProducts.length} seasonal products');
+    }
+    for (var product in seasonalProducts) {
+      if (kDebugMode) {
+        print('UI: Product data: ${product.toJson()}');
+      }
+    }
+
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.only(top: 20, left: 20),
-          child: Text(
-            'Сезонные продукты',
-            style: GoogleFonts.inter(
-              textStyle: const TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10, left: 20, bottom: 15),
+            child: Text(
+              'Сезонные продукты',
+              style: GoogleFonts.inter(
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
@@ -330,28 +512,63 @@ class HomeScreenBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
             height: 200,
-            child: ListView(
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              children: List.generate(
-                4,
-                (i) => Column(
+              itemCount: seasonalProducts.length,
+              itemBuilder: (context, index) {
+                final product = seasonalProducts[index];
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Container(
-                        height: 150,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.red,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (context) => SesonalProductBloc(
+                                    recipeRepository: recipeRepository)
+                                  ..add(LoadSeasonalProductDetail(
+                                      product.productId)),
+                                child: SeasonalProductDetailScreen(
+                                  productId: product.productId,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 150,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: NetworkImage(product.productIdImage),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    const Align(
-                        alignment: Alignment.topLeft, child: Text('Продукт')),
+                    Container(
+                      width: 200,
+                      padding: const EdgeInsets.only(left: 10, top: 5),
+                      child: Text(
+                        product.title,
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
-                ),
-              ),
+                );
+              },
             ),
           ),
         ),
@@ -359,68 +576,72 @@ class HomeScreenBody extends StatelessWidget {
       ],
     );
   }
+}
 
-  void navigateToFavoritesScreen(BuildContext context) {
-    User? currentUser = FirebaseAuth.instance.currentUser;
-    if (currentUser == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Пользователь не авторизован'),
-          backgroundColor: Colors.red,
-        ),
-      );
-      if (kDebugMode) {
-        print('Пользователь не авторизован');
-      }
-      return;
-    }
+void navigateToFavoriteRecipesScreen(BuildContext context) {
+  User? currentUser = FirebaseAuth.instance.currentUser;
 
-    String userId = currentUser.uid; // Используйте UID текущего пользователя
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BlocProvider.value(
-          value: BlocProvider.of<AuthBloc>(context),
-          child: FavoritesListScreen(userId: userId),
-        ),
+  if (currentUser == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Пользователь не авторизован'),
+        backgroundColor: Colors.red,
       ),
     );
+    if (kDebugMode) {
+      print('Пользователь не авторизован');
+    }
+    return;
   }
 
-  void navigateToUserRecipesScreen(BuildContext context) {
-    User? currentUser = FirebaseAuth.instance.currentUser;
+  String userId = currentUser.uid;
 
-    if (currentUser == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Пользователь не авторизован'),
-          backgroundColor: Colors.red,
-        ),
-      );
-      if (kDebugMode) {
-        print('Пользователь не авторизован');
-      }
-      return;
-    }
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => BlocProvider.value(
+        value: BlocProvider.of<RecipeBloc>(context),
+        child: FavoriteRecipesScreen(userId: userId),
+      ),
+    ),
+  );
+}
 
-    String userId = currentUser.uid;
+void navigateToUserRecipesScreen(BuildContext context) {
+  User? currentUser = FirebaseAuth.instance.currentUser;
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BlocProvider.value(
-          value: BlocProvider.of<AuthBloc>(context),
-          child: UserRecipesListScreen(userId: userId),
-        ),
+  if (currentUser == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Пользователь не авторизован'),
+        backgroundColor: Colors.red,
       ),
     );
+    if (kDebugMode) {
+      print('Пользователь не авторизован');
+    }
+    return;
   }
+
+  String userId = currentUser.uid;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => BlocProvider.value(
+        value: BlocProvider.of<RecipeBloc>(context)
+          ..add(GetFavoriteRecipes(userId)),
+        child: UserRecipesListScreen(userId: userId),
+      ),
+    ),
+  );
 }
 
 class ServiceCard extends StatelessWidget {
-  final String title;
+  //final String title;
+  final String image;
 
-  const ServiceCard({Key? key, required this.title}) : super(key: key);
+  const ServiceCard({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -431,19 +652,16 @@ class ServiceCard extends StatelessWidget {
       children: [
         Container(
           width: 110,
-          height: 80,
+          height: 90,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.red,
           ),
-        ),
-        const SizedBox(
-            height: 8), // добавить пространство между контейнером и текстом
-        Flexible(
-          child: Text(
-            title,
-            style: const TextStyle(fontSize: 14),
-            textAlign: TextAlign.center,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ],
@@ -469,7 +687,6 @@ class CategoryCard extends StatelessWidget {
             height: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.red,
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -479,27 +696,18 @@ class CategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          Align(alignment: Alignment.topLeft, child: Text(title)),
-        ],
-      ),
-    );
-  }
-}
-
-class Out extends StatelessWidget {
-  const Out({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.read<AuthBloc>().add(const UserSignedOut());
-            },
-            icon: const Icon(Icons.login),
-          ),
+          Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                title,
+                style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              )),
         ],
       ),
     );

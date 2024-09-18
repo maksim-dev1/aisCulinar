@@ -4,6 +4,7 @@ import 'package:culinar/feature/auth/domain/entity/user_model.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class AuthFirebaseRepository implements AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -22,28 +23,12 @@ class AuthFirebaseRepository implements AuthRepository {
       }
       return null;
     } catch (e) {
-      print("Ошибка при получении текущего пользователя: $e");
+      if (kDebugMode) {
+        print("Ошибка при получении текущего пользователя: $e");
+      }
       return null;
     }
   }
-
-  // @override
-  // Future<void> updateUser(MyUser user) async {
-  //   try {
-  //     await _firestore.collection('users').doc(user.userId).update(user.toJson());
-  //   } catch (e) {
-  //     print("Ошибка при обновлении пользователя: $e");
-  //   }
-  // }
-
-  // @override
-  // Future<void> deleteUser(String userId) async {
-  //   try {
-  //     await _firestore.collection('users').doc(userId).delete();
-  //   } catch (e) {
-  //     print("Ошибка при удалении пользователя: $e");
-  //   }
-  // }
 
   @override
   Future<MyUser?> signInWithEmailAndPassword(
@@ -59,11 +44,15 @@ class AuthFirebaseRepository implements AuthRepository {
           name: 'user',
           recipeIds: {});
     } on FirebaseAuthException catch (e) {
-      print("Ошибка при входе в систему: ${e.code} - ${e.message}");
-      return null;
+      if (e.code == 'user-not-found') {
+        throw Exception('Пользователь с таким email не найден.');
+      } else if (e.code == 'wrong-password') {
+        throw Exception('Неправильный пароль.');
+      } else {
+        throw Exception('Ошибка при входе в систему: ${e.message}');
+      }
     } catch (e) {
-      print("Неизвестная ошибка при входе в систему: $e");
-      return null;
+      throw Exception('Неизвестная ошибка при входе в систему: $e');
     }
   }
 
@@ -90,7 +79,9 @@ class AuthFirebaseRepository implements AuthRepository {
       await createUser(newUser);
       return newUser;
     } catch (e) {
-      print("Ошибка при регистрации: $e");
+      if (kDebugMode) {
+        print("Ошибка при регистрации: $e");
+      }
       return null;
     }
   }
@@ -100,7 +91,9 @@ class AuthFirebaseRepository implements AuthRepository {
     try {
       await _firestore.collection('users').doc(user.userId).set(user.toJson());
     } catch (e) {
-      print("Ошибка при создании пользователя: $e");
+      if (kDebugMode) {
+        print("Ошибка при создании пользователя: $e");
+      }
     }
   }
 
@@ -111,6 +104,11 @@ class AuthFirebaseRepository implements AuthRepository {
 
   @override
   Future<void> addToFavorites(String userId, String recipeId) async {
+    final currentUser = await getCurrentUser();
+    if (currentUser == null) {
+      throw Exception('Войдите, чтобы добавлять в избранное');
+    }
+
     DocumentReference docRef = _firestore.collection('users').doc(userId);
     await _firestore.runTransaction((transaction) async {
       DocumentSnapshot snapshot = await transaction.get(docRef);
@@ -120,19 +118,28 @@ class AuthFirebaseRepository implements AuthRepository {
         if (!recipeIds.containsKey(recipeId)) {
           recipeIds[recipeId] = true;
           transaction.update(docRef, {'recipeIds': recipeIds});
-          print('Рецепт добавлен в избранное: $recipeId');
+          if (kDebugMode) {
+            print('Рецепт добавлен в избранное: $recipeId');
+          }
         }
       } else {
         transaction.set(docRef, {
           'recipeIds': {recipeId: true}
         });
-        print('Рецепт добавлен в избранное (новый документ): $recipeId');
+        if (kDebugMode) {
+          print('Рецепт добавлен в избранное (новый документ): $recipeId');
+        }
       }
     });
   }
 
   @override
   Future<void> removeFromFavorites(String userId, String recipeId) async {
+    final currentUser = await getCurrentUser();
+    if (currentUser == null) {
+      throw Exception('Войдите, чтобы удалять из избранного');
+    }
+
     DocumentReference docRef = _firestore.collection('users').doc(userId);
     await _firestore.runTransaction((transaction) async {
       DocumentSnapshot snapshot = await transaction.get(docRef);
@@ -142,54 +149,107 @@ class AuthFirebaseRepository implements AuthRepository {
         if (recipeIds.containsKey(recipeId)) {
           recipeIds.remove(recipeId);
           transaction.update(docRef, {'recipeIds': recipeIds});
-          print('Рецепт удален из избранного: $recipeId');
+          if (kDebugMode) {
+            print('Рецепт удален из избранного: $recipeId');
+          }
         } else {
-          print('Рецепт не найден в избранном: $recipeId');
+          if (kDebugMode) {
+            print('Рецепт не найден в избранном: $recipeId');
+          }
         }
       } else {
-        print('Документ пользователя не найден: $userId');
+        if (kDebugMode) {
+          print('Документ пользователя не найден: $userId');
+        }
       }
     });
   }
 
   @override
-Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
-  print('getFavoriteRecipesForUser: $userId');
-  try {
-    DocumentSnapshot snapshot = await _firestore.collection('users').doc(userId).get();
-    if (snapshot.exists) {
-      print('Snapshot exists: ${snapshot.data()}');
-      Map<String, bool> recipeIdsMap = Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
-      List<String> recipeIds = recipeIdsMap.keys.toList();
-      List<Recipe> recipes = [];
-      for (String id in recipeIds) {
-        recipes.add(await getRecipeById(id));
+  Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
+
+      if (!userDoc.exists) {
+        throw Exception('User not found');
       }
-      print('Найдено рецептов: ${recipes.length}');
-      return recipes;
-    } else {
-      print('Пользователь не найден');
-      return [];
+
+      MyUser user = MyUser.fromJson(userDoc.data() as Map<String, dynamic>);
+      List<String> recipeIds = user.recipeIds.keys.toList();
+
+      if (kDebugMode) {
+        print('Получены идентификаторы рецептов: $recipeIds');
+      }
+
+      List<Recipe> favoriteRecipes = [];
+      for (String recipeId in recipeIds) {
+        Recipe recipe = await getRecipeById(recipeId);
+        favoriteRecipes.add(recipe);
+      }
+
+      if (kDebugMode) {
+        print('Избранные рецепты: $favoriteRecipes');
+      }
+
+      return favoriteRecipes;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Ошибка при получении избранных рецептов: $e');
+      }
+      throw Exception("Ошибка при получении избранных рецептов: $e");
     }
+  }
+
+  @override
+  Future<Recipe> getRecipeById(String recipeId) async {
+    try {
+      if (kDebugMode) {
+        print("Запрос к базе данных рецепта с recipeId: $recipeId");
+      }
+      DocumentSnapshot doc =
+          await _firestore.collection('recipes').doc(recipeId).get();
+      if (!doc.exists) {
+        throw Exception('Рецепт не найден');
+      }
+      if (kDebugMode) {
+        print("Рецепт успешно получен из репозитория.");
+      }
+      return Recipe.fromJson(doc.data() as Map<String, dynamic>);
+    } catch (e) {
+      if (kDebugMode) {
+        print("Ошибка при получении рецепта из репозитория: $e");
+      }
+      throw Exception("Ошибка при получении рецепта из репозитория: $e");
+    }
+  }
+
+@override
+Future<void> updateUserProfile(String userId, String name, String email) async {
+  try {
+    await _firestore.collection('users').doc(userId).update({
+      if (name.isNotEmpty) 'name': name,
+      if (email.isNotEmpty) 'email': email,
+    });
   } catch (e) {
-    print('Ошибка при получении данных из Firestore: $e');
-    return [];
+    if (kDebugMode) {
+      print("Ошибка при обновлении профиля: $e");
+    }
   }
 }
 
 @override
-Future<Recipe> getRecipeById(String recipeId) async {
+Future<void> updateUserPhoto(String userId, String photoURL) async {
   try {
-    print("Запрос к базе данных рецепта с recipeId: $recipeId");
-    DocumentSnapshot doc = await _firestore.collection('recipes').doc(recipeId).get();
-    if (!doc.exists) {
-      throw Exception('Recipe not found');
-    }
-    print("Рецепт успешно получен из репозитория.");
-    return Recipe.fromJson(doc.data() as Map<String, dynamic>);
+    await _firestore.collection('users').doc(userId).update({
+      'photoURL': photoURL,
+    });
   } catch (e) {
-    print("Ошибка при получении рецепта из репозитория: $e");
-    throw Exception("Ошибка при получении рецепта из репозитория: $e");
+    if (kDebugMode) {
+      print("Ошибка при обновлении фото: $e");
+    }
   }
 }
 

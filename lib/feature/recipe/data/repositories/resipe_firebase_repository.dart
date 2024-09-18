@@ -1,6 +1,6 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:culinar/feature/auth/domain/entity/user_model.dart';
 import 'package:culinar/feature/recipe/domain/entity/recipe_model.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -9,7 +9,6 @@ import 'recipe_repository.dart';
 
 class RecipeFirebaseRepository implements RecipeRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  //final FirebaseStorage _storage = FirebaseStorage.instance;
 
   @override
   Future<List<Recipe>> getRecipes() async {
@@ -20,7 +19,9 @@ class RecipeFirebaseRepository implements RecipeRepository {
           .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      print('Error loading recipes: $e');
+      if (kDebugMode) {
+        print('Error loading recipes: $e');
+      }
       throw Exception('Error loading recipes: $e');
     }
   }
@@ -30,14 +31,11 @@ class RecipeFirebaseRepository implements RecipeRepository {
     try {
       if (time == '0') {
         final snapshot = await _firestore.collection('recipes').get();
-        return snapshot.docs
-            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
-            .toList();
+        return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
       } else if (time == '121') {
         final snapshot = await _firestore.collection('recipes').get();
-        final recipes = snapshot.docs
-            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
-            .toList();
+        final recipes =
+            snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
         return recipes
             .where((recipe) => int.parse(recipe.cookingTime) > 120)
             .toList();
@@ -46,59 +44,35 @@ class RecipeFirebaseRepository implements RecipeRepository {
             .collection('recipes')
             .where('cookingTime', isEqualTo: time)
             .get();
-        return snapshot.docs
-            .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
-            .toList();
+        return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
       }
     } catch (e) {
-      print('Error getting recipes by cooking time: $e');
+      if (kDebugMode) {
+        print('Error getting recipes by cooking time: $e');
+      }
       throw Exception('Error getting recipes by cooking time: $e');
     }
   }
 
-  // @override
-  // Future<List<Recipe>> getRecipesByIngredients(List<String> ingredients) async {
-  //   // This assumes you want to get recipes that contain all the ingredients in the list
-  //   final snapshot = await _firestore.collection('recipes').get();
-  //   List<Recipe> recipes = [];
-  //   for (var doc in snapshot.docs) {
-  //     var data = doc.data();
-  //     String ingredientDocId = data['ingredients'];
-  //     DocumentSnapshot ingredientDoc = await _firestore
-  //         .collection('ingredientWithQuantity')
-  //         .doc(ingredientDocId)
-  //         .get();
-  //     var ingredientData = ingredientDoc.data() as Map<String, dynamic>;
-
-  //     List<IngredientWithQuantity> ingredients = (ingredientData['ingredients']
-  //             as List<dynamic>)
-  //         .map(
-  //             (e) => IngredientWithQuantity.fromJson(e as Map<String, dynamic>))
-  //         .toList();
-
-  //     bool hasAllIngredients = ingredients.every((id) => ingredients
-  //         .any((ingredient) => ingredient.ingredient.ingredientId == id));
-
-  //     if (hasAllIngredients) {
-  //       recipes.add(Recipe.fromJson(data));
-  //     }
-  //   }
-  //   return recipes;
-  // }
-
   @override
   Future<Recipe> getRecipeById(String recipeId) async {
     try {
-      print("Запрос к базе данных рецепта с recipeId: $recipeId");
+      if (kDebugMode) {
+        print("Запрос к базе данных рецепта с recipeId: $recipeId");
+      }
       DocumentSnapshot doc =
           await _firestore.collection('recipes').doc(recipeId).get();
       if (!doc.exists) {
         throw Exception('Recipe not found');
       }
-      print("Рецепт успешно получен из репозитория.");
+      if (kDebugMode) {
+        print("Рецепт успешно получен из репозитория.");
+      }
       return Recipe.fromJson(doc.data() as Map<String, dynamic>);
     } catch (e) {
-      print("Ошибка при получении рецепта из репозитория: $e");
+      if (kDebugMode) {
+        print("Ошибка при получении рецепта из репозитория: $e");
+      }
       throw Exception("Ошибка при получении рецепта из репозитория: $e");
     }
   }
@@ -135,7 +109,9 @@ class RecipeFirebaseRepository implements RecipeRepository {
           .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      print('Error getting recipes by category: $e');
+      if (kDebugMode) {
+        print('Error getting recipes by category: $e');
+      }
       throw Exception('Error getting recipes by category: $e');
     }
   }
@@ -144,9 +120,8 @@ class RecipeFirebaseRepository implements RecipeRepository {
   Future<List<Ingredient>> searchIngredients(String query) async {
     try {
       final snapshot = await _firestore.collection('ingredients').get();
-      final ingredients = snapshot.docs
-          .map((doc) => Ingredient.fromJson(doc.data() as Map<String, dynamic>))
-          .toList();
+      final ingredients =
+          snapshot.docs.map((doc) => Ingredient.fromJson(doc.data())).toList();
 
       final filteredIngredients = ingredients.where((ingredient) {
         return ingredient.title.toLowerCase().contains(query.toLowerCase());
@@ -263,7 +238,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
       if (data == null) {
         throw Exception('Document data is null');
       }
-      // Логирование данных для отладки
       if (kDebugMode) {
         print('Document data: $data');
       }
@@ -393,11 +367,11 @@ class RecipeFirebaseRepository implements RecipeRepository {
           .where('title', isGreaterThanOrEqualTo: query)
           .where('title', isLessThanOrEqualTo: '$query\uf8ff')
           .get();
-      return snapshot.docs
-          .map((doc) => Recipe.fromJson(doc.data() as Map<String, dynamic>))
-          .toList();
+      return snapshot.docs.map((doc) => Recipe.fromJson(doc.data())).toList();
     } catch (e) {
-      print('Error searching recipes: $e');
+      if (kDebugMode) {
+        print('Error searching recipes: $e');
+      }
       throw Exception('Error searching recipes: $e');
     }
   }
@@ -420,16 +394,22 @@ class RecipeFirebaseRepository implements RecipeRepository {
   @override
   Future<List<Comment>> getCommentsForRecipe(String recipeId) async {
     try {
-      print('Загрузка комментариев для рецепта: $recipeId');
+      if (kDebugMode) {
+        print('Загрузка комментариев для рецепта: $recipeId');
+      }
       final snapshot = await _firestore
           .collection('recipes')
           .doc(recipeId)
           .collection('comments')
           .get();
-      print('Загружено ${snapshot.docs.length} комментариев.');
+      if (kDebugMode) {
+        print('Загружено ${snapshot.docs.length} комментариев.');
+      }
       return snapshot.docs.map((doc) => Comment.fromJson(doc.data())).toList();
     } catch (e) {
-      print('Ошибка при загрузке комментариев: $e');
+      if (kDebugMode) {
+        print('Ошибка при загрузке комментариев: $e');
+      }
       throw Exception('Ошибка при загрузке комментариев: $e');
     }
   }
@@ -448,60 +428,6 @@ class RecipeFirebaseRepository implements RecipeRepository {
   }
 
   @override
-  Future<void> addToFavorites(String userId, String recipeId) async {
-    DocumentReference docRef = _firestore.collection('users').doc(userId);
-    await _firestore.runTransaction((transaction) async {
-      DocumentSnapshot snapshot = await transaction.get(docRef);
-      if (snapshot.exists) {
-        Map<String, bool> recipeIds =
-            Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
-        if (!recipeIds.containsKey(recipeId)) {
-          recipeIds[recipeId] = true;
-          transaction.update(docRef, {'recipeIds': recipeIds});
-        }
-      } else {
-        transaction.set(docRef, {
-          'recipeIds': {recipeId: true}
-        });
-      }
-    });
-  }
-
-  @override
-  Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
-    DocumentSnapshot snapshot =
-        await _firestore.collection('users').doc(userId).get();
-    if (snapshot.exists) {
-      Map<String, bool> recipeIdsMap =
-          Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
-      List<String> recipeIds = recipeIdsMap.keys.toList();
-      List<Recipe> recipes = [];
-      for (String id in recipeIds) {
-        recipes.add(await getRecipeById(id));
-      }
-      return recipes;
-    } else {
-      return [];
-    }
-  }
-
-  @override
-  Future<void> removeFromFavorites(String userId, String recipeId) async {
-    DocumentReference docRef = _firestore.collection('users').doc(userId);
-    await _firestore.runTransaction((transaction) async {
-      DocumentSnapshot snapshot = await transaction.get(docRef);
-      if (snapshot.exists) {
-        Map<String, bool> recipeIds =
-            Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
-        if (recipeIds.containsKey(recipeId)) {
-          recipeIds.remove(recipeId);
-          transaction.update(docRef, {'recipeIds': recipeIds});
-        }
-      }
-    });
-  }
-
-  @override
   Future<List<Categories>> getCategories(String title) async {
     try {
       final snapshot = await _firestore.collection('categories').get();
@@ -512,77 +438,237 @@ class RecipeFirebaseRepository implements RecipeRepository {
         );
       }).toList();
 
-      // Выводим полученные категории в консоль
-      print('Categories:');
+      if (kDebugMode) {
+        print('Categories:');
+      }
       for (var category in categories) {
-        print('ID: ${category.categoryId}, Title: ${category.title}');
+        if (kDebugMode) {
+          print('ID: ${category.categoryId}, Title: ${category.title}');
+        }
       }
 
       return categories;
     } catch (e) {
-      print('Error getting categories: $e');
+      if (kDebugMode) {
+        print('Error getting categories: $e');
+      }
       throw Exception('Error getting categories: $e');
     }
   }
 
-@override
-Future<List<RecipeCollection>> getRecipeCollections() async {
-  try {
-    print('Fetching recipe collections from Firestore...');
-
-    QuerySnapshot querySnapshot =
-        await _firestore.collection('RecipeCollection').get();
-    print("Number of documents found: ${querySnapshot.docs.length}");
-
-    if (querySnapshot.docs.isEmpty) {
-      print("No recipe collections found.");
-      return [];
-    }
-
-    List<RecipeCollection> collections = querySnapshot.docs.map((doc) {
-      print('Document data: ${doc.data()}');
-
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      if (!data.containsKey('recipeCollectionId') ||
-          !data.containsKey('recipeCollectionImage') ||
-          !data.containsKey('title') ||
-          !data.containsKey('description') ||
-          !(data['recipes'] is List)) {
-        throw Exception("Invalid data structure.");
+  @override
+  Future<List<RecipeCollection>> getRecipeCollections() async {
+    try {
+      if (kDebugMode) {
+        print('Repository: Fetching recipe collections from Firestore...');
       }
 
-      // Преобразуем массив `recipes` в List<String>
-      List<String> recipes = List<String>.from(data['recipes']);
+      QuerySnapshot querySnapshot =
+          await _firestore.collection('RecipeCollection').get();
+      if (kDebugMode) {
+        print(
+            "Repository: Number of documents found: ${querySnapshot.docs.length}");
+      }
 
-      return RecipeCollection(
-        recipeCollectionId: data['recipeCollectionId'],
-        recipes: recipes,
-        recipeCollectionImage: data['recipeCollectionImage'],
-        title: data['title'],
-        description: data['description'],
-      );
-    }).toList();
+      if (querySnapshot.docs.isEmpty) {
+        if (kDebugMode) {
+          print("Repository: No recipe collections found.");
+        }
+        return [];
+      }
 
-    return collections;
-  } catch (e) {
-    print("Error fetching recipe collections: $e");
-    throw Exception("Failed to fetch recipe collections from Firestore.");
+      List<RecipeCollection> collections = querySnapshot.docs.map((doc) {
+        if (kDebugMode) {
+          print('Repository: Document data: ${doc.data()}');
+        }
+
+        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        if (!data.containsKey('recipeCollectionId') ||
+            !data.containsKey('recipeCollectionImage') ||
+            !data.containsKey('title') ||
+            !data.containsKey('description') ||
+            data['recipes'] is! List) {
+          throw Exception("Repository: Invalid data structure.");
+        }
+
+        // Преобразуем массив `recipes` в List<String>
+        List<String> recipes = List<String>.from(data['recipes']);
+
+        return RecipeCollection(
+          recipeCollectionId: data['recipeCollectionId'],
+          recipes: recipes,
+          recipeCollectionImage: data['recipeCollectionImage'],
+          title: data['title'],
+          description: data['description'],
+        );
+      }).toList();
+
+      if (kDebugMode) {
+        print('Repository: Successfully fetched recipe collections');
+      }
+      return collections;
+    } catch (e) {
+      if (kDebugMode) {
+        print("Repository: Error fetching recipe collections - $e");
+      }
+      throw Exception("Failed to fetch recipe collections from Firestore.");
+    }
   }
-}
-
 
   @override
   Future<List<Recipe>> getRecipesByIds(List<String> recipeIds) async {
     try {
+      if (kDebugMode) {
+        print('Repository: Fetching recipes by IDs from Firestore...');
+      }
       List<Recipe> recipes = [];
-      for (String recipeId in recipeIds) {
-        Recipe recipe = await getRecipeById(recipeId);
-        recipes.add(recipe);
+      for (String id in recipeIds) {
+        DocumentSnapshot doc =
+            await _firestore.collection('recipes').doc(id).get();
+        if (kDebugMode) {
+          print('Repository: Document data for recipe ID $id: ${doc.data()}');
+        }
+        recipes.add(Recipe.fromJson(doc.data() as Map<String, dynamic>));
+      }
+      if (kDebugMode) {
+        print('Repository: Successfully fetched ${recipes.length} recipes');
       }
       return recipes;
     } catch (e) {
-      print("Ошибка при получении рецептов: $e");
-      throw Exception("Ошибка при получении рецептов: $e");
+      if (kDebugMode) {
+        print('Repository: Error fetching recipes by IDs - $e');
+      }
+      throw Exception('Error fetching recipes: $e');
+    }
+  }
+
+  @override
+  Future<List<SeasonalProduct>> getSeasonalProducts() async {
+    try {
+      if (kDebugMode) {
+        print('Repository: Fetching seasonal products from Firestore...');
+      }
+      QuerySnapshot querySnapshot =
+          await _firestore.collection('SeasonalProduct').get();
+      if (kDebugMode) {
+        print(
+            "Repository: Number of seasonal products found: ${querySnapshot.docs.length}");
+      }
+
+      if (querySnapshot.docs.isEmpty) {
+        if (kDebugMode) {
+          print("Repository: No seasonal products found.");
+        }
+        return [];
+      }
+
+      List<SeasonalProduct> products = querySnapshot.docs.map((doc) {
+        if (kDebugMode) {
+          print('Repository: Document data: ${doc.data()}');
+        }
+        return SeasonalProduct.fromJson(doc.data() as Map<String, dynamic>);
+      }).toList();
+
+      if (kDebugMode) {
+        print('Repository: Successfully fetched seasonal products');
+      }
+      return products;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Repository: Error loading seasonal products - $e');
+      }
+      throw Exception('Error loading seasonal products: $e');
+    }
+  }
+
+  @override
+  Future<SeasonalProduct> getSeasonalProductById(String productId) async {
+    try {
+      DocumentSnapshot doc =
+          await _firestore.collection('SeasonalProduct').doc(productId).get();
+      if (!doc.exists) {
+        throw Exception('Seasonal product not found');
+      }
+      return SeasonalProduct.fromJson(doc.data() as Map<String, dynamic>);
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting seasonal product: $e');
+      }
+      throw Exception('Error getting seasonal product: $e');
+    }
+  }
+
+//////////////////////////////////////////////////////////////////////////
+@override
+Future<void> addToFavorites(String userId, String recipeId) async {
+  DocumentReference docRef = _firestore.collection('users').doc(userId);
+  await _firestore.runTransaction((transaction) async {
+    DocumentSnapshot snapshot = await transaction.get(docRef);
+    if (snapshot.exists) {
+      Map<String, bool> recipeIds = Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+      if (!recipeIds.containsKey(recipeId)) {
+        recipeIds[recipeId] = true;
+        transaction.update(docRef, {'recipeIds': recipeIds});
+      }
+    } else {
+      transaction.set(docRef, {
+        'recipeIds': {recipeId: true}
+      });
+    }
+  });
+}
+
+@override
+Future<void> removeFromFavorites(String userId, String recipeId) async {
+  DocumentReference docRef = _firestore.collection('users').doc(userId);
+  await _firestore.runTransaction((transaction) async {
+    DocumentSnapshot snapshot = await transaction.get(docRef);
+    if (snapshot.exists) {
+      Map<String, bool> recipeIds = Map<String, bool>.from(snapshot.get('recipeIds') ?? {});
+      if (recipeIds.containsKey(recipeId)) {
+        recipeIds.remove(recipeId);
+        transaction.update(docRef, {'recipeIds': recipeIds});
+      }
+    }
+  });
+}
+
+
+  @override
+  Future<List<Recipe>> getFavoriteRecipesForUser(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
+
+      if (!userDoc.exists) {
+        throw Exception('User not found');
+      }
+
+      MyUser user = MyUser.fromJson(userDoc.data() as Map<String, dynamic>);
+      List<String> recipeIds = user.recipeIds.keys.toList();
+
+      if (kDebugMode) {
+        print('Получены идентификаторы рецептов: $recipeIds');
+      }
+
+      List<Recipe> favoriteRecipes = [];
+      for (String recipeId in recipeIds) {
+        Recipe recipe = await getRecipeById(recipeId);
+        favoriteRecipes.add(recipe);
+      }
+
+      if (kDebugMode) {
+        print('Избранные рецепты: $favoriteRecipes');
+      }
+
+      return favoriteRecipes;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Ошибка при получении избранных рецептов: $e');
+      }
+      throw Exception("Ошибка при получении избранных рецептов: $e");
     }
   }
 }

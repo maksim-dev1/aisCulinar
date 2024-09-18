@@ -15,12 +15,12 @@ void main() async {
   );
 
   ConnectivityService connectivityService = ConnectivityService();
-  connectivityService.simulateNoConnection(false); // Имитация отсутствия интернета
+  connectivityService
+      .simulateNoConnection(false);
 
   runApp(App(
-    AuthFirebaseRepository(), 
-    RecipeFirebaseRepository(), 
+    AuthFirebaseRepository(),
+    RecipeFirebaseRepository(),
     connectivityService,
   ));
 }
-

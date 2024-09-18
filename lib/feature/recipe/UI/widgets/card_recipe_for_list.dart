@@ -9,9 +9,9 @@ class CardRecipeForList extends StatelessWidget {
   final Recipe recipe;
 
   const CardRecipeForList({
-    Key? key,
+    super.key,
     required this.recipe,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

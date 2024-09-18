@@ -23,8 +23,10 @@ mixin _$AuthEvent {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) =>
@@ -36,8 +38,10 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) =>
       throw _privateConstructorUsedError;
@@ -48,8 +52,10 @@ mixin _$AuthEvent {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) =>
@@ -60,8 +66,8 @@ mixin _$AuthEvent {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,8 +77,8 @@ mixin _$AuthEvent {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) =>
       throw _privateConstructorUsedError;
@@ -82,8 +88,8 @@ mixin _$AuthEvent {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) =>
@@ -125,12 +131,18 @@ class __$$AppStartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppStartedImpl implements AppStarted {
+class _$AppStartedImpl with DiagnosticableTreeMixin implements AppStarted {
   const _$AppStartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.appStarted()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthEvent.appStarted'));
   }
 
   @override
@@ -150,8 +162,10 @@ class _$AppStartedImpl implements AppStarted {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -166,8 +180,10 @@ class _$AppStartedImpl implements AppStarted {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return appStarted?.call();
@@ -181,8 +197,10 @@ class _$AppStartedImpl implements AppStarted {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -199,8 +217,8 @@ class _$AppStartedImpl implements AppStarted {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return appStarted(this);
@@ -213,8 +231,8 @@ class _$AppStartedImpl implements AppStarted {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return appStarted?.call(this);
@@ -227,8 +245,8 @@ class _$AppStartedImpl implements AppStarted {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -261,12 +279,20 @@ class __$$UserSignedOutImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserSignedOutImpl implements UserSignedOut {
+class _$UserSignedOutImpl
+    with DiagnosticableTreeMixin
+    implements UserSignedOut {
   const _$UserSignedOutImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.userSignedOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthEvent.userSignedOut'));
   }
 
   @override
@@ -286,8 +312,10 @@ class _$UserSignedOutImpl implements UserSignedOut {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -302,8 +330,10 @@ class _$UserSignedOutImpl implements UserSignedOut {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return userSignedOut?.call();
@@ -317,8 +347,10 @@ class _$UserSignedOutImpl implements UserSignedOut {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -335,8 +367,8 @@ class _$UserSignedOutImpl implements UserSignedOut {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return userSignedOut(this);
@@ -349,8 +381,8 @@ class _$UserSignedOutImpl implements UserSignedOut {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return userSignedOut?.call(this);
@@ -363,8 +395,8 @@ class _$UserSignedOutImpl implements UserSignedOut {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -417,7 +449,9 @@ class __$$SignInRequestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignInRequestedImpl implements SignInRequested {
+class _$SignInRequestedImpl
+    with DiagnosticableTreeMixin
+    implements SignInRequested {
   const _$SignInRequestedImpl({required this.email, required this.password});
 
   @override
@@ -426,8 +460,17 @@ class _$SignInRequestedImpl implements SignInRequested {
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.signInRequested(email: $email, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.signInRequested'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -458,8 +501,10 @@ class _$SignInRequestedImpl implements SignInRequested {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -474,8 +519,10 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return signInRequested?.call(email, password);
@@ -489,8 +536,10 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -507,8 +556,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return signInRequested(this);
@@ -521,8 +570,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return signInRequested?.call(this);
@@ -535,8 +584,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -602,7 +651,9 @@ class __$$SignUpRequestedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignUpRequestedImpl implements SignUpRequested {
+class _$SignUpRequestedImpl
+    with DiagnosticableTreeMixin
+    implements SignUpRequested {
   const _$SignUpRequestedImpl(
       {required this.email, required this.password, required this.name});
 
@@ -614,8 +665,18 @@ class _$SignUpRequestedImpl implements SignUpRequested {
   final String name;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.signUpRequested(email: $email, password: $password, name: $name)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.signUpRequested'))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -647,8 +708,10 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -663,8 +726,10 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return signUpRequested?.call(email, password, name);
@@ -678,8 +743,10 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -696,8 +763,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return signUpRequested(this);
@@ -710,8 +777,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return signUpRequested?.call(this);
@@ -724,8 +791,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -747,6 +814,223 @@ abstract class SignUpRequested implements AuthEvent {
   String get name;
   @JsonKey(ignore: true)
   _$$SignUpRequestedImplCopyWith<_$SignUpRequestedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserProfileUpdatedImplCopyWith<$Res> {
+  factory _$$UserProfileUpdatedImplCopyWith(_$UserProfileUpdatedImpl value,
+          $Res Function(_$UserProfileUpdatedImpl) then) =
+      __$$UserProfileUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId, String? name, String? email, String? photoURL});
+}
+
+/// @nodoc
+class __$$UserProfileUpdatedImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$UserProfileUpdatedImpl>
+    implements _$$UserProfileUpdatedImplCopyWith<$Res> {
+  __$$UserProfileUpdatedImplCopyWithImpl(_$UserProfileUpdatedImpl _value,
+      $Res Function(_$UserProfileUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? photoURL = freezed,
+  }) {
+    return _then(_$UserProfileUpdatedImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == photoURL
+          ? _value.photoURL
+          : photoURL // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserProfileUpdatedImpl
+    with DiagnosticableTreeMixin
+    implements UserProfileUpdated {
+  const _$UserProfileUpdatedImpl(
+      this.userId, this.name, this.email, this.photoURL);
+
+  @override
+  final String userId;
+  @override
+  final String? name;
+  @override
+  final String? email;
+  @override
+  final String? photoURL;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.userProfileUpdated(userId: $userId, name: $name, email: $email, photoURL: $photoURL)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.userProfileUpdated'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('photoURL', photoURL));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserProfileUpdatedImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.photoURL, photoURL) ||
+                other.photoURL == photoURL));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId, name, email, photoURL);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserProfileUpdatedImplCopyWith<_$UserProfileUpdatedImpl> get copyWith =>
+      __$$UserProfileUpdatedImplCopyWithImpl<_$UserProfileUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() appStarted,
+    required TResult Function() userSignedOut,
+    required TResult Function(String email, String password) signInRequested,
+    required TResult Function(String email, String password, String name)
+        signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
+    required TResult Function(String userId, String recipeId) addToFavorites,
+    required TResult Function(String userId, String recipeId)
+        removeFromFavorites,
+  }) {
+    return userProfileUpdated(userId, name, email, photoURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? appStarted,
+    TResult? Function()? userSignedOut,
+    TResult? Function(String email, String password)? signInRequested,
+    TResult? Function(String email, String password, String name)?
+        signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
+    TResult? Function(String userId, String recipeId)? addToFavorites,
+    TResult? Function(String userId, String recipeId)? removeFromFavorites,
+  }) {
+    return userProfileUpdated?.call(userId, name, email, photoURL);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? appStarted,
+    TResult Function()? userSignedOut,
+    TResult Function(String email, String password)? signInRequested,
+    TResult Function(String email, String password, String name)?
+        signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
+    TResult Function(String userId, String recipeId)? addToFavorites,
+    TResult Function(String userId, String recipeId)? removeFromFavorites,
+    required TResult orElse(),
+  }) {
+    if (userProfileUpdated != null) {
+      return userProfileUpdated(userId, name, email, photoURL);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AppStarted value) appStarted,
+    required TResult Function(UserSignedOut value) userSignedOut,
+    required TResult Function(SignInRequested value) signInRequested,
+    required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
+    required TResult Function(AddToFavorites value) addToFavorites,
+    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
+  }) {
+    return userProfileUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AppStarted value)? appStarted,
+    TResult? Function(UserSignedOut value)? userSignedOut,
+    TResult? Function(SignInRequested value)? signInRequested,
+    TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
+    TResult? Function(AddToFavorites value)? addToFavorites,
+    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
+  }) {
+    return userProfileUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AppStarted value)? appStarted,
+    TResult Function(UserSignedOut value)? userSignedOut,
+    TResult Function(SignInRequested value)? signInRequested,
+    TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
+    TResult Function(AddToFavorites value)? addToFavorites,
+    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
+    required TResult orElse(),
+  }) {
+    if (userProfileUpdated != null) {
+      return userProfileUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserProfileUpdated implements AuthEvent {
+  const factory UserProfileUpdated(final String userId, final String? name,
+      final String? email, final String? photoURL) = _$UserProfileUpdatedImpl;
+
+  String get userId;
+  String? get name;
+  String? get email;
+  String? get photoURL;
+  @JsonKey(ignore: true)
+  _$$UserProfileUpdatedImplCopyWith<_$UserProfileUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -788,7 +1072,9 @@ class __$$AddToFavoritesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddToFavoritesImpl implements AddToFavorites {
+class _$AddToFavoritesImpl
+    with DiagnosticableTreeMixin
+    implements AddToFavorites {
   const _$AddToFavoritesImpl(this.userId, this.recipeId);
 
   @override
@@ -797,8 +1083,17 @@ class _$AddToFavoritesImpl implements AddToFavorites {
   final String recipeId;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.addToFavorites(userId: $userId, recipeId: $recipeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.addToFavorites'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('recipeId', recipeId));
   }
 
   @override
@@ -829,8 +1124,10 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -845,8 +1142,10 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return addToFavorites?.call(userId, recipeId);
@@ -860,8 +1159,10 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -878,8 +1179,8 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return addToFavorites(this);
@@ -892,8 +1193,8 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return addToFavorites?.call(this);
@@ -906,8 +1207,8 @@ class _$AddToFavoritesImpl implements AddToFavorites {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -926,175 +1227,6 @@ abstract class AddToFavorites implements AuthEvent {
   String get recipeId;
   @JsonKey(ignore: true)
   _$$AddToFavoritesImplCopyWith<_$AddToFavoritesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetFavoriteRecipesImplCopyWith<$Res> {
-  factory _$$GetFavoriteRecipesImplCopyWith(_$GetFavoriteRecipesImpl value,
-          $Res Function(_$GetFavoriteRecipesImpl) then) =
-      __$$GetFavoriteRecipesImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String userId});
-}
-
-/// @nodoc
-class __$$GetFavoriteRecipesImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$GetFavoriteRecipesImpl>
-    implements _$$GetFavoriteRecipesImplCopyWith<$Res> {
-  __$$GetFavoriteRecipesImplCopyWithImpl(_$GetFavoriteRecipesImpl _value,
-      $Res Function(_$GetFavoriteRecipesImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_$GetFavoriteRecipesImpl(
-      null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetFavoriteRecipesImpl implements GetFavoriteRecipes {
-  const _$GetFavoriteRecipesImpl(this.userId);
-
-  @override
-  final String userId;
-
-  @override
-  String toString() {
-    return 'AuthEvent.getFavoriteRecipes(userId: $userId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetFavoriteRecipesImpl &&
-            (identical(other.userId, userId) || other.userId == userId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, userId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetFavoriteRecipesImplCopyWith<_$GetFavoriteRecipesImpl> get copyWith =>
-      __$$GetFavoriteRecipesImplCopyWithImpl<_$GetFavoriteRecipesImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function() userSignedOut,
-    required TResult Function(String email, String password) signInRequested,
-    required TResult Function(String email, String password, String name)
-        signUpRequested,
-    required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
-    required TResult Function(String userId, String recipeId)
-        removeFromFavorites,
-  }) {
-    return getFavoriteRecipes(userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? appStarted,
-    TResult? Function()? userSignedOut,
-    TResult? Function(String email, String password)? signInRequested,
-    TResult? Function(String email, String password, String name)?
-        signUpRequested,
-    TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
-    TResult? Function(String userId, String recipeId)? removeFromFavorites,
-  }) {
-    return getFavoriteRecipes?.call(userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function()? userSignedOut,
-    TResult Function(String email, String password)? signInRequested,
-    TResult Function(String email, String password, String name)?
-        signUpRequested,
-    TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
-    TResult Function(String userId, String recipeId)? removeFromFavorites,
-    required TResult orElse(),
-  }) {
-    if (getFavoriteRecipes != null) {
-      return getFavoriteRecipes(userId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AppStarted value) appStarted,
-    required TResult Function(UserSignedOut value) userSignedOut,
-    required TResult Function(SignInRequested value) signInRequested,
-    required TResult Function(SignUpRequested value) signUpRequested,
-    required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
-    required TResult Function(RemoveFromFavorites value) removeFromFavorites,
-  }) {
-    return getFavoriteRecipes(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AppStarted value)? appStarted,
-    TResult? Function(UserSignedOut value)? userSignedOut,
-    TResult? Function(SignInRequested value)? signInRequested,
-    TResult? Function(SignUpRequested value)? signUpRequested,
-    TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
-    TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
-  }) {
-    return getFavoriteRecipes?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AppStarted value)? appStarted,
-    TResult Function(UserSignedOut value)? userSignedOut,
-    TResult Function(SignInRequested value)? signInRequested,
-    TResult Function(SignUpRequested value)? signUpRequested,
-    TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
-    TResult Function(RemoveFromFavorites value)? removeFromFavorites,
-    required TResult orElse(),
-  }) {
-    if (getFavoriteRecipes != null) {
-      return getFavoriteRecipes(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class GetFavoriteRecipes implements AuthEvent {
-  const factory GetFavoriteRecipes(final String userId) =
-      _$GetFavoriteRecipesImpl;
-
-  String get userId;
-  @JsonKey(ignore: true)
-  _$$GetFavoriteRecipesImplCopyWith<_$GetFavoriteRecipesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1136,7 +1268,9 @@ class __$$RemoveFromFavoritesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
+class _$RemoveFromFavoritesImpl
+    with DiagnosticableTreeMixin
+    implements RemoveFromFavorites {
   const _$RemoveFromFavoritesImpl(this.userId, this.recipeId);
 
   @override
@@ -1145,8 +1279,17 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
   final String recipeId;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthEvent.removeFromFavorites(userId: $userId, recipeId: $recipeId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.removeFromFavorites'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('recipeId', recipeId));
   }
 
   @override
@@ -1177,8 +1320,10 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     required TResult Function(String email, String password) signInRequested,
     required TResult Function(String email, String password, String name)
         signUpRequested,
+    required TResult Function(
+            String userId, String? name, String? email, String? photoURL)
+        userProfileUpdated,
     required TResult Function(String userId, String recipeId) addToFavorites,
-    required TResult Function(String userId) getFavoriteRecipes,
     required TResult Function(String userId, String recipeId)
         removeFromFavorites,
   }) {
@@ -1193,8 +1338,10 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     TResult? Function(String email, String password)? signInRequested,
     TResult? Function(String email, String password, String name)?
         signUpRequested,
+    TResult? Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult? Function(String userId, String recipeId)? addToFavorites,
-    TResult? Function(String userId)? getFavoriteRecipes,
     TResult? Function(String userId, String recipeId)? removeFromFavorites,
   }) {
     return removeFromFavorites?.call(userId, recipeId);
@@ -1208,8 +1355,10 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     TResult Function(String email, String password)? signInRequested,
     TResult Function(String email, String password, String name)?
         signUpRequested,
+    TResult Function(
+            String userId, String? name, String? email, String? photoURL)?
+        userProfileUpdated,
     TResult Function(String userId, String recipeId)? addToFavorites,
-    TResult Function(String userId)? getFavoriteRecipes,
     TResult Function(String userId, String recipeId)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -1226,8 +1375,8 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     required TResult Function(UserSignedOut value) userSignedOut,
     required TResult Function(SignInRequested value) signInRequested,
     required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(UserProfileUpdated value) userProfileUpdated,
     required TResult Function(AddToFavorites value) addToFavorites,
-    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
     required TResult Function(RemoveFromFavorites value) removeFromFavorites,
   }) {
     return removeFromFavorites(this);
@@ -1240,8 +1389,8 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     TResult? Function(UserSignedOut value)? userSignedOut,
     TResult? Function(SignInRequested value)? signInRequested,
     TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(UserProfileUpdated value)? userProfileUpdated,
     TResult? Function(AddToFavorites value)? addToFavorites,
-    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult? Function(RemoveFromFavorites value)? removeFromFavorites,
   }) {
     return removeFromFavorites?.call(this);
@@ -1254,8 +1403,8 @@ class _$RemoveFromFavoritesImpl implements RemoveFromFavorites {
     TResult Function(UserSignedOut value)? userSignedOut,
     TResult Function(SignInRequested value)? signInRequested,
     TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(UserProfileUpdated value)? userProfileUpdated,
     TResult Function(AddToFavorites value)? addToFavorites,
-    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
     TResult Function(RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
   }) {
@@ -1286,7 +1435,7 @@ mixin _$AuthState {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -1297,7 +1446,7 @@ mixin _$AuthState {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -1308,7 +1457,7 @@ mixin _$AuthState {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) =>
@@ -1320,7 +1469,7 @@ mixin _$AuthState {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -1331,7 +1480,7 @@ mixin _$AuthState {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -1342,7 +1491,7 @@ mixin _$AuthState {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) =>
@@ -1384,12 +1533,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -1409,7 +1564,7 @@ class _$InitialImpl implements Initial {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return initial();
@@ -1423,7 +1578,7 @@ class _$InitialImpl implements Initial {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return initial?.call();
@@ -1437,7 +1592,7 @@ class _$InitialImpl implements Initial {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1455,7 +1610,7 @@ class _$InitialImpl implements Initial {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return initial(this);
@@ -1469,7 +1624,7 @@ class _$InitialImpl implements Initial {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return initial?.call(this);
@@ -1483,7 +1638,7 @@ class _$InitialImpl implements Initial {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1541,15 +1696,25 @@ class __$$AuthAuthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthAuthenticatedImpl implements AuthAuthenticated {
+class _$AuthAuthenticatedImpl
+    with DiagnosticableTreeMixin
+    implements AuthAuthenticated {
   const _$AuthAuthenticatedImpl(this.user);
 
   @override
   final MyUser user;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.authenticated(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.authenticated'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -1578,7 +1743,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return authenticated(user);
@@ -1592,7 +1757,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return authenticated?.call(user);
@@ -1606,7 +1771,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1624,7 +1789,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return authenticated(this);
@@ -1638,7 +1803,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return authenticated?.call(this);
@@ -1652,7 +1817,7 @@ class _$AuthAuthenticatedImpl implements AuthAuthenticated {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1690,12 +1855,20 @@ class __$$AuthUnauthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
+class _$AuthUnauthenticatedImpl
+    with DiagnosticableTreeMixin
+    implements AuthUnauthenticated {
   const _$AuthUnauthenticatedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.unauthenticated()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.unauthenticated'));
   }
 
   @override
@@ -1716,7 +1889,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return unauthenticated();
@@ -1730,7 +1903,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return unauthenticated?.call();
@@ -1744,7 +1917,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1762,7 +1935,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return unauthenticated(this);
@@ -1776,7 +1949,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return unauthenticated?.call(this);
@@ -1790,7 +1963,7 @@ class _$AuthUnauthenticatedImpl implements AuthUnauthenticated {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1823,12 +1996,18 @@ class __$$LoadingAuthImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingAuthImpl implements LoadingAuth {
+class _$LoadingAuthImpl with DiagnosticableTreeMixin implements LoadingAuth {
   const _$LoadingAuthImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.loading'));
   }
 
   @override
@@ -1848,7 +2027,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return loading();
@@ -1862,7 +2041,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return loading?.call();
@@ -1876,7 +2055,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1894,7 +2073,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return loading(this);
@@ -1908,7 +2087,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return loading?.call(this);
@@ -1922,7 +2101,7 @@ class _$LoadingAuthImpl implements LoadingAuth {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -1980,15 +2159,23 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements Success {
+class _$SuccessImpl with DiagnosticableTreeMixin implements Success {
   const _$SuccessImpl(this.user);
 
   @override
   final MyUser user;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.success(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.success'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -2016,7 +2203,7 @@ class _$SuccessImpl implements Success {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return success(user);
@@ -2030,7 +2217,7 @@ class _$SuccessImpl implements Success {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return success?.call(user);
@@ -2044,7 +2231,7 @@ class _$SuccessImpl implements Success {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -2062,7 +2249,7 @@ class _$SuccessImpl implements Success {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return success(this);
@@ -2076,7 +2263,7 @@ class _$SuccessImpl implements Success {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return success?.call(this);
@@ -2090,7 +2277,7 @@ class _$SuccessImpl implements Success {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -2143,15 +2330,23 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements Failure {
+class _$FailureImpl with DiagnosticableTreeMixin implements Failure {
   const _$FailureImpl(this.error);
 
   @override
   final String error;
 
   @override
-  String toString() {
-    return 'AuthState.ailure(error: $error)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.failure(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.failure'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -2179,10 +2374,10 @@ class _$FailureImpl implements Failure {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
-    return ailure(error);
+    return failure(error);
   }
 
   @override
@@ -2193,10 +2388,10 @@ class _$FailureImpl implements Failure {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
-    return ailure?.call(error);
+    return failure?.call(error);
   }
 
   @override
@@ -2207,12 +2402,12 @@ class _$FailureImpl implements Failure {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
-    if (ailure != null) {
-      return ailure(error);
+    if (failure != null) {
+      return failure(error);
     }
     return orElse();
   }
@@ -2225,10 +2420,10 @@ class _$FailureImpl implements Failure {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
-    return ailure(this);
+    return failure(this);
   }
 
   @override
@@ -2239,10 +2434,10 @@ class _$FailureImpl implements Failure {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
-    return ailure?.call(this);
+    return failure?.call(this);
   }
 
   @override
@@ -2253,12 +2448,12 @@ class _$FailureImpl implements Failure {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
-    if (ailure != null) {
-      return ailure(this);
+    if (failure != null) {
+      return failure(this);
     }
     return orElse();
   }
@@ -2306,7 +2501,9 @@ class __$$FavoritesLoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FavoritesLoadedImpl implements FavoritesLoaded {
+class _$FavoritesLoadedImpl
+    with DiagnosticableTreeMixin
+    implements FavoritesLoaded {
   const _$FavoritesLoadedImpl(final List<Recipe> favoriteRecipes)
       : _favoriteRecipes = favoriteRecipes;
 
@@ -2319,8 +2516,16 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.favoritesLoaded(favoriteRecipes: $favoriteRecipes)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.favoritesLoaded'))
+      ..add(DiagnosticsProperty('favoriteRecipes', favoriteRecipes));
   }
 
   @override
@@ -2351,7 +2556,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     required TResult Function() unauthenticated,
     required TResult Function() loading,
     required TResult Function(MyUser user) success,
-    required TResult Function(String error) ailure,
+    required TResult Function(String error) failure,
     required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return favoritesLoaded(favoriteRecipes);
@@ -2365,7 +2570,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(MyUser user)? success,
-    TResult? Function(String error)? ailure,
+    TResult? Function(String error)? failure,
     TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return favoritesLoaded?.call(favoriteRecipes);
@@ -2379,7 +2584,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     TResult Function()? unauthenticated,
     TResult Function()? loading,
     TResult Function(MyUser user)? success,
-    TResult Function(String error)? ailure,
+    TResult Function(String error)? failure,
     TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
@@ -2397,7 +2602,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     required TResult Function(AuthUnauthenticated value) unauthenticated,
     required TResult Function(LoadingAuth value) loading,
     required TResult Function(Success value) success,
-    required TResult Function(Failure value) ailure,
+    required TResult Function(Failure value) failure,
     required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return favoritesLoaded(this);
@@ -2411,7 +2616,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     TResult? Function(AuthUnauthenticated value)? unauthenticated,
     TResult? Function(LoadingAuth value)? loading,
     TResult? Function(Success value)? success,
-    TResult? Function(Failure value)? ailure,
+    TResult? Function(Failure value)? failure,
     TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return favoritesLoaded?.call(this);
@@ -2425,7 +2630,7 @@ class _$FavoritesLoadedImpl implements FavoritesLoaded {
     TResult Function(AuthUnauthenticated value)? unauthenticated,
     TResult Function(LoadingAuth value)? loading,
     TResult Function(Success value)? success,
-    TResult Function(Failure value)? ailure,
+    TResult Function(Failure value)? failure,
     TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {

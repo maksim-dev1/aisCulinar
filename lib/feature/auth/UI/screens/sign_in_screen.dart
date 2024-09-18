@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:culinar/app/app_view.dart';
+import 'package:culinar/design/colors.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/auth/UI/screens/sign_up_screen.dart';
 import 'package:culinar/feature/auth/UI/widgets/auth_text_filed.dart';
@@ -20,6 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _isDialogShowing = false;
 
   @override
   void dispose() {
@@ -28,19 +28,57 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+  void _showLoadingDialog(BuildContext context) {
+    if (!_isDialogShowing) {
+      _isDialogShowing = true;
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(
+                  color: secondaryColor,
+                ),
+                const SizedBox(height: 16),
+                const Text('Loading...'),
+              ],
+            ),
+          );
+        },
+      );
+    }
+  }
+
+  void _closeLoadingDialog(BuildContext context) {
+    if (_isDialogShowing) {
+      _isDialogShowing = false;
+      Navigator.of(context, rootNavigator: true).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>( 
+    return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is Success) {
-          _closeLoadingDialog();
+        if (state is LoadingAuth) {
+          print('LoadingAuth state detected');
+          //_showLoadingDialog(context);
+        } else if (state is AuthAuthenticated || state is Failure || state is AuthUnauthenticated) {
+          print('Closing loading dialog');
+          _closeLoadingDialog(context);
+        }
+
+        if (state is AuthAuthenticated) {
+          print('AuthAuthenticated state detected');
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => AppView()),
-          ); 
-        }
-        if (state is Failure) {
-          _closeLoadingDialog(); 
+            MaterialPageRoute(builder: (context) => const AppView()),
+          );
+        } else if (state is Failure) {
+          print('Failure state detected with error: ${state.error}');
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -49,9 +87,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 backgroundColor: Colors.red,
               ),
             );
-        }
-        if (state is LoadingAuth) {
-          _showLoadingDialog(context); 
         }
       },
       child: Scaffold(
@@ -62,8 +97,8 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 100, left: 20, right: 20),
-                  child:
-                      Image(image: AssetImage('assets/chef_cooking_logo.png')),
+                  child: Image(
+                      image: AssetImage('assets/images/chef_cooking_logo.jpg')),
                 ),
                 const SizedBox(height: 40),
                 Text(
@@ -110,6 +145,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             borderRadius: BorderRadius.circular(14))),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        print('Form validated, triggering SignInRequested');
                         context.read<AuthBloc>().add(SignInRequested(
                               email: _emailController.text,
                               password: _passwordController.text,
@@ -125,7 +161,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('У вас нет аккаунта?',
-                        style: Theme.of(context).textTheme.labelMedium ),
+                        style: Theme.of(context).textTheme.labelMedium),
                     const SizedBox(
                       width: 5,
                     ),
@@ -153,39 +189,5 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
-  }
-
-//TODO: перенести код ниже
-  late Completer<void> _dialogCompleter;
-
-  void _showLoadingDialog(BuildContext context) {
-    _dialogCompleter = Completer<void>();
-    showDialog(
-      context: context,
-      barrierDismissible: false, // Запретить закрытие диалога нажатием вне его
-      builder: (BuildContext context) {
-        return const AlertDialog(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(color: Color(0xFF308B85)),
-              SizedBox(height: 16),
-              Text('Loading...'),
-            ],
-          ),
-        );
-      },
-    ).then((_) {
-      if (!_dialogCompleter.isCompleted) {
-        _dialogCompleter.complete();
-      }
-    });
-  }
-
-  void _closeLoadingDialog() {
-    if (!_dialogCompleter.isCompleted) {
-      _dialogCompleter.complete();
-      Navigator.pop(context);
-    }
   }
 }

@@ -9,7 +9,7 @@ class MyUser with _$MyUser {
     required String userId,
     required String name,
     required String email,
-    String? photoProfile,
+    String? photoURL,
     required Map<String, bool> recipeIds,
   }) = _MyUser;
 

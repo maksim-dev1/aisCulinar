@@ -42,5 +42,15 @@ class RecipeEvent with _$RecipeEvent {
   const factory RecipeEvent.loadRecipesForCollection(List<String> recipeIds) = LoadRecipesForCollection;
 
   const factory RecipeEvent.loadUserRecipes(String userId) = LoadUserRecipes;
-  
+  const factory RecipeEvent.loadSeasonalProducts() = LoadSeasonalProducts;
+  const factory RecipeEvent.loadSeasonalProductDetail(String productId) = LoadSeasonalProductDetail ;
+  //
+  //  const factory RecipeEvent.addToFavorites(String userId, String recipeId) =
+  //     AddToFavorites;
+  const factory RecipeEvent.getFavoriteRecipes(String userId) = 
+      GetFavoriteRecipes;
+  // const factory RecipeEvent.removeFromFavorites(String userId, String recipeId) =
+  //     RemoveFromFavorites;
+  const factory RecipeEvent.loadFavoriteRecipes(String userId) =
+      LoadFavoriteRecipes;
 }

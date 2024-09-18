@@ -13,9 +13,11 @@ class AuthEvent with _$AuthEvent {
     required String password,
     required String name,
   }) = SignUpRequested;
-  const factory AuthEvent.addToFavorites(String userId, String recipeId) =
+
+  const factory AuthEvent.userProfileUpdated(String userId, String? name, String? email, String? photoURL) = UserProfileUpdated;
+
+     const factory AuthEvent.addToFavorites(String userId, String recipeId) =
       AddToFavorites;
-  const factory AuthEvent.getFavoriteRecipes(String userId) = GetFavoriteRecipes;
   const factory AuthEvent.removeFromFavorites(String userId, String recipeId) =
       RemoveFromFavorites;
 }

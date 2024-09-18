@@ -136,7 +136,6 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
       if (ingredients.isNotEmpty &&
           _steps.isNotEmpty &&
           _selectedCategory != null) {
-        // Используем значение ползунка для времени приготовления
         final String cookingTime = _cookingTimeValue.round().toString();
 
         List<IngredientWithQuantity> ingredientsList = ingredients
@@ -173,15 +172,14 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
           description: _descriptionController.text,
           cookingTime: cookingTime,
           portions: int.parse(_portionsController.text),
-          category:
-              _selectedCategory!.title,
-          ingredients: [], 
+          category: _selectedCategory!.title,
+          ingredients: [],
           steps: [],
           rating: const Rating(
             ratingId: '',
             userId: '',
-            overallRating: 0, totalRatings: 0,
-          
+            overallRating: 0,
+            totalRatings: 0,
           ),
           comments: [],
         );
@@ -296,17 +294,17 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
               barrierDismissible: false,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircularProgressIndicator(
-                        color: secondaryColor,
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CircularProgressIndicator(
+                            color: secondaryColor,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text('Loading...'),
+                        ],
                       ),
-                      const SizedBox(height: 16),
-                      const Text('Loading...'),
-                    ],
-                  ),
-                );
+                    );
               },
             );
           } else if (state is RecipeAdded) {
@@ -402,7 +400,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                                 ),
                                 child: Center(
                                   child: Transform.scale(
-                                      scale: 1.5, child: addgalleryIcon),
+                                      scale: 1.5, child: addGalleryIcon),
                                 ),
                               ))
                           : Stack(

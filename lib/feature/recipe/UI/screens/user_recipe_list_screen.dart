@@ -1,3 +1,4 @@
+import 'package:culinar/design/colors.dart';
 import 'package:culinar/design/icons.dart';
 import 'package:culinar/feature/recipe/bloc/recipe_bloc.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,20 @@ class UserRecipesListScreen extends StatelessWidget {
       body: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
           if (state is Loading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircularProgressIndicator(
+                      color: secondaryColor,
+                    ),
+                    const SizedBox(height: 16),
+                    const Text('Loading...'),
+                  ],
+                ),
+              ),
+            );
           } else if (state is Loaded) {
             final recipes = state.recipes;
             return ListView.builder(

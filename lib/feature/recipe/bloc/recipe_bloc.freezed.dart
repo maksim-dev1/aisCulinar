@@ -47,6 +47,10 @@ mixin _$RecipeEvent {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +83,10 @@ mixin _$RecipeEvent {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +119,10 @@ mixin _$RecipeEvent {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +154,11 @@ mixin _$RecipeEvent {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -169,6 +186,11 @@ mixin _$RecipeEvent {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -196,6 +218,11 @@ mixin _$RecipeEvent {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -292,6 +319,10 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return loadRecipes();
   }
@@ -327,6 +358,10 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return loadRecipes?.call();
   }
@@ -362,6 +397,10 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -399,6 +438,11 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return loadRecipes(this);
   }
@@ -429,6 +473,11 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return loadRecipes?.call(this);
   }
@@ -459,6 +508,11 @@ class _$LoadRecipesImpl with DiagnosticableTreeMixin implements LoadRecipes {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipes != null) {
@@ -577,6 +631,10 @@ class _$LoadRecipeDetailImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return loadRecipeDetail(recipeId);
   }
@@ -612,6 +670,10 @@ class _$LoadRecipeDetailImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return loadRecipeDetail?.call(recipeId);
   }
@@ -647,6 +709,10 @@ class _$LoadRecipeDetailImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeDetail != null) {
@@ -684,6 +750,11 @@ class _$LoadRecipeDetailImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return loadRecipeDetail(this);
   }
@@ -714,6 +785,11 @@ class _$LoadRecipeDetailImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return loadRecipeDetail?.call(this);
   }
@@ -744,6 +820,11 @@ class _$LoadRecipeDetailImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeDetail != null) {
@@ -931,6 +1012,10 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return addRecipe(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -966,6 +1051,10 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return addRecipe?.call(recipe, ingredientsWithQuantity, steps, image);
   }
@@ -1001,6 +1090,10 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -1038,6 +1131,11 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return addRecipe(this);
   }
@@ -1068,6 +1166,11 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return addRecipe?.call(this);
   }
@@ -1098,6 +1201,11 @@ class _$AddRecipeImpl with DiagnosticableTreeMixin implements AddRecipe {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addRecipe != null) {
@@ -1234,6 +1342,10 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return updateRecipe(recipe);
   }
@@ -1269,6 +1381,10 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return updateRecipe?.call(recipe);
   }
@@ -1304,6 +1420,10 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -1341,6 +1461,11 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return updateRecipe(this);
   }
@@ -1371,6 +1496,11 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return updateRecipe?.call(this);
   }
@@ -1401,6 +1531,11 @@ class _$UpdateRecipeImpl with DiagnosticableTreeMixin implements UpdateRecipe {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateRecipe != null) {
@@ -1521,6 +1656,10 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return deleteRecipe(recipeId);
   }
@@ -1556,6 +1695,10 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return deleteRecipe?.call(recipeId);
   }
@@ -1591,6 +1734,10 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1628,6 +1775,11 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return deleteRecipe(this);
   }
@@ -1658,6 +1810,11 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return deleteRecipe?.call(this);
   }
@@ -1688,6 +1845,11 @@ class _$DeleteRecipeImpl with DiagnosticableTreeMixin implements DeleteRecipe {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (deleteRecipe != null) {
@@ -1810,6 +1972,10 @@ class _$GetRecipeByIdImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getRecipeById(recipeId);
   }
@@ -1845,6 +2011,10 @@ class _$GetRecipeByIdImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getRecipeById?.call(recipeId);
   }
@@ -1880,6 +2050,10 @@ class _$GetRecipeByIdImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -1917,6 +2091,11 @@ class _$GetRecipeByIdImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getRecipeById(this);
   }
@@ -1947,6 +2126,11 @@ class _$GetRecipeByIdImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getRecipeById?.call(this);
   }
@@ -1977,6 +2161,11 @@ class _$GetRecipeByIdImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getRecipeById != null) {
@@ -2101,6 +2290,10 @@ class _$GetRecipesByCategoryImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getRecipesByCategory(category);
   }
@@ -2136,6 +2329,10 @@ class _$GetRecipesByCategoryImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getRecipesByCategory?.call(category);
   }
@@ -2171,6 +2368,10 @@ class _$GetRecipesByCategoryImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -2208,6 +2409,11 @@ class _$GetRecipesByCategoryImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getRecipesByCategory(this);
   }
@@ -2238,6 +2444,11 @@ class _$GetRecipesByCategoryImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getRecipesByCategory?.call(this);
   }
@@ -2268,6 +2479,11 @@ class _$GetRecipesByCategoryImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getRecipesByCategory != null) {
@@ -2390,6 +2606,10 @@ class _$SearchRecipesImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return searchRecipes(query);
   }
@@ -2425,6 +2645,10 @@ class _$SearchRecipesImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return searchRecipes?.call(query);
   }
@@ -2460,6 +2684,10 @@ class _$SearchRecipesImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -2497,6 +2725,11 @@ class _$SearchRecipesImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return searchRecipes(this);
   }
@@ -2527,6 +2760,11 @@ class _$SearchRecipesImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return searchRecipes?.call(this);
   }
@@ -2557,6 +2795,11 @@ class _$SearchRecipesImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (searchRecipes != null) {
@@ -2696,6 +2939,10 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return addComment(recipeId, comment);
   }
@@ -2731,6 +2978,10 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return addComment?.call(recipeId, comment);
   }
@@ -2766,6 +3017,10 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -2803,6 +3058,11 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return addComment(this);
   }
@@ -2833,6 +3093,11 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return addComment?.call(this);
   }
@@ -2863,6 +3128,11 @@ class _$AddCommentImpl with DiagnosticableTreeMixin implements AddComment {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addComment != null) {
@@ -3005,6 +3275,10 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return addRating(recipeId, rating);
   }
@@ -3040,6 +3314,10 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return addRating?.call(recipeId, rating);
   }
@@ -3075,6 +3353,10 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addRating != null) {
@@ -3112,6 +3394,11 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return addRating(this);
   }
@@ -3142,6 +3429,11 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return addRating?.call(this);
   }
@@ -3172,6 +3464,11 @@ class _$AddRatingImpl with DiagnosticableTreeMixin implements AddRating {
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addRating != null) {
@@ -3299,6 +3596,10 @@ class _$GetCommentsForRecipeImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getCommentsForRecipe(recipeId);
   }
@@ -3334,6 +3635,10 @@ class _$GetCommentsForRecipeImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getCommentsForRecipe?.call(recipeId);
   }
@@ -3369,6 +3674,10 @@ class _$GetCommentsForRecipeImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -3406,6 +3715,11 @@ class _$GetCommentsForRecipeImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getCommentsForRecipe(this);
   }
@@ -3436,6 +3750,11 @@ class _$GetCommentsForRecipeImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getCommentsForRecipe?.call(this);
   }
@@ -3466,6 +3785,11 @@ class _$GetCommentsForRecipeImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getCommentsForRecipe != null) {
@@ -3589,6 +3913,10 @@ class _$DeleteCommentImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return deleteComment(commentId);
   }
@@ -3624,6 +3952,10 @@ class _$DeleteCommentImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return deleteComment?.call(commentId);
   }
@@ -3659,6 +3991,10 @@ class _$DeleteCommentImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -3696,6 +4032,11 @@ class _$DeleteCommentImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return deleteComment(this);
   }
@@ -3726,6 +4067,11 @@ class _$DeleteCommentImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return deleteComment?.call(this);
   }
@@ -3756,6 +4102,11 @@ class _$DeleteCommentImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (deleteComment != null) {
@@ -3888,6 +4239,10 @@ class _$AddIngredientImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return addIngredient(ingredient);
   }
@@ -3923,6 +4278,10 @@ class _$AddIngredientImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return addIngredient?.call(ingredient);
   }
@@ -3958,6 +4317,10 @@ class _$AddIngredientImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -3995,6 +4358,11 @@ class _$AddIngredientImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return addIngredient(this);
   }
@@ -4025,6 +4393,11 @@ class _$AddIngredientImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return addIngredient?.call(this);
   }
@@ -4055,6 +4428,11 @@ class _$AddIngredientImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (addIngredient != null) {
@@ -4178,6 +4556,10 @@ class _$GetIngredientsImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getIngredients(title);
   }
@@ -4213,6 +4595,10 @@ class _$GetIngredientsImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getIngredients?.call(title);
   }
@@ -4248,6 +4634,10 @@ class _$GetIngredientsImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4285,6 +4675,11 @@ class _$GetIngredientsImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getIngredients(this);
   }
@@ -4315,6 +4710,11 @@ class _$GetIngredientsImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getIngredients?.call(this);
   }
@@ -4345,6 +4745,11 @@ class _$GetIngredientsImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getIngredients != null) {
@@ -4467,6 +4872,10 @@ class _$SearchIngredientsImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return searchIngredients(query);
   }
@@ -4502,6 +4911,10 @@ class _$SearchIngredientsImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return searchIngredients?.call(query);
   }
@@ -4537,6 +4950,10 @@ class _$SearchIngredientsImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4574,6 +4991,11 @@ class _$SearchIngredientsImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return searchIngredients(this);
   }
@@ -4604,6 +5026,11 @@ class _$SearchIngredientsImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return searchIngredients?.call(this);
   }
@@ -4634,6 +5061,11 @@ class _$SearchIngredientsImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (searchIngredients != null) {
@@ -4756,6 +5188,10 @@ class _$GetMeasurementsImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getMeasurements(title);
   }
@@ -4791,6 +5227,10 @@ class _$GetMeasurementsImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getMeasurements?.call(title);
   }
@@ -4826,6 +5266,10 @@ class _$GetMeasurementsImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -4863,6 +5307,11 @@ class _$GetMeasurementsImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getMeasurements(this);
   }
@@ -4893,6 +5342,11 @@ class _$GetMeasurementsImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getMeasurements?.call(this);
   }
@@ -4923,6 +5377,11 @@ class _$GetMeasurementsImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getMeasurements != null) {
@@ -5044,6 +5503,10 @@ class _$GetCategoriesImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return getCategories(title);
   }
@@ -5079,6 +5542,10 @@ class _$GetCategoriesImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return getCategories?.call(title);
   }
@@ -5114,6 +5581,10 @@ class _$GetCategoriesImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -5151,6 +5622,11 @@ class _$GetCategoriesImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return getCategories(this);
   }
@@ -5181,6 +5657,11 @@ class _$GetCategoriesImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return getCategories?.call(this);
   }
@@ -5211,6 +5692,11 @@ class _$GetCategoriesImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -5343,6 +5829,10 @@ class _$FilterRecipesImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return filterRecipes(category, cookingTime);
   }
@@ -5378,6 +5868,10 @@ class _$FilterRecipesImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return filterRecipes?.call(category, cookingTime);
   }
@@ -5413,6 +5907,10 @@ class _$FilterRecipesImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (filterRecipes != null) {
@@ -5450,6 +5948,11 @@ class _$FilterRecipesImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return filterRecipes(this);
   }
@@ -5480,6 +5983,11 @@ class _$FilterRecipesImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return filterRecipes?.call(this);
   }
@@ -5510,6 +6018,11 @@ class _$FilterRecipesImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (filterRecipes != null) {
@@ -5636,6 +6149,10 @@ class _$UpdateCategoryFilterImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return updateCategoryFilter(category);
   }
@@ -5671,6 +6188,10 @@ class _$UpdateCategoryFilterImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return updateCategoryFilter?.call(category);
   }
@@ -5706,6 +6227,10 @@ class _$UpdateCategoryFilterImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateCategoryFilter != null) {
@@ -5743,6 +6268,11 @@ class _$UpdateCategoryFilterImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return updateCategoryFilter(this);
   }
@@ -5773,6 +6303,11 @@ class _$UpdateCategoryFilterImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return updateCategoryFilter?.call(this);
   }
@@ -5803,6 +6338,11 @@ class _$UpdateCategoryFilterImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateCategoryFilter != null) {
@@ -5929,6 +6469,10 @@ class _$UpdateCookingTimeFilterImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return updateCookingTimeFilter(cookingTime);
   }
@@ -5964,6 +6508,10 @@ class _$UpdateCookingTimeFilterImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return updateCookingTimeFilter?.call(cookingTime);
   }
@@ -5999,6 +6547,10 @@ class _$UpdateCookingTimeFilterImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateCookingTimeFilter != null) {
@@ -6036,6 +6588,11 @@ class _$UpdateCookingTimeFilterImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return updateCookingTimeFilter(this);
   }
@@ -6066,6 +6623,11 @@ class _$UpdateCookingTimeFilterImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return updateCookingTimeFilter?.call(this);
   }
@@ -6096,6 +6658,11 @@ class _$UpdateCookingTimeFilterImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (updateCookingTimeFilter != null) {
@@ -6193,6 +6760,10 @@ class _$LoadRecipeCollectionsImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return loadRecipeCollections();
   }
@@ -6228,6 +6799,10 @@ class _$LoadRecipeCollectionsImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return loadRecipeCollections?.call();
   }
@@ -6263,6 +6838,10 @@ class _$LoadRecipeCollectionsImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeCollections != null) {
@@ -6300,6 +6879,11 @@ class _$LoadRecipeCollectionsImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return loadRecipeCollections(this);
   }
@@ -6330,6 +6914,11 @@ class _$LoadRecipeCollectionsImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return loadRecipeCollections?.call(this);
   }
@@ -6360,6 +6949,11 @@ class _$LoadRecipeCollectionsImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipeCollections != null) {
@@ -6487,6 +7081,10 @@ class _$LoadRecipesForCollectionImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return loadRecipesForCollection(recipeIds);
   }
@@ -6522,6 +7120,10 @@ class _$LoadRecipesForCollectionImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return loadRecipesForCollection?.call(recipeIds);
   }
@@ -6557,6 +7159,10 @@ class _$LoadRecipesForCollectionImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipesForCollection != null) {
@@ -6594,6 +7200,11 @@ class _$LoadRecipesForCollectionImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return loadRecipesForCollection(this);
   }
@@ -6624,6 +7235,11 @@ class _$LoadRecipesForCollectionImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return loadRecipesForCollection?.call(this);
   }
@@ -6654,6 +7270,11 @@ class _$LoadRecipesForCollectionImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadRecipesForCollection != null) {
@@ -6777,6 +7398,10 @@ class _$LoadUserRecipesImpl
     required TResult Function() loadRecipeCollections,
     required TResult Function(List<String> recipeIds) loadRecipesForCollection,
     required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
   }) {
     return loadUserRecipes(userId);
   }
@@ -6812,6 +7437,10 @@ class _$LoadUserRecipesImpl
     TResult? Function()? loadRecipeCollections,
     TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
   }) {
     return loadUserRecipes?.call(userId);
   }
@@ -6847,6 +7476,10 @@ class _$LoadUserRecipesImpl
     TResult Function()? loadRecipeCollections,
     TResult Function(List<String> recipeIds)? loadRecipesForCollection,
     TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadUserRecipes != null) {
@@ -6884,6 +7517,11 @@ class _$LoadUserRecipesImpl
     required TResult Function(LoadRecipesForCollection value)
         loadRecipesForCollection,
     required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
   }) {
     return loadUserRecipes(this);
   }
@@ -6914,6 +7552,11 @@ class _$LoadUserRecipesImpl
     TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
   }) {
     return loadUserRecipes?.call(this);
   }
@@ -6944,6 +7587,11 @@ class _$LoadUserRecipesImpl
     TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
     TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
     TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
     required TResult orElse(),
   }) {
     if (loadUserRecipes != null) {
@@ -6959,6 +7607,1245 @@ abstract class LoadUserRecipes implements RecipeEvent {
   String get userId;
   @JsonKey(ignore: true)
   _$$LoadUserRecipesImplCopyWith<_$LoadUserRecipesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadSeasonalProductsImplCopyWith<$Res> {
+  factory _$$LoadSeasonalProductsImplCopyWith(_$LoadSeasonalProductsImpl value,
+          $Res Function(_$LoadSeasonalProductsImpl) then) =
+      __$$LoadSeasonalProductsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadSeasonalProductsImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadSeasonalProductsImpl>
+    implements _$$LoadSeasonalProductsImplCopyWith<$Res> {
+  __$$LoadSeasonalProductsImplCopyWithImpl(_$LoadSeasonalProductsImpl _value,
+      $Res Function(_$LoadSeasonalProductsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadSeasonalProductsImpl
+    with DiagnosticableTreeMixin
+    implements LoadSeasonalProducts {
+  const _$LoadSeasonalProductsImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadSeasonalProducts()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'RecipeEvent.loadSeasonalProducts'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadSeasonalProductsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProducts?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadSeasonalProducts != null) {
+      return loadSeasonalProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadSeasonalProducts != null) {
+      return loadSeasonalProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadSeasonalProducts implements RecipeEvent {
+  const factory LoadSeasonalProducts() = _$LoadSeasonalProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadSeasonalProductDetailImplCopyWith<$Res> {
+  factory _$$LoadSeasonalProductDetailImplCopyWith(
+          _$LoadSeasonalProductDetailImpl value,
+          $Res Function(_$LoadSeasonalProductDetailImpl) then) =
+      __$$LoadSeasonalProductDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId});
+}
+
+/// @nodoc
+class __$$LoadSeasonalProductDetailImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadSeasonalProductDetailImpl>
+    implements _$$LoadSeasonalProductDetailImplCopyWith<$Res> {
+  __$$LoadSeasonalProductDetailImplCopyWithImpl(
+      _$LoadSeasonalProductDetailImpl _value,
+      $Res Function(_$LoadSeasonalProductDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(_$LoadSeasonalProductDetailImpl(
+      null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadSeasonalProductDetailImpl
+    with DiagnosticableTreeMixin
+    implements LoadSeasonalProductDetail {
+  const _$LoadSeasonalProductDetailImpl(this.productId);
+
+  @override
+  final String productId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadSeasonalProductDetail(productId: $productId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'RecipeEvent.loadSeasonalProductDetail'))
+      ..add(DiagnosticsProperty('productId', productId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadSeasonalProductDetailImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadSeasonalProductDetailImplCopyWith<_$LoadSeasonalProductDetailImpl>
+      get copyWith => __$$LoadSeasonalProductDetailImplCopyWithImpl<
+          _$LoadSeasonalProductDetailImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProductDetail(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProductDetail?.call(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadSeasonalProductDetail != null) {
+      return loadSeasonalProductDetail(productId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProductDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+  }) {
+    return loadSeasonalProductDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadSeasonalProductDetail != null) {
+      return loadSeasonalProductDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadSeasonalProductDetail implements RecipeEvent {
+  const factory LoadSeasonalProductDetail(final String productId) =
+      _$LoadSeasonalProductDetailImpl;
+
+  String get productId;
+  @JsonKey(ignore: true)
+  _$$LoadSeasonalProductDetailImplCopyWith<_$LoadSeasonalProductDetailImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetFavoriteRecipesImplCopyWith<$Res> {
+  factory _$$GetFavoriteRecipesImplCopyWith(_$GetFavoriteRecipesImpl value,
+          $Res Function(_$GetFavoriteRecipesImpl) then) =
+      __$$GetFavoriteRecipesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$GetFavoriteRecipesImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$GetFavoriteRecipesImpl>
+    implements _$$GetFavoriteRecipesImplCopyWith<$Res> {
+  __$$GetFavoriteRecipesImplCopyWithImpl(_$GetFavoriteRecipesImpl _value,
+      $Res Function(_$GetFavoriteRecipesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$GetFavoriteRecipesImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetFavoriteRecipesImpl
+    with DiagnosticableTreeMixin
+    implements GetFavoriteRecipes {
+  const _$GetFavoriteRecipesImpl(this.userId);
+
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.getFavoriteRecipes(userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.getFavoriteRecipes'))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetFavoriteRecipesImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetFavoriteRecipesImplCopyWith<_$GetFavoriteRecipesImpl> get copyWith =>
+      __$$GetFavoriteRecipesImplCopyWithImpl<_$GetFavoriteRecipesImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
+  }) {
+    return getFavoriteRecipes(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
+  }) {
+    return getFavoriteRecipes?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (getFavoriteRecipes != null) {
+      return getFavoriteRecipes(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
+  }) {
+    return getFavoriteRecipes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+  }) {
+    return getFavoriteRecipes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (getFavoriteRecipes != null) {
+      return getFavoriteRecipes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetFavoriteRecipes implements RecipeEvent {
+  const factory GetFavoriteRecipes(final String userId) =
+      _$GetFavoriteRecipesImpl;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$GetFavoriteRecipesImplCopyWith<_$GetFavoriteRecipesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadFavoriteRecipesImplCopyWith<$Res> {
+  factory _$$LoadFavoriteRecipesImplCopyWith(_$LoadFavoriteRecipesImpl value,
+          $Res Function(_$LoadFavoriteRecipesImpl) then) =
+      __$$LoadFavoriteRecipesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$LoadFavoriteRecipesImplCopyWithImpl<$Res>
+    extends _$RecipeEventCopyWithImpl<$Res, _$LoadFavoriteRecipesImpl>
+    implements _$$LoadFavoriteRecipesImplCopyWith<$Res> {
+  __$$LoadFavoriteRecipesImplCopyWithImpl(_$LoadFavoriteRecipesImpl _value,
+      $Res Function(_$LoadFavoriteRecipesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$LoadFavoriteRecipesImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadFavoriteRecipesImpl
+    with DiagnosticableTreeMixin
+    implements LoadFavoriteRecipes {
+  const _$LoadFavoriteRecipesImpl(this.userId);
+
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeEvent.loadFavoriteRecipes(userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeEvent.loadFavoriteRecipes'))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadFavoriteRecipesImpl &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadFavoriteRecipesImplCopyWith<_$LoadFavoriteRecipesImpl> get copyWith =>
+      __$$LoadFavoriteRecipesImplCopyWithImpl<_$LoadFavoriteRecipesImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadRecipes,
+    required TResult Function(String recipeId) loadRecipeDetail,
+    required TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)
+        addRecipe,
+    required TResult Function(Recipe recipe) updateRecipe,
+    required TResult Function(String recipeId) deleteRecipe,
+    required TResult Function(String recipeId) getRecipeById,
+    required TResult Function(String category) getRecipesByCategory,
+    required TResult Function(String query) searchRecipes,
+    required TResult Function(String recipeId, Comment comment) addComment,
+    required TResult Function(String recipeId, Rating rating) addRating,
+    required TResult Function(String recipeId) getCommentsForRecipe,
+    required TResult Function(String commentId) deleteComment,
+    required TResult Function(Ingredient ingredient) addIngredient,
+    required TResult Function(String title) getIngredients,
+    required TResult Function(String query) searchIngredients,
+    required TResult Function(String title) getMeasurements,
+    required TResult Function(String title) getCategories,
+    required TResult Function(String category, String cookingTime)
+        filterRecipes,
+    required TResult Function(String category) updateCategoryFilter,
+    required TResult Function(String cookingTime) updateCookingTimeFilter,
+    required TResult Function() loadRecipeCollections,
+    required TResult Function(List<String> recipeIds) loadRecipesForCollection,
+    required TResult Function(String userId) loadUserRecipes,
+    required TResult Function() loadSeasonalProducts,
+    required TResult Function(String productId) loadSeasonalProductDetail,
+    required TResult Function(String userId) getFavoriteRecipes,
+    required TResult Function(String userId) loadFavoriteRecipes,
+  }) {
+    return loadFavoriteRecipes(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadRecipes,
+    TResult? Function(String recipeId)? loadRecipeDetail,
+    TResult? Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult? Function(Recipe recipe)? updateRecipe,
+    TResult? Function(String recipeId)? deleteRecipe,
+    TResult? Function(String recipeId)? getRecipeById,
+    TResult? Function(String category)? getRecipesByCategory,
+    TResult? Function(String query)? searchRecipes,
+    TResult? Function(String recipeId, Comment comment)? addComment,
+    TResult? Function(String recipeId, Rating rating)? addRating,
+    TResult? Function(String recipeId)? getCommentsForRecipe,
+    TResult? Function(String commentId)? deleteComment,
+    TResult? Function(Ingredient ingredient)? addIngredient,
+    TResult? Function(String title)? getIngredients,
+    TResult? Function(String query)? searchIngredients,
+    TResult? Function(String title)? getMeasurements,
+    TResult? Function(String title)? getCategories,
+    TResult? Function(String category, String cookingTime)? filterRecipes,
+    TResult? Function(String category)? updateCategoryFilter,
+    TResult? Function(String cookingTime)? updateCookingTimeFilter,
+    TResult? Function()? loadRecipeCollections,
+    TResult? Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult? Function(String userId)? loadUserRecipes,
+    TResult? Function()? loadSeasonalProducts,
+    TResult? Function(String productId)? loadSeasonalProductDetail,
+    TResult? Function(String userId)? getFavoriteRecipes,
+    TResult? Function(String userId)? loadFavoriteRecipes,
+  }) {
+    return loadFavoriteRecipes?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadRecipes,
+    TResult Function(String recipeId)? loadRecipeDetail,
+    TResult Function(
+            Recipe recipe,
+            List<IngredientWithQuantity> ingredientsWithQuantity,
+            List<StepRecipe> steps,
+            File? image)?
+        addRecipe,
+    TResult Function(Recipe recipe)? updateRecipe,
+    TResult Function(String recipeId)? deleteRecipe,
+    TResult Function(String recipeId)? getRecipeById,
+    TResult Function(String category)? getRecipesByCategory,
+    TResult Function(String query)? searchRecipes,
+    TResult Function(String recipeId, Comment comment)? addComment,
+    TResult Function(String recipeId, Rating rating)? addRating,
+    TResult Function(String recipeId)? getCommentsForRecipe,
+    TResult Function(String commentId)? deleteComment,
+    TResult Function(Ingredient ingredient)? addIngredient,
+    TResult Function(String title)? getIngredients,
+    TResult Function(String query)? searchIngredients,
+    TResult Function(String title)? getMeasurements,
+    TResult Function(String title)? getCategories,
+    TResult Function(String category, String cookingTime)? filterRecipes,
+    TResult Function(String category)? updateCategoryFilter,
+    TResult Function(String cookingTime)? updateCookingTimeFilter,
+    TResult Function()? loadRecipeCollections,
+    TResult Function(List<String> recipeIds)? loadRecipesForCollection,
+    TResult Function(String userId)? loadUserRecipes,
+    TResult Function()? loadSeasonalProducts,
+    TResult Function(String productId)? loadSeasonalProductDetail,
+    TResult Function(String userId)? getFavoriteRecipes,
+    TResult Function(String userId)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadFavoriteRecipes != null) {
+      return loadFavoriteRecipes(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadRecipes value) loadRecipes,
+    required TResult Function(LoadRecipeDetail value) loadRecipeDetail,
+    required TResult Function(AddRecipe value) addRecipe,
+    required TResult Function(UpdateRecipe value) updateRecipe,
+    required TResult Function(DeleteRecipe value) deleteRecipe,
+    required TResult Function(GetRecipeById value) getRecipeById,
+    required TResult Function(GetRecipesByCategory value) getRecipesByCategory,
+    required TResult Function(SearchRecipes value) searchRecipes,
+    required TResult Function(AddComment value) addComment,
+    required TResult Function(AddRating value) addRating,
+    required TResult Function(GetCommentsForRecipe value) getCommentsForRecipe,
+    required TResult Function(DeleteComment value) deleteComment,
+    required TResult Function(AddIngredient value) addIngredient,
+    required TResult Function(GetIngredients value) getIngredients,
+    required TResult Function(SearchIngredients value) searchIngredients,
+    required TResult Function(GetMeasurements value) getMeasurements,
+    required TResult Function(GetCategories value) getCategories,
+    required TResult Function(FilterRecipes value) filterRecipes,
+    required TResult Function(UpdateCategoryFilter value) updateCategoryFilter,
+    required TResult Function(UpdateCookingTimeFilter value)
+        updateCookingTimeFilter,
+    required TResult Function(LoadRecipeCollections value)
+        loadRecipeCollections,
+    required TResult Function(LoadRecipesForCollection value)
+        loadRecipesForCollection,
+    required TResult Function(LoadUserRecipes value) loadUserRecipes,
+    required TResult Function(LoadSeasonalProducts value) loadSeasonalProducts,
+    required TResult Function(LoadSeasonalProductDetail value)
+        loadSeasonalProductDetail,
+    required TResult Function(GetFavoriteRecipes value) getFavoriteRecipes,
+    required TResult Function(LoadFavoriteRecipes value) loadFavoriteRecipes,
+  }) {
+    return loadFavoriteRecipes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadRecipes value)? loadRecipes,
+    TResult? Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult? Function(AddRecipe value)? addRecipe,
+    TResult? Function(UpdateRecipe value)? updateRecipe,
+    TResult? Function(DeleteRecipe value)? deleteRecipe,
+    TResult? Function(GetRecipeById value)? getRecipeById,
+    TResult? Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult? Function(SearchRecipes value)? searchRecipes,
+    TResult? Function(AddComment value)? addComment,
+    TResult? Function(AddRating value)? addRating,
+    TResult? Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult? Function(DeleteComment value)? deleteComment,
+    TResult? Function(AddIngredient value)? addIngredient,
+    TResult? Function(GetIngredients value)? getIngredients,
+    TResult? Function(SearchIngredients value)? searchIngredients,
+    TResult? Function(GetMeasurements value)? getMeasurements,
+    TResult? Function(GetCategories value)? getCategories,
+    TResult? Function(FilterRecipes value)? filterRecipes,
+    TResult? Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult? Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult? Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult? Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult? Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult? Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult? Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult? Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult? Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+  }) {
+    return loadFavoriteRecipes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadRecipes value)? loadRecipes,
+    TResult Function(LoadRecipeDetail value)? loadRecipeDetail,
+    TResult Function(AddRecipe value)? addRecipe,
+    TResult Function(UpdateRecipe value)? updateRecipe,
+    TResult Function(DeleteRecipe value)? deleteRecipe,
+    TResult Function(GetRecipeById value)? getRecipeById,
+    TResult Function(GetRecipesByCategory value)? getRecipesByCategory,
+    TResult Function(SearchRecipes value)? searchRecipes,
+    TResult Function(AddComment value)? addComment,
+    TResult Function(AddRating value)? addRating,
+    TResult Function(GetCommentsForRecipe value)? getCommentsForRecipe,
+    TResult Function(DeleteComment value)? deleteComment,
+    TResult Function(AddIngredient value)? addIngredient,
+    TResult Function(GetIngredients value)? getIngredients,
+    TResult Function(SearchIngredients value)? searchIngredients,
+    TResult Function(GetMeasurements value)? getMeasurements,
+    TResult Function(GetCategories value)? getCategories,
+    TResult Function(FilterRecipes value)? filterRecipes,
+    TResult Function(UpdateCategoryFilter value)? updateCategoryFilter,
+    TResult Function(UpdateCookingTimeFilter value)? updateCookingTimeFilter,
+    TResult Function(LoadRecipeCollections value)? loadRecipeCollections,
+    TResult Function(LoadRecipesForCollection value)? loadRecipesForCollection,
+    TResult Function(LoadUserRecipes value)? loadUserRecipes,
+    TResult Function(LoadSeasonalProducts value)? loadSeasonalProducts,
+    TResult Function(LoadSeasonalProductDetail value)?
+        loadSeasonalProductDetail,
+    TResult Function(GetFavoriteRecipes value)? getFavoriteRecipes,
+    TResult Function(LoadFavoriteRecipes value)? loadFavoriteRecipes,
+    required TResult orElse(),
+  }) {
+    if (loadFavoriteRecipes != null) {
+      return loadFavoriteRecipes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadFavoriteRecipes implements RecipeEvent {
+  const factory LoadFavoriteRecipes(final String userId) =
+      _$LoadFavoriteRecipesImpl;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$LoadFavoriteRecipesImplCopyWith<_$LoadFavoriteRecipesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -6985,6 +8872,11 @@ mixin _$RecipeState {
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -7005,6 +8897,11 @@ mixin _$RecipeState {
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -7025,6 +8922,11 @@ mixin _$RecipeState {
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -7044,6 +8946,11 @@ mixin _$RecipeState {
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -7061,6 +8968,10 @@ mixin _$RecipeState {
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -7078,6 +8989,10 @@ mixin _$RecipeState {
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -7166,6 +9081,11 @@ class _$InitialRecipeImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return initial();
   }
@@ -7189,6 +9109,11 @@ class _$InitialRecipeImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return initial?.call();
   }
@@ -7212,6 +9137,11 @@ class _$InitialRecipeImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -7237,6 +9167,11 @@ class _$InitialRecipeImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return initial(this);
   }
@@ -7257,6 +9192,10 @@ class _$InitialRecipeImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return initial?.call(this);
   }
@@ -7277,6 +9216,10 @@ class _$InitialRecipeImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -7353,6 +9296,11 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return loading();
   }
@@ -7376,6 +9324,11 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return loading?.call();
   }
@@ -7399,6 +9352,11 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -7424,6 +9382,11 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return loading(this);
   }
@@ -7444,6 +9407,10 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return loading?.call(this);
   }
@@ -7464,6 +9431,10 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -7574,6 +9545,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return loaded(recipes);
   }
@@ -7597,6 +9573,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return loaded?.call(recipes);
   }
@@ -7620,6 +9601,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -7645,6 +9631,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return loaded(this);
   }
@@ -7665,6 +9656,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -7685,6 +9680,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements Loaded {
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -7802,6 +9801,11 @@ class _$RecipeLoadingImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return recipeLoading(recipes);
   }
@@ -7825,6 +9829,11 @@ class _$RecipeLoadingImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return recipeLoading?.call(recipes);
   }
@@ -7848,6 +9857,11 @@ class _$RecipeLoadingImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeLoading != null) {
@@ -7873,6 +9887,11 @@ class _$RecipeLoadingImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return recipeLoading(this);
   }
@@ -7893,6 +9912,10 @@ class _$RecipeLoadingImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return recipeLoading?.call(this);
   }
@@ -7913,6 +9936,10 @@ class _$RecipeLoadingImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeLoading != null) {
@@ -7994,6 +10021,11 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return recipeAdded();
   }
@@ -8017,6 +10049,11 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return recipeAdded?.call();
   }
@@ -8040,6 +10077,11 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeAdded != null) {
@@ -8065,6 +10107,11 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return recipeAdded(this);
   }
@@ -8085,6 +10132,10 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return recipeAdded?.call(this);
   }
@@ -8105,6 +10156,10 @@ class _$RecipeAddedImpl with DiagnosticableTreeMixin implements RecipeAdded {
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeAdded != null) {
@@ -8209,6 +10264,11 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return error(message);
   }
@@ -8232,6 +10292,11 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return error?.call(message);
   }
@@ -8255,6 +10320,11 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -8280,6 +10350,11 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return error(this);
   }
@@ -8300,6 +10375,10 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return error?.call(this);
   }
@@ -8320,6 +10399,10 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements Error {
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -8439,6 +10522,11 @@ class _$CommentsLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return commentsLoaded(comments);
   }
@@ -8462,6 +10550,11 @@ class _$CommentsLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return commentsLoaded?.call(comments);
   }
@@ -8485,6 +10578,11 @@ class _$CommentsLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (commentsLoaded != null) {
@@ -8510,6 +10608,11 @@ class _$CommentsLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return commentsLoaded(this);
   }
@@ -8530,6 +10633,10 @@ class _$CommentsLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return commentsLoaded?.call(this);
   }
@@ -8550,6 +10657,10 @@ class _$CommentsLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (commentsLoaded != null) {
@@ -8671,6 +10782,11 @@ class _$IngredientsLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return ingredientsLoaded(ingredients);
   }
@@ -8694,6 +10810,11 @@ class _$IngredientsLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return ingredientsLoaded?.call(ingredients);
   }
@@ -8717,6 +10838,11 @@ class _$IngredientsLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (ingredientsLoaded != null) {
@@ -8742,6 +10868,11 @@ class _$IngredientsLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return ingredientsLoaded(this);
   }
@@ -8762,6 +10893,10 @@ class _$IngredientsLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return ingredientsLoaded?.call(this);
   }
@@ -8782,6 +10917,10 @@ class _$IngredientsLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (ingredientsLoaded != null) {
@@ -8895,6 +11034,11 @@ class _$IngredientAddedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return ingredientAddedLoaded(message);
   }
@@ -8918,6 +11062,11 @@ class _$IngredientAddedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return ingredientAddedLoaded?.call(message);
   }
@@ -8941,6 +11090,11 @@ class _$IngredientAddedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (ingredientAddedLoaded != null) {
@@ -8966,6 +11120,11 @@ class _$IngredientAddedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return ingredientAddedLoaded(this);
   }
@@ -8986,6 +11145,10 @@ class _$IngredientAddedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return ingredientAddedLoaded?.call(this);
   }
@@ -9006,6 +11169,10 @@ class _$IngredientAddedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (ingredientAddedLoaded != null) {
@@ -9126,6 +11293,11 @@ class _$MeasurementsLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return measurementsLoaded(measurements);
   }
@@ -9149,6 +11321,11 @@ class _$MeasurementsLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return measurementsLoaded?.call(measurements);
   }
@@ -9172,6 +11349,11 @@ class _$MeasurementsLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (measurementsLoaded != null) {
@@ -9197,6 +11379,11 @@ class _$MeasurementsLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return measurementsLoaded(this);
   }
@@ -9217,6 +11404,10 @@ class _$MeasurementsLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return measurementsLoaded?.call(this);
   }
@@ -9237,6 +11428,10 @@ class _$MeasurementsLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (measurementsLoaded != null) {
@@ -9358,6 +11553,11 @@ class _$CategoriesLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return categoriesLoaded(categories);
   }
@@ -9381,6 +11581,11 @@ class _$CategoriesLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return categoriesLoaded?.call(categories);
   }
@@ -9404,6 +11609,11 @@ class _$CategoriesLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (categoriesLoaded != null) {
@@ -9429,6 +11639,11 @@ class _$CategoriesLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return categoriesLoaded(this);
   }
@@ -9449,6 +11664,10 @@ class _$CategoriesLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return categoriesLoaded?.call(this);
   }
@@ -9469,6 +11688,10 @@ class _$CategoriesLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (categoriesLoaded != null) {
@@ -9634,6 +11857,11 @@ class _$RecipeDetailLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return recipeDetailLoaded(recipe, ingredients, steps);
   }
@@ -9657,6 +11885,11 @@ class _$RecipeDetailLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return recipeDetailLoaded?.call(recipe, ingredients, steps);
   }
@@ -9680,6 +11913,11 @@ class _$RecipeDetailLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeDetailLoaded != null) {
@@ -9705,6 +11943,11 @@ class _$RecipeDetailLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return recipeDetailLoaded(this);
   }
@@ -9725,6 +11968,10 @@ class _$RecipeDetailLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return recipeDetailLoaded?.call(this);
   }
@@ -9745,6 +11992,10 @@ class _$RecipeDetailLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeDetailLoaded != null) {
@@ -9872,6 +12123,11 @@ class _$RecipeCollectionsLoadedImpl
         recipeDetailLoaded,
     required TResult Function(List<RecipeCollection> collections)
         recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
   }) {
     return recipeCollectionsLoaded(collections);
   }
@@ -9895,6 +12151,11 @@ class _$RecipeCollectionsLoadedImpl
         recipeDetailLoaded,
     TResult? Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
   }) {
     return recipeCollectionsLoaded?.call(collections);
   }
@@ -9918,6 +12179,11 @@ class _$RecipeCollectionsLoadedImpl
         recipeDetailLoaded,
     TResult Function(List<RecipeCollection> collections)?
         recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeCollectionsLoaded != null) {
@@ -9943,6 +12209,11 @@ class _$RecipeCollectionsLoadedImpl
     required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
     required TResult Function(RecipeCollectionsLoaded value)
         recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
   }) {
     return recipeCollectionsLoaded(this);
   }
@@ -9963,6 +12234,10 @@ class _$RecipeCollectionsLoadedImpl
     TResult? Function(CategoriesLoaded value)? categoriesLoaded,
     TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
   }) {
     return recipeCollectionsLoaded?.call(this);
   }
@@ -9983,6 +12258,10 @@ class _$RecipeCollectionsLoadedImpl
     TResult Function(CategoriesLoaded value)? categoriesLoaded,
     TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
     TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
     required TResult orElse(),
   }) {
     if (recipeCollectionsLoaded != null) {
@@ -10000,4 +12279,796 @@ abstract class RecipeCollectionsLoaded implements RecipeState {
   @JsonKey(ignore: true)
   _$$RecipeCollectionsLoadedImplCopyWith<_$RecipeCollectionsLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SeasonalProductsLoadedImplCopyWith<$Res> {
+  factory _$$SeasonalProductsLoadedImplCopyWith(
+          _$SeasonalProductsLoadedImpl value,
+          $Res Function(_$SeasonalProductsLoadedImpl) then) =
+      __$$SeasonalProductsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<SeasonalProduct> seasonalProducts});
+}
+
+/// @nodoc
+class __$$SeasonalProductsLoadedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$SeasonalProductsLoadedImpl>
+    implements _$$SeasonalProductsLoadedImplCopyWith<$Res> {
+  __$$SeasonalProductsLoadedImplCopyWithImpl(
+      _$SeasonalProductsLoadedImpl _value,
+      $Res Function(_$SeasonalProductsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? seasonalProducts = null,
+  }) {
+    return _then(_$SeasonalProductsLoadedImpl(
+      null == seasonalProducts
+          ? _value._seasonalProducts
+          : seasonalProducts // ignore: cast_nullable_to_non_nullable
+              as List<SeasonalProduct>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SeasonalProductsLoadedImpl
+    with DiagnosticableTreeMixin
+    implements SeasonalProductsLoaded {
+  const _$SeasonalProductsLoadedImpl(
+      final List<SeasonalProduct> seasonalProducts)
+      : _seasonalProducts = seasonalProducts;
+
+  final List<SeasonalProduct> _seasonalProducts;
+  @override
+  List<SeasonalProduct> get seasonalProducts {
+    if (_seasonalProducts is EqualUnmodifiableListView)
+      return _seasonalProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_seasonalProducts);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.seasonalProductsLoaded(seasonalProducts: $seasonalProducts)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeState.seasonalProductsLoaded'))
+      ..add(DiagnosticsProperty('seasonalProducts', seasonalProducts));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeasonalProductsLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._seasonalProducts, _seasonalProducts));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_seasonalProducts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeasonalProductsLoadedImplCopyWith<_$SeasonalProductsLoadedImpl>
+      get copyWith => __$$SeasonalProductsLoadedImplCopyWithImpl<
+          _$SeasonalProductsLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+    required TResult Function(List<RecipeCollection> collections)
+        recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+  }) {
+    return seasonalProductsLoaded(seasonalProducts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult? Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+  }) {
+    return seasonalProductsLoaded?.call(seasonalProducts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (seasonalProductsLoaded != null) {
+      return seasonalProductsLoaded(seasonalProducts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialRecipe value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+    required TResult Function(RecipeCollectionsLoaded value)
+        recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+  }) {
+    return seasonalProductsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialRecipe value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+  }) {
+    return seasonalProductsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialRecipe value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (seasonalProductsLoaded != null) {
+      return seasonalProductsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SeasonalProductsLoaded implements RecipeState {
+  const factory SeasonalProductsLoaded(
+          final List<SeasonalProduct> seasonalProducts) =
+      _$SeasonalProductsLoadedImpl;
+
+  List<SeasonalProduct> get seasonalProducts;
+  @JsonKey(ignore: true)
+  _$$SeasonalProductsLoadedImplCopyWith<_$SeasonalProductsLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SeasonalProductDetailLoadedImplCopyWith<$Res> {
+  factory _$$SeasonalProductDetailLoadedImplCopyWith(
+          _$SeasonalProductDetailLoadedImpl value,
+          $Res Function(_$SeasonalProductDetailLoadedImpl) then) =
+      __$$SeasonalProductDetailLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SeasonalProduct seasonalProduct});
+
+  $SeasonalProductCopyWith<$Res> get seasonalProduct;
+}
+
+/// @nodoc
+class __$$SeasonalProductDetailLoadedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$SeasonalProductDetailLoadedImpl>
+    implements _$$SeasonalProductDetailLoadedImplCopyWith<$Res> {
+  __$$SeasonalProductDetailLoadedImplCopyWithImpl(
+      _$SeasonalProductDetailLoadedImpl _value,
+      $Res Function(_$SeasonalProductDetailLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? seasonalProduct = null,
+  }) {
+    return _then(_$SeasonalProductDetailLoadedImpl(
+      null == seasonalProduct
+          ? _value.seasonalProduct
+          : seasonalProduct // ignore: cast_nullable_to_non_nullable
+              as SeasonalProduct,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SeasonalProductCopyWith<$Res> get seasonalProduct {
+    return $SeasonalProductCopyWith<$Res>(_value.seasonalProduct, (value) {
+      return _then(_value.copyWith(seasonalProduct: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$SeasonalProductDetailLoadedImpl
+    with DiagnosticableTreeMixin
+    implements SeasonalProductDetailLoaded {
+  const _$SeasonalProductDetailLoadedImpl(this.seasonalProduct);
+
+  @override
+  final SeasonalProduct seasonalProduct;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.seasonalProductDetailLoaded(seasonalProduct: $seasonalProduct)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'RecipeState.seasonalProductDetailLoaded'))
+      ..add(DiagnosticsProperty('seasonalProduct', seasonalProduct));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeasonalProductDetailLoadedImpl &&
+            (identical(other.seasonalProduct, seasonalProduct) ||
+                other.seasonalProduct == seasonalProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, seasonalProduct);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeasonalProductDetailLoadedImplCopyWith<_$SeasonalProductDetailLoadedImpl>
+      get copyWith => __$$SeasonalProductDetailLoadedImplCopyWithImpl<
+          _$SeasonalProductDetailLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+    required TResult Function(List<RecipeCollection> collections)
+        recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+  }) {
+    return seasonalProductDetailLoaded(seasonalProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult? Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+  }) {
+    return seasonalProductDetailLoaded?.call(seasonalProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (seasonalProductDetailLoaded != null) {
+      return seasonalProductDetailLoaded(seasonalProduct);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialRecipe value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+    required TResult Function(RecipeCollectionsLoaded value)
+        recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+  }) {
+    return seasonalProductDetailLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialRecipe value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+  }) {
+    return seasonalProductDetailLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialRecipe value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (seasonalProductDetailLoaded != null) {
+      return seasonalProductDetailLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SeasonalProductDetailLoaded implements RecipeState {
+  const factory SeasonalProductDetailLoaded(
+          final SeasonalProduct seasonalProduct) =
+      _$SeasonalProductDetailLoadedImpl;
+
+  SeasonalProduct get seasonalProduct;
+  @JsonKey(ignore: true)
+  _$$SeasonalProductDetailLoadedImplCopyWith<_$SeasonalProductDetailLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FavoritesLoadedImplCopyWith<$Res> {
+  factory _$$FavoritesLoadedImplCopyWith(_$FavoritesLoadedImpl value,
+          $Res Function(_$FavoritesLoadedImpl) then) =
+      __$$FavoritesLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Recipe> favoriteRecipes});
+}
+
+/// @nodoc
+class __$$FavoritesLoadedImplCopyWithImpl<$Res>
+    extends _$RecipeStateCopyWithImpl<$Res, _$FavoritesLoadedImpl>
+    implements _$$FavoritesLoadedImplCopyWith<$Res> {
+  __$$FavoritesLoadedImplCopyWithImpl(
+      _$FavoritesLoadedImpl _value, $Res Function(_$FavoritesLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteRecipes = null,
+  }) {
+    return _then(_$FavoritesLoadedImpl(
+      null == favoriteRecipes
+          ? _value._favoriteRecipes
+          : favoriteRecipes // ignore: cast_nullable_to_non_nullable
+              as List<Recipe>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FavoritesLoadedImpl
+    with DiagnosticableTreeMixin
+    implements FavoritesLoaded {
+  const _$FavoritesLoadedImpl(final List<Recipe> favoriteRecipes)
+      : _favoriteRecipes = favoriteRecipes;
+
+  final List<Recipe> _favoriteRecipes;
+  @override
+  List<Recipe> get favoriteRecipes {
+    if (_favoriteRecipes is EqualUnmodifiableListView) return _favoriteRecipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteRecipes);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecipeState.favoritesLoaded(favoriteRecipes: $favoriteRecipes)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'RecipeState.favoritesLoaded'))
+      ..add(DiagnosticsProperty('favoriteRecipes', favoriteRecipes));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoritesLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteRecipes, _favoriteRecipes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_favoriteRecipes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoritesLoadedImplCopyWith<_$FavoritesLoadedImpl> get copyWith =>
+      __$$FavoritesLoadedImplCopyWithImpl<_$FavoritesLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Recipe> recipes) loaded,
+    required TResult Function(List<Recipe> recipes) recipeLoading,
+    required TResult Function() recipeAdded,
+    required TResult Function(String message) error,
+    required TResult Function(List<Comment> comments) commentsLoaded,
+    required TResult Function(List<Ingredient> ingredients) ingredientsLoaded,
+    required TResult Function(String message) ingredientAddedLoaded,
+    required TResult Function(List<Measurement> measurements)
+        measurementsLoaded,
+    required TResult Function(List<Categories> categories) categoriesLoaded,
+    required TResult Function(
+            Recipe recipe,
+            List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)
+        recipeDetailLoaded,
+    required TResult Function(List<RecipeCollection> collections)
+        recipeCollectionsLoaded,
+    required TResult Function(List<SeasonalProduct> seasonalProducts)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProduct seasonalProduct)
+        seasonalProductDetailLoaded,
+    required TResult Function(List<Recipe> favoriteRecipes) favoritesLoaded,
+  }) {
+    return favoritesLoaded(favoriteRecipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Recipe> recipes)? loaded,
+    TResult? Function(List<Recipe> recipes)? recipeLoading,
+    TResult? Function()? recipeAdded,
+    TResult? Function(String message)? error,
+    TResult? Function(List<Comment> comments)? commentsLoaded,
+    TResult? Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult? Function(String message)? ingredientAddedLoaded,
+    TResult? Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult? Function(List<Categories> categories)? categoriesLoaded,
+    TResult? Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult? Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult? Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult? Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult? Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+  }) {
+    return favoritesLoaded?.call(favoriteRecipes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Recipe> recipes)? loaded,
+    TResult Function(List<Recipe> recipes)? recipeLoading,
+    TResult Function()? recipeAdded,
+    TResult Function(String message)? error,
+    TResult Function(List<Comment> comments)? commentsLoaded,
+    TResult Function(List<Ingredient> ingredients)? ingredientsLoaded,
+    TResult Function(String message)? ingredientAddedLoaded,
+    TResult Function(List<Measurement> measurements)? measurementsLoaded,
+    TResult Function(List<Categories> categories)? categoriesLoaded,
+    TResult Function(Recipe recipe, List<Map<String, dynamic>> ingredients,
+            List<Map<String, dynamic>> steps)?
+        recipeDetailLoaded,
+    TResult Function(List<RecipeCollection> collections)?
+        recipeCollectionsLoaded,
+    TResult Function(List<SeasonalProduct> seasonalProducts)?
+        seasonalProductsLoaded,
+    TResult Function(SeasonalProduct seasonalProduct)?
+        seasonalProductDetailLoaded,
+    TResult Function(List<Recipe> favoriteRecipes)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (favoritesLoaded != null) {
+      return favoritesLoaded(favoriteRecipes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialRecipe value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(RecipeLoading value) recipeLoading,
+    required TResult Function(RecipeAdded value) recipeAdded,
+    required TResult Function(Error value) error,
+    required TResult Function(CommentsLoaded value) commentsLoaded,
+    required TResult Function(IngredientsLoaded value) ingredientsLoaded,
+    required TResult Function(IngredientAdded value) ingredientAddedLoaded,
+    required TResult Function(MeasurementsLoaded value) measurementsLoaded,
+    required TResult Function(CategoriesLoaded value) categoriesLoaded,
+    required TResult Function(RecipeDetailLoaded value) recipeDetailLoaded,
+    required TResult Function(RecipeCollectionsLoaded value)
+        recipeCollectionsLoaded,
+    required TResult Function(SeasonalProductsLoaded value)
+        seasonalProductsLoaded,
+    required TResult Function(SeasonalProductDetailLoaded value)
+        seasonalProductDetailLoaded,
+    required TResult Function(FavoritesLoaded value) favoritesLoaded,
+  }) {
+    return favoritesLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialRecipe value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(RecipeLoading value)? recipeLoading,
+    TResult? Function(RecipeAdded value)? recipeAdded,
+    TResult? Function(Error value)? error,
+    TResult? Function(CommentsLoaded value)? commentsLoaded,
+    TResult? Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult? Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult? Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult? Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult? Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult? Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult? Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult? Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult? Function(FavoritesLoaded value)? favoritesLoaded,
+  }) {
+    return favoritesLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialRecipe value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(RecipeLoading value)? recipeLoading,
+    TResult Function(RecipeAdded value)? recipeAdded,
+    TResult Function(Error value)? error,
+    TResult Function(CommentsLoaded value)? commentsLoaded,
+    TResult Function(IngredientsLoaded value)? ingredientsLoaded,
+    TResult Function(IngredientAdded value)? ingredientAddedLoaded,
+    TResult Function(MeasurementsLoaded value)? measurementsLoaded,
+    TResult Function(CategoriesLoaded value)? categoriesLoaded,
+    TResult Function(RecipeDetailLoaded value)? recipeDetailLoaded,
+    TResult Function(RecipeCollectionsLoaded value)? recipeCollectionsLoaded,
+    TResult Function(SeasonalProductsLoaded value)? seasonalProductsLoaded,
+    TResult Function(SeasonalProductDetailLoaded value)?
+        seasonalProductDetailLoaded,
+    TResult Function(FavoritesLoaded value)? favoritesLoaded,
+    required TResult orElse(),
+  }) {
+    if (favoritesLoaded != null) {
+      return favoritesLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FavoritesLoaded implements RecipeState {
+  const factory FavoritesLoaded(final List<Recipe> favoriteRecipes) =
+      _$FavoritesLoadedImpl;
+
+  List<Recipe> get favoriteRecipes;
+  @JsonKey(ignore: true)
+  _$$FavoritesLoadedImplCopyWith<_$FavoritesLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
